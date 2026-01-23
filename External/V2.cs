@@ -1,4 +1,4 @@
-﻿namespace Shockah.Kokoro;
+﻿namespace TeraTaxMod.External;
 
 /// <summary>
 /// Allows accessing all of Kokoro library APIs.

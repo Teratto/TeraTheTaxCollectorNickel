@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using static Shockah.Kokoro.IKokoroApi.IV2;
 
-namespace Shockah.Kokoro;
+namespace TeraTaxMod.External;
 
 public partial interface IKokoroApi
 {

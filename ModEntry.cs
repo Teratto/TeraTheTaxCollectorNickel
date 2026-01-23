@@ -17,11 +17,13 @@ namespace TeraTaxMod;
 internal class ModEntry : SimpleMod
 {
     internal static ModEntry Instance { get; private set; } = null!;
-    internal Harmony Harmony;
-    internal IKokoroApi.IV2 KokoroApi;
-    internal IDeckEntry TeraTaxDeck;
-    internal IStatusEntry KnowledgeStatus;
-    internal IStatusEntry LessonStatus;
+    internal Harmony Harmony { get; }
+    internal IKokoroApi.IV2 KokoroApi { get; }
+    internal IDeckEntry TeraTaxDeck { get; }
+    internal IStatusEntry KnowledgeStatus { get; }
+
+    internal IStatusEntry TeraTaxationStatus { get; }
+    internal IStatusEntry LessonStatus { get; }
     internal ILocalizationProvider<IReadOnlyList<string>> AnyLocalizations { get; }
     internal ILocaleBoundNonNullLocalizationProvider<IReadOnlyList<string>> Localizations { get; }
 
@@ -176,6 +178,18 @@ internal class ModEntry : SimpleMod
             Name = AnyLocalizations.Bind(["status", "knowledge", "name"]).Localize,
             Description = AnyLocalizations.Bind(["status", "knowledge", "desc"]).Localize
         });
+        TeraTaxationStatus = helper.Content.Statuses.RegisterStatus("Taxation", new StatusConfiguration
+        {
+            Definition = new StatusDef
+            {
+                isGood = false,
+                affectedByTimestop = false,
+                color = new Color("FFFFFF"),
+                icon = RegisterSprite(package, "assets/Feature/coin.png").Sprite
+            },
+            Name = AnyLocalizations.Bind(["status", "taxation", "name"]).Localize,
+            Description = AnyLocalizations.Bind(["status", "taxation", "desc"]).Localize
+        });
         LessonStatus = helper.Content.Statuses.RegisterStatus("Lesson", new StatusConfiguration
         {
             Definition = new StatusDef
@@ -193,7 +207,6 @@ internal class ModEntry : SimpleMod
          * Managers are typically made to register themselves when constructed.
          * _ = makes the compiler not complain about the fact that you are constructing something for seemingly no reason.
          */
-        _ = new KnowledgeManager(package, helper);
         _ = new SilentStatusManager();
 
         /*
