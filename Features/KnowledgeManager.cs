@@ -9,7 +9,7 @@ using Nickel;
 
 namespace TeraTaxMod.Features;
 
-public class KnowledgeManager : IKokoroApi.IV2.IStatusRenderingApi.IHook
+public class KnowledgeManager : IKokoroApi.IV2.IStatusLogicApi.IHook
 {
     private static IModSoundEntry _lessonLearnedSound = null!;
     
@@ -35,7 +35,7 @@ public class KnowledgeManager : IKokoroApi.IV2.IStatusRenderingApi.IHook
      * However, it only knows how to render Knowledge as bars - so it has its definition for Knowledge,
      * and returns null for everything else.
      */
-    public (IReadOnlyList<Color> Colors, int? BarSegmentWidth)? OverrideStatusRenderingAsBars(IKokoroApi.IV2.IStatusRenderingApi.IHook.IOverrideStatusRenderingAsBarsArgs args)
+    public (IReadOnlyList<Color> Colors, int? BarSegmentWidth)? OverrideStatusRenderingAsBars(IKokoroApi.IV2.IStatusLogicApi.IHook.IOverrideStatusRenderingAsBarsArgs args)
     {
         if (args.Status != ModEntry.Instance.KnowledgeStatus.Status) return null;
 

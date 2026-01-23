@@ -6,6 +6,7 @@ using TeraTaxMod.External;
 using HarmonyLib;
 using Nanoray.PluginManager;
 using Nickel;
+using static Shockah.Kokoro.IKokoroApi.IV2;
 
 namespace TeraTaxMod.Features;
 
