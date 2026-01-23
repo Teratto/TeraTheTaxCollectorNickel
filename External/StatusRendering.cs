@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using static Shockah.Kokoro.IKokoroApi.IV2;
 
 namespace TeraTaxMod.External;
 
@@ -6,13 +7,13 @@ public partial interface IKokoroApi
 {
 	public partial interface IV2
 	{
-		/// <inheritdoc cref="IStatusRenderingApi"/>
-		IStatusRenderingApi StatusRendering { get; }
+		/// <inheritdoc cref="IStatusLogicApi"/>
+		IStatusLogicApi StatusRendering { get; }
 
 		/// <summary>
 		/// Allows modifying how a status is being rendered via a hook.
 		/// </summary>
-		public interface IStatusRenderingApi
+		public interface IStatusLogicApi
 		{
 			/// <summary>
 			/// Registers a new hook related to status rendering.

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using static TeraTaxMod.External.IKokoroApi.IV2;
+using static Shockah.Kokoro.IKokoroApi.IV2;
 
 namespace TeraTaxMod.External;
 
