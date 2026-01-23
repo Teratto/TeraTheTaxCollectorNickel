@@ -10,13 +10,13 @@ using Nickel;
 namespace TeraTaxMod.Features;
 
 
-public class TeraTaxationManager : IKokoroApi.IV2.IStatusRenderingApi.IHook
+public class TeraTaxationManager : IKokoroApi.IV2.StatusLogic.IHook
 {
     
 
     public TeraTaxationManager()
     {
-        ModEntry.Instance.KokoroApi.StatusLogic.RegisterHook(this, 0);
+        ModEntry.Instance.KokoroApi.StatusLogic.RegisterHook(this);
         ModEntry.Instance.KokoroApi.StatusRendering.RegisterHook(this, 0);
     }
 
