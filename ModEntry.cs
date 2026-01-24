@@ -21,10 +21,14 @@ internal class ModEntry : SimpleMod
     internal static ModEntry Instance { get; private set; } = null!;
     internal Harmony Harmony { get; }
     internal IKokoroApi.IV2 KokoroApi { get; }
+
+    internal IPlayableCharacterEntryV2 TeraCharacter {get;}
+    //Note: this IPlayableCharacterEntryV2 was originally in the helper.content function. I changed code
+    //to try and get the "ismissing" status to work. Let's hope I did this right. If it breaks, remove
+    //this from internal and add it back to the helper.content function.
     internal IDeckEntry TeraTaxDeck { get; }
     internal IStatusEntry TeraPersistenceStatus { get; }
     internal IStatusEntry TeraTaxationStatus { get; }
-    internal IStatusEntry LessonStatus { get; }
     internal ILocalizationProvider<IReadOnlyList<string>> AnyLocalizations { get; }
     internal ILocaleBoundNonNullLocalizationProvider<IReadOnlyList<string>> Localizations { get; }
 
@@ -37,7 +41,7 @@ internal class ModEntry : SimpleMod
         typeof(Tariff)
     ];
     private static List<Type> TeraTaxUncommonCardTypes = [
-      
+        typeof(MarketCrash)
     ];
     private static List<Type> TeraTaxRareCardTypes = [
         
@@ -98,9 +102,9 @@ internal class ModEntry : SimpleMod
                  * TODO On cards, it dictates the sheen on higher rarities, as well as influences the color of the energy cost.
                  * If this deck is given to a playable character, their name will be this color, and their mini will have this color as their border.
                  */
-                color = new Color("999999"),
+                color = new Color("0xff266fd8"),
 
-                titleColor = new Color("000000")
+                titleColor = new Color("0xff266fd8")
             },
 
             DefaultCardArt = StableSpr.cards_colorless,
@@ -122,14 +126,14 @@ internal class ModEntry : SimpleMod
          * The game uses the squint animation for the Extra-Planar Being and High-Pitched Static events, and the gameover animation while you are dying.
          * You may define any other animations, and they will only be used when explicitly referenced (such as dialogue).
          */
-        RegisterAnimation(package, "neutral", "assets/Animation/DaveNeutral", 4);
-        RegisterAnimation(package, "squint", "assets/Animation/DaveSquint", 4);
+        RegisterAnimation(package, "neutral", "assets/Animation/NormalIdle", 4);
+        RegisterAnimation(package, "squint", "assets/Animation/SquintIdle", 4);
         Instance.Helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2
         {
             CharacterType = TeraTaxDeck.Deck.Key(),
             LoopTag = "gameover",
             Frames = [
-                RegisterSprite(package, "assets/Animation/DaveGameOver.png").Sprite,
+                RegisterSprite(package, "assets/Animation/bird_GameOver_0.png").Sprite,
             ]
         });
         Instance.Helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2
@@ -137,14 +141,14 @@ internal class ModEntry : SimpleMod
             CharacterType = TeraTaxDeck.Deck.Key(),
             LoopTag = "mini",
             Frames = [
-                RegisterSprite(package, "assets/Animation/DaveMini.png").Sprite,
+                RegisterSprite(package, "assets/Animation/bird_mini_0.png").Sprite,
             ]
         });
 
-        helper.Content.Characters.V2.RegisterPlayableCharacter("Tera", new PlayableCharacterConfigurationV2
+        TeraCharacter = helper.Content.Characters.V2.RegisterPlayableCharacter("Tera", new()
         {
             Deck = TeraTaxDeck.Deck,
-            BorderSprite = RegisterSprite(package, "assets/char_frame_dave.png").Sprite,
+            BorderSprite = RegisterSprite(package, "assets/Animation/panel_tera.png").Sprite,
             Starters = new StarterDeck
             {
                 cards = [
@@ -190,18 +194,7 @@ internal class ModEntry : SimpleMod
             Name = AnyLocalizations.Bind(["status", "persistence", "name"]).Localize,
             Description = AnyLocalizations.Bind(["status", "persistence", "desc"]).Localize
         });
-        LessonStatus = helper.Content.Statuses.RegisterStatus("Lesson", new StatusConfiguration
-        {
-            Definition = new StatusDef
-            {
-                isGood = true,
-                affectedByTimestop = false,
-                color = new Color("c7dcd0"),
-                icon = RegisterSprite(package, "assets/lesson.png").Sprite
-            },
-            Name = AnyLocalizations.Bind(["status", "lesson", "name"]).Localize,
-            Description = AnyLocalizations.Bind(["status", "lesson", "desc"]).Localize
-        });
+        
 
         /*
          * Managers are typically made to register themselves when constructed.
