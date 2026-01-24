@@ -1,10 +1,10 @@
 {
-  "UniqueName": "rft.TeraTaxMod",
+  "UniqueName": "TeraTaxMod",
   "Version": "0.1.0",
-  "Author": "rft50",
-  "Description": "A mod demonstrating the basics of modding Cobalt Core.",
+  "Author": "Teratto",
+  "Description": "Introduces a silly tax bird to Cobalt Core.",
   "RequiredApiVersion": "1.5.7",
-  "EntryPointAssembly": "DemoMod.dll",
+  "EntryPointAssembly": "TeraTaxMod.dll",
   "LoadPhase": "AfterDbInit",
   "Dependencies": [
     {

@@ -30,23 +30,39 @@ public class TeraTaxationManager : IKokoroApi.IV2.IStatusLogicApi.IHook
 
         if (args.Status != ModEntry.Instance.TeraTaxationStatus.Status)
             return false;
-        if (args.Timing != IKokoroApi.IV2.IStatusLogicApi.StatusTurnTriggerTiming.TurnStart)
+        if (args.Timing == IKokoroApi.IV2.IStatusLogicApi.StatusTurnTriggerTiming.TurnEnd)
+            
+            if (args.NewAmount == 0)
+                return false;
+            if (args.NewAmount != 0) {
+                bool isPlayerShip = args.Ship.isPlayerShip;
+                args.Combat.QueueImmediate(new AHurt() { 
+                    hurtShieldsFirst = true,
+                    hurtAmount = args.NewAmount / taxationDamageThreshold,
+                    targetPlayer = isPlayerShip
+                });
+       
+            }
             return false;
-        if (args.NewAmount == 0)
+    }
+    public bool HandleStatusturnAutoStep(IHandleStatusTurnAutoStepArgs args)
+    {
+        if (args.Status != ModEntry.Instance.TeraTaxationStatus.Status)
             return false;
-        if (args.NewAmount != 0) {
-            bool isPlayerShip = args.Ship.isPlayerShip;
-            args.Combat.QueueImmediate(new AHurt() { 
-                hurtShieldsFirst = true,
-                hurtAmount = args.NewAmount / taxationDamageThreshold,
-                targetPlayer = isPlayerShip
-            });
-        }
+        int persistenceAmount = args.Ship.Get(ModEntry.Instance.TeraPersistenceStatus.Status);
+        if (args.Timing == IKokoroApi.IV2.IStatusLogicApi.StatusTurnTriggerTiming.TurnStart)
+            {
+                if (persistenceAmount > 0)
+                {
+                args.Amount += persistenceAmount;
+                }
+            }
 
-            //If the amount on a ship > damage threshold on turn start, do damage equal to amount / damage threshold. Ignore remainder. 
+
 
             return false;
     }
+
 }
 
 

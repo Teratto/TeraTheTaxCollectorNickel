@@ -6,9 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
-using TeraTaxMod.Actions;
-using TeraTaxMod.Artifacts;
-using TeraTaxMod.Cards;
+using TeraNickel.Cards;
+
+//using TeraTaxMod.Actions;
+//using TeraTaxMod.Artifacts;
+//using TeraTaxMod.Cards;
 using TeraTaxMod.External;
 using TeraTaxMod.Features;
 
@@ -20,8 +22,7 @@ internal class ModEntry : SimpleMod
     internal Harmony Harmony { get; }
     internal IKokoroApi.IV2 KokoroApi { get; }
     internal IDeckEntry TeraTaxDeck { get; }
-    internal IStatusEntry KnowledgeStatus { get; }
-
+    internal IStatusEntry TeraPersistenceStatus { get; }
     internal IStatusEntry TeraTaxationStatus { get; }
     internal IStatusEntry LessonStatus { get; }
     internal ILocalizationProvider<IReadOnlyList<string>> AnyLocalizations { get; }
@@ -33,17 +34,16 @@ internal class ModEntry : SimpleMod
      * In theory only one collection could be used, containing all registrable types, but it is seperated this way for ease of organization.
      */
     private static List<Type> TeraTaxCommonCardTypes = [
-        typeof(LessonPlan),
-        typeof(PatternBlock)
+        typeof(Tariff)
     ];
     private static List<Type> TeraTaxUncommonCardTypes = [
-        typeof(DeepStudy)
+      
     ];
     private static List<Type> TeraTaxRareCardTypes = [
-        typeof(ExtractKnowledge)
+        
     ];
     private static List<Type> TeraTaxSpecialCardTypes = [
-        typeof(Ponder)
+        
     ];
     private static IEnumerable<Type> TeraTaxCardTypes =
         TeraTaxCommonCardTypes
@@ -52,10 +52,10 @@ internal class ModEntry : SimpleMod
             .Concat(TeraTaxSpecialCardTypes);
 
     private static List<Type> TeraTaxCommonArtifacts = [
-        typeof(BuriedKnowledge)
+       
     ];
     private static List<Type> TeraTaxBossArtifacts = [
-        typeof(Lexicon)
+        
     ];
     private static IEnumerable<Type> TeraTaxArtifactTypes =
         TeraTaxCommonArtifacts
@@ -148,8 +148,7 @@ internal class ModEntry : SimpleMod
             Starters = new StarterDeck
             {
                 cards = [
-                    new LessonPlan(),
-                    new PatternBlock()
+                   
                 ],
                 /*
                  * Some characters have starting artifacts, in addition to starting cards.
@@ -166,18 +165,7 @@ internal class ModEntry : SimpleMod
          * Statuses are used to achieve many mechanics.
          * However, statuses themselves do not contain any code - they just keep track of how much you have.
          */
-        KnowledgeStatus = helper.Content.Statuses.RegisterStatus("Knowledge", new StatusConfiguration
-        {
-            Definition = new StatusDef
-            {
-                isGood = true,
-                affectedByTimestop = false,
-                color = new Color("fbb954"),
-                icon = RegisterSprite(package, "assets/knowledge.png").Sprite
-            },
-            Name = AnyLocalizations.Bind(["status", "knowledge", "name"]).Localize,
-            Description = AnyLocalizations.Bind(["status", "knowledge", "desc"]).Localize
-        });
+        
         TeraTaxationStatus = helper.Content.Statuses.RegisterStatus("Taxation", new StatusConfiguration
         {
             Definition = new StatusDef
@@ -189,6 +177,18 @@ internal class ModEntry : SimpleMod
             },
             Name = AnyLocalizations.Bind(["status", "taxation", "name"]).Localize,
             Description = AnyLocalizations.Bind(["status", "taxation", "desc"]).Localize
+        });
+        TeraPersistenceStatus = helper.Content.Statuses.RegisterStatus("Persistence", new StatusConfiguration
+        {
+            Definition = new StatusDef
+            {
+                isGood = false,
+                affectedByTimestop = false,
+                color = new Color("FFFFFF"),
+                icon = RegisterSprite(package, "assets/Feature/coin.png").Sprite
+            },
+            Name = AnyLocalizations.Bind(["status", "persistence", "name"]).Localize,
+            Description = AnyLocalizations.Bind(["status", "persistence", "desc"]).Localize
         });
         LessonStatus = helper.Content.Statuses.RegisterStatus("Lesson", new StatusConfiguration
         {
@@ -213,10 +213,7 @@ internal class ModEntry : SimpleMod
          * Some classes require so little management that a manager may not be worth writing.
          * In AGainPonder's case, it is simply a need for two sprites and evaluation of an artifact's effect.
          */
-        AGainPonder.DrawSpr = RegisterSprite(package, "assets/ponder_draw.png").Sprite;
-        AGainPonder.DiscardSpr = RegisterSprite(package, "assets/ponder_discard.png").Sprite;
         
-        AOverthink.Spr = RegisterSprite(package, "assets/overthink.png").Sprite;
     }
 
     /*
