@@ -23,27 +23,26 @@ public class TeraTaxationManager : IKokoroApi.IV2.IStatusLogicApi.IHook
 
 
 
-    public bool OnStatusTurnTrigger(IOnStatusTurnTriggerArgs args )
+    public void OnStatusTurnTrigger(IOnStatusTurnTriggerArgs args )
     {
         int taxationDamageThreshold = 3;
         //if player has inflation relic, set threshold to 2
 
         if (args.Status != ModEntry.Instance.TeraTaxationStatus.Status)
-            return false;
-        if (args.Timing == IKokoroApi.IV2.IStatusLogicApi.StatusTurnTriggerTiming.TurnEnd)
+            return;
+        if (args.Timing != IKokoroApi.IV2.IStatusLogicApi.StatusTurnTriggerTiming.TurnEnd)
+            return;
+        
+        bool isPlayerShip = args.Ship.isPlayerShip;
+        args.Combat.QueueImmediate(new AHurt() {
+            targetPlayer = isPlayerShip,
+            hurtShieldsFirst = true,
+            hurtAmount = args.OldAmount / taxationDamageThreshold,
             
-            if (args.NewAmount == 0)
-                return false;
-            if (args.NewAmount != 0) {
-                bool isPlayerShip = args.Ship.isPlayerShip;
-                args.Combat.QueueImmediate(new AHurt() { 
-                    hurtShieldsFirst = true,
-                    hurtAmount = args.NewAmount / taxationDamageThreshold,
-                    targetPlayer = isPlayerShip
-                });
+         });
        
-            }
-            return false;
+            
+           return;
     }
     public bool HandleStatusturnAutoStep(IHandleStatusTurnAutoStepArgs args)
     {

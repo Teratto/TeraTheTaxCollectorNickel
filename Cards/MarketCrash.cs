@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TeraTaxMod;
 
-namespace TeraNickel.Cards
+namespace TeraTaxMod.Cards
 {
     internal class MarketCrash : Card, IRegisterable
     {
@@ -50,17 +50,26 @@ namespace TeraNickel.Cards
                         {
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
                             statusAmount = 2,
+                            targetPlayer = false
                         },
                         new AStatus()
                         {
                             status = Status.tempShield,
                             statusAmount = 2,
+                            targetPlayer = true
 
                         },
                         new AStatus()
                         {
                             status = ModEntry.Instance.TeraCharacter.MissingStatus.Status,
-                            statusAmount = 1
+                            statusAmount = 1,
+                            targetPlayer = true
+                        },
+                        new AStatus()
+                        {
+                            status = ModEntry.Instance.TeraPersistenceStatus.Status,
+                            statusAmount = 1,
+                            targetPlayer = true
                         }
                     };
                     }
@@ -72,17 +81,19 @@ namespace TeraNickel.Cards
                         {
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
                             statusAmount = 2,
+                            targetPlayer = false
                         },
                         new AStatus()
                         {
                             status = Status.tempShield,
                             statusAmount = 3,
-
+                            targetPlayer = true
                         },
                         new AStatus()
                         {
                             status = ModEntry.Instance.TeraCharacter.MissingStatus.Status,
-                            statusAmount = 1
+                            statusAmount = 1,
+                            targetPlayer = true
                         }
                     };
                     }
@@ -94,17 +105,20 @@ namespace TeraNickel.Cards
                         {
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
                             statusAmount = 3,
+                            targetPlayer = false
                         },
                         new AStatus()
                         {
                             status = Status.tempShield,
                             statusAmount = 3,
+                            targetPlayer= true  
 
                         },
                         new AStatus()
                         {
                             status = ModEntry.Instance.TeraCharacter.MissingStatus.Status,
-                            statusAmount = 2
+                            statusAmount = 2,
+                            targetPlayer = true
                         }
                     };
                     }
@@ -116,17 +130,20 @@ namespace TeraNickel.Cards
                         {
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
                             statusAmount = 2,
+                            targetPlayer = false
                         },
                         new AStatus()
                         {
                             status = Status.tempShield,
                             statusAmount = 2,
+                            targetPlayer = true
 
                         },
                         new AStatus()
                         {
                             status = ModEntry.Instance.TeraCharacter.MissingStatus.Status,
-                            statusAmount = 1
+                            statusAmount = 1,
+                            targetPlayer = true
                         }
                     };
                     }
@@ -139,7 +156,7 @@ namespace TeraNickel.Cards
         {
             return new CardData
             {
-                cost = 2,
+                cost = 0,
                 exhaust = false,
             };
         }

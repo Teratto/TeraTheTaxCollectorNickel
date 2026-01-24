@@ -6,11 +6,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
-using TeraNickel.Cards;
+using TeraTaxMod.Cards;
 
 //using TeraTaxMod.Actions;
 //using TeraTaxMod.Artifacts;
-//using TeraTaxMod.Cards;
 using TeraTaxMod.External;
 using TeraTaxMod.Features;
 
@@ -38,13 +37,15 @@ internal class ModEntry : SimpleMod
      * In theory only one collection could be used, containing all registrable types, but it is seperated this way for ease of organization.
      */
     private static List<Type> TeraTaxCommonCardTypes = [
-        typeof(Tariff)
+        typeof(Tariff),
+        typeof(EggToss),
     ];
     private static List<Type> TeraTaxUncommonCardTypes = [
-        typeof(MarketCrash)
+        typeof(MarketCrash),
     ];
     private static List<Type> TeraTaxRareCardTypes = [
-        
+        typeof(Persistence),
+        typeof(Desperation),
     ];
     private static List<Type> TeraTaxSpecialCardTypes = [
         
@@ -102,13 +103,13 @@ internal class ModEntry : SimpleMod
                  * TODO On cards, it dictates the sheen on higher rarities, as well as influences the color of the energy cost.
                  * If this deck is given to a playable character, their name will be this color, and their mini will have this color as their border.
                  */
-                color = new Color("0xff266fd8"),
+                color = new Color("266fd8"),
 
-                titleColor = new Color("0xff266fd8")
+                titleColor = new Color("000000")
             },
 
             DefaultCardArt = StableSpr.cards_colorless,
-            BorderSprite = RegisterSprite(package, "assets/frame_dave.png").Sprite,
+            BorderSprite = RegisterSprite(package, "assets/Animation/border_tera.png").Sprite,
             Name = AnyLocalizations.Bind(["character", "name"]).Localize
         });
 
@@ -126,8 +127,8 @@ internal class ModEntry : SimpleMod
          * The game uses the squint animation for the Extra-Planar Being and High-Pitched Static events, and the gameover animation while you are dying.
          * You may define any other animations, and they will only be used when explicitly referenced (such as dialogue).
          */
-        RegisterAnimation(package, "neutral", "assets/Animation/NormalIdle", 4);
-        RegisterAnimation(package, "squint", "assets/Animation/SquintIdle", 4);
+      
+      
         Instance.Helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2
         {
             CharacterType = TeraTaxDeck.Deck.Key(),
@@ -149,7 +150,18 @@ internal class ModEntry : SimpleMod
         {
             Deck = TeraTaxDeck.Deck,
             BorderSprite = RegisterSprite(package, "assets/Animation/panel_tera.png").Sprite,
+            NeutralAnimation = new()
+            {
+                CharacterType = TeraTaxDeck.UniqueName,
+                LoopTag = "neutral",
+                Frames = Enumerable.Range(0, 4)
+                    .Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Animation/NormalIdle/{i}.png")).Sprite)
+                    .ToList()
+            },
+
+           
             Starters = new StarterDeck
+
             {
                 cards = [
                    
@@ -165,12 +177,26 @@ internal class ModEntry : SimpleMod
             Description = AnyLocalizations.Bind(["character", "desc"]).Localize
         });
 
+        //Animation directory Below VVVVVVV
+        helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+        {
+            CharacterType = TeraTaxDeck.UniqueName,
+            LoopTag = "squint",
+            Frames = Enumerable.Range(0, 4)
+                    .Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Animation/SquintIdle/{i}.png")).Sprite)
+                    .ToList()
+        });
+            
+            
+           
+   
+
         /*
          * Statuses are used to achieve many mechanics.
          * However, statuses themselves do not contain any code - they just keep track of how much you have.
          */
         
-        TeraTaxationStatus = helper.Content.Statuses.RegisterStatus("Taxation", new StatusConfiguration
+        TeraTaxationStatus = helper.Content.Statuses.RegisterStatus("Tax", new StatusConfiguration
         {
             Definition = new StatusDef
             {
@@ -179,8 +205,8 @@ internal class ModEntry : SimpleMod
                 color = new Color("FFFFFF"),
                 icon = RegisterSprite(package, "assets/Feature/coin.png").Sprite
             },
-            Name = AnyLocalizations.Bind(["status", "taxation", "name"]).Localize,
-            Description = AnyLocalizations.Bind(["status", "taxation", "desc"]).Localize
+            Name = AnyLocalizations.Bind(["status", "tax", "name"]).Localize,
+            Description = AnyLocalizations.Bind(["status", "tax", "desc"]).Localize
         });
         TeraPersistenceStatus = helper.Content.Statuses.RegisterStatus("Persistence", new StatusConfiguration
         {
@@ -189,7 +215,7 @@ internal class ModEntry : SimpleMod
                 isGood = false,
                 affectedByTimestop = false,
                 color = new Color("FFFFFF"),
-                icon = RegisterSprite(package, "assets/Feature/coin.png").Sprite
+                icon = RegisterSprite(package, "assets/Feature/taxes.png").Sprite
             },
             Name = AnyLocalizations.Bind(["status", "persistence", "name"]).Localize,
             Description = AnyLocalizations.Bind(["status", "persistence", "desc"]).Localize
@@ -200,7 +226,6 @@ internal class ModEntry : SimpleMod
          * Managers are typically made to register themselves when constructed.
          * _ = makes the compiler not complain about the fact that you are constructing something for seemingly no reason.
          */
-        _ = new SilentStatusManager();
 
         /*
          * Some classes require so little management that a manager may not be worth writing.

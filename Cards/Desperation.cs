@@ -10,7 +10,7 @@ using TeraTaxMod;
 
 namespace TeraTaxMod.Cards
 {
-    internal class Tariff : Card, IRegisterable
+    internal class Desperation : Card, IRegisterable
     {
     public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
         {
@@ -27,8 +27,8 @@ namespace TeraTaxMod.Cards
                     dontOffer = true,
                     upgradesTo = [Upgrade.A, Upgrade.B]
                 },
-                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Tariff", "name"]).Localize,
-                Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/cardTariff.png")).Sprite,
+                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Desperation", "name"]).Localize,
+                Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/cardDesperation.png")).Sprite,
             });
         }
 
@@ -46,11 +46,17 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AAttack()
+                        new AStatus()
                         {
-                            damage = GetDmg(s,1),
+                            status = Status.powerdrive,
+                            statusAmount = 1,
+                            targetPlayer = true
+                        },
+                        new AStatus()
+                        {
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 1
+                            statusAmount = 3,
+                            targetPlayer = true
                         }
                     };
                     }
@@ -58,11 +64,17 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AAttack()
+                        new AStatus()
                         {
-                            damage = GetDmg(s,2),
+                            status = Status.powerdrive,
+                            statusAmount = 1,
+                            targetPlayer = true
+                        },
+                        new AStatus()
+                        {
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 1
+                            statusAmount = 3,
+                            targetPlayer = true
                         }
                     };
                     }
@@ -72,28 +84,34 @@ namespace TeraTaxMod.Cards
                     {
                         new AStatus()
                         {
-                            status = Status.shield,
-                            statusAmount = 1,
+                            status = Status.powerdrive,
+                            statusAmount = 2,
                             targetPlayer = true
-
                         },
-                        new AAttack()
+                        new AStatus()
                         {
-                            damage = GetDmg(s,1),
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 1
+                            statusAmount = 6,
+                            targetPlayer = true
                         }
+
                     };
                     }
                 default:
                     {
                         return new List<CardAction>
                     {
-                        new AAttack()
+                        new AStatus()
                         {
-                            damage = GetDmg(s,1),
+                            status = Status.powerdrive,
+                            statusAmount = 1,
+                            targetPlayer = true
+                        },
+                        new AStatus()
+                        {
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 1
+                            statusAmount = 3,
+                            targetPlayer = true
                         }
                     };
                     }
@@ -106,8 +124,8 @@ namespace TeraTaxMod.Cards
         {
             return new CardData
             {
-                cost = 1,
-                exhaust = false,
+                cost = upgrade == Upgrade.A ? 1 : 2,
+                exhaust = true,
             };
         }
 

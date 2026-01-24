@@ -10,7 +10,7 @@ using TeraTaxMod;
 
 namespace TeraTaxMod.Cards
 {
-    internal class Tariff : Card, IRegisterable
+    internal class EggShells : Card, IRegisterable
     {
     public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
         {
@@ -27,8 +27,8 @@ namespace TeraTaxMod.Cards
                     dontOffer = true,
                     upgradesTo = [Upgrade.A, Upgrade.B]
                 },
-                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Tariff", "name"]).Localize,
-                Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/cardTariff.png")).Sprite,
+                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Egg Shells", "name"]).Localize,
+                Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/cardPersistence.png")).Sprite,
             });
         }
 
@@ -48,9 +48,8 @@ namespace TeraTaxMod.Cards
                     {
                         new AAttack()
                         {
-                            damage = GetDmg(s,1),
-                            status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 1
+                            damage = GetDmg(s,0),
+                            stunEnemy = true,
                         }
                     };
                     }
@@ -60,9 +59,8 @@ namespace TeraTaxMod.Cards
                     {
                         new AAttack()
                         {
-                            damage = GetDmg(s,2),
-                            status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 1
+                            damage = GetDmg(s,3),
+                            stunEnemy = true,
                         }
                     };
                     }
@@ -70,19 +68,14 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AStatus()
-                        {
-                            status = Status.shield,
-                            statusAmount = 1,
-                            targetPlayer = true
-
-                        },
                         new AAttack()
                         {
-                            damage = GetDmg(s,1),
-                            status = ModEntry.Instance.TeraTaxationStatus.Status,
+                            damage = GetDmg(s,0),
+                            stunEnemy = true,
+                            status = Status.lockdown,
                             statusAmount = 1
                         }
+
                     };
                     }
                 default:
@@ -91,9 +84,8 @@ namespace TeraTaxMod.Cards
                     {
                         new AAttack()
                         {
-                            damage = GetDmg(s,1),
-                            status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 1
+                            damage = GetDmg(s,0),
+                            stunEnemy = true,
                         }
                     };
                     }
@@ -106,8 +98,8 @@ namespace TeraTaxMod.Cards
         {
             return new CardData
             {
-                cost = 1,
-                exhaust = false,
+                cost = upgrade == Upgrade.B ? 4 : 3,
+                exhaust = true,
             };
         }
 
