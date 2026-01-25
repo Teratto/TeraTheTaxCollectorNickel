@@ -40,147 +40,120 @@ namespace TeraTaxMod.Cards
          */
         public override List<CardAction> GetActions(State s, Combat c)
         {
-            int requiredTax = 1;
-            int taxAmount = c.otherShip.Get(ModEntry.Instance.TeraTaxationStatus.Status);
-
-
+            int enemyTax = c.otherShip.Get(ModEntry.Instance.TeraTaxationStatus.Status);
             switch (this.upgrade)
             {
-
                 case Upgrade.None:
                     {
-                        if (taxAmount >= requiredTax)
+                        return new List<CardAction>
+                    {
+                        new AStatus()
                         {
-                            return new List<CardAction>
-                            {
-                                new AStatus()
-                                     {
-                                        status = ModEntry.Instance.TeraTaxationStatus.Status,
-                                        statusAmount = -requiredTax,
-                                        targetPlayer = false
-                                     },
-                                new AStatus()
-                                    {
-                                        status = Status.evade,
-                                        statusAmount = 1,
-                                        targetPlayer = true
-                                     },
-                                new AStatus()
-                                     {
-                                        status = Status.tempShield,
-                                        statusAmount = 2,
-                                        targetPlayer = true
-                                     },
-                            };
+                            status = Status.shield,
+                            statusAmount = enemyTax,
+                            targetPlayer = true
+                        },
+                        new AStatus()
+                        {
+                            status = ModEntry.Instance.TeraTaxationStatus.Status,
+                            statusAmount = -1,
+                            targetPlayer = false
                         }
-
-
+                    };
                     }
-                    break;
                 case Upgrade.A:
                     {
-                        if (taxAmount >= requiredTax)
+                        return new List<CardAction>
+                    {
+                         new AStatus()
                         {
-                            return new List<CardAction>
-                            {
-                                new AStatus()
-                                     {
-                                        status = ModEntry.Instance.TeraTaxationStatus.Status,
-                                        statusAmount = -requiredTax,
-                                        targetPlayer = false
-                                     },
-                                new AStatus()
-                                    {
-                                        status = Status.evade,
-                                        statusAmount = 1,
-                                        targetPlayer = true
-                                     },
-                                new AStatus()
-                                     {
-                                        status = Status.tempShield,
-                                        statusAmount = 3,
-                                        targetPlayer = true
-                                     },
-                            };
-                        }
-
-
+                            status = Status.shield,
+                            statusAmount = enemyTax,
+                            targetPlayer = true
+                        },
+                    };
                     }
-                    break;
                 case Upgrade.B:
                     {
-                        List<CardAction> actions = new List<CardAction>
-                            {
-                                new AStatus()
-                                     {
-                                        status = Status.tempShield,
-                                        statusAmount = 1,
-                                        targetPlayer = true
-                                     },
-                            };
-                        if (taxAmount >= requiredTax)
-                            {
+                        return new List<CardAction>
+                    {
+                         new AStatus()
+                        {
+                            status = Status.tempShield,
+                            statusAmount = enemyTax,
+                            targetPlayer = true
+                        },
+                        new AStatus()
+                        {
+                            status = ModEntry.Instance.TeraTaxationStatus.Status,
+                            statusAmount = -1,
+                            targetPlayer = false
+                        }
 
-                                actions.Add(new AStatus()
-                                    {
-                                        status = ModEntry.Instance.TeraTaxationStatus.Status,
-                                        statusAmount = -requiredTax,
-                                        targetPlayer = false
-                                    });
-                                actions.Add(new AStatus()
-                                    {
-                                        status = Status.evade,
-                                        statusAmount = 1,
-                                        targetPlayer = true
-                                    });
-                                actions.Add(new AStatus()
-                                    {
-                                        status = Status.tempShield,
-                                        statusAmount = 1,
-                                        targetPlayer = true
-                                    });
-                        };
-                        return actions;
-
-
+                    };
                     }
                 default:
                     {
-                        if (taxAmount > requiredTax)
+                        return new List<CardAction>
+                    {
+                        new AStatus()
                         {
-                            return new List<CardAction>
-                            {
-
-                                new AStatus()
-                                    {
-                                        status = Status.evade,
-                                        statusAmount = 1,
-                                        targetPlayer = true
-                                     },
-                                new AStatus()
-                                     {
-                                        status = Status.tempShield,
-                                        statusAmount = 2,
-                                        targetPlayer = true
-                                     },
-                            };
+                            status = Status.shield,
+                            statusAmount = enemyTax,
+                            targetPlayer = true
+                        },
+                        new AStatus()
+                        {
+                            status = ModEntry.Instance.TeraTaxationStatus.Status,
+                            statusAmount = -1,
+                            targetPlayer = false
                         }
-
-
+                    };
                     }
-                    break;
             }
 
-            return new List<CardAction>();
         }
 
-
+        
         public override CardData GetData(State state)
         {
-            return new CardData
+            switch (this.upgrade)
             {
-                cost = 0,
-            };
+                case Upgrade.None:
+                    {
+                        return new CardData
+                        {
+                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "TaxExemption", "desc"])),
+                            cost = 1
+                        };
+                    }
+                case Upgrade.A:
+                    {
+                        return new CardData
+                        {
+                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "TaxExemption", "descA"])),
+                            cost = 1,
+
+                        };
+                    }
+                case Upgrade.B:
+                    {
+                        return new CardData
+                        {
+                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "TaxExemption", "descB"])),
+                            cost = 1,
+
+                        };
+                    }
+                default:
+                    {
+                        return new CardData
+                        {
+                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "TaxExemption", "desc"])),
+                            cost = 1
+                        };
+                    }
+            }
         }
 
     }

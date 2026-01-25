@@ -6,7 +6,7 @@
     "status": {
       "tax": {
         "name": "Tax",
-        "desc": "On end of turn, deal <c=keyword>1</c> damage for every <c=keyword>3</> <c=status>TAX</c>."
+        "desc": "On end of turn, deal <c=keyword>1</c> damage for every <c=keyword>3</c> <c=status>TAX</c>."
       },
         "persistence": {
             "name": "Persistence",
@@ -36,8 +36,8 @@
             "name": "Persistence"
         },
 
-      "TaxExemption": {
-        "name": "Tax Exemption",
+      "TaxEvasion": {
+        "name": "Tax Evasion",
         "desc": "<c=downside>Spend 1 enemy tax</c> to gain 1 <c=status>evade</c> and 2 <c=status>temp shield</c>.",
         "descA": "<c=downside>Spend 1 enemy tax</c> to gain 1 <c=status>evade</c> and 3 <c=status>temp shield</c>.",
         "descB": "Gain 1 <c=status>temp shield</c>. <c=downside>Spend 1 enemy tax</c> to gain 1 <c=status>evade</c> and 1 <c=status>temp shield</c>."
@@ -51,7 +51,36 @@
         },
         "EggShells": {
             "name": "Egg Shells"
-        }
+        },
+        "Taunt": {
+            "name": "Taunt"
+        },
+        "TaxingEscape": {
+            "name": "Taxing Escape"
+        },
+      "NumberCrunching": {
+        "name": "Number Crunching"
+        },
+        "HealthInsurance": {
+            "name": "Health Insurance"
+        },
+        "TaxHike": {
+            "name": "Tax Hike"
+        },
+      "TaxExemption": {
+        "name": "Tax Exemption",
+        "desc": "Gain <c=status>shield</c> equal to enemy <c=status>tax</c>, then <c=downside>remove 1 tax</c>.",
+        "descA": "Gain <c=status>shield</c> equal to enemy <c=status>tax</c>.",
+        "descB": "Gain <c=status>temp shield</c> equal to enemy <c=status>tax</c>, then <c=downside>remove 1 tax</c>."
+      },
+      "Forgiveness": {
+        "name": "Forgiveness",
+        "desc": "<c=downside>Remove 2 enemy tax</c> to <c=status>gain 2 energy</c>.",
+        "descA": "<c=downside>Remove 1 enemy tax</c> to <c=status>gain 2 energy</c>.",
+        "descB": "<c=downside>Remove 2 enemy tax</c> to <c=status>gain 2 energy</c>."
+      },
+
+
     },
     "artifact": {
         "BuriedKnowledge": {

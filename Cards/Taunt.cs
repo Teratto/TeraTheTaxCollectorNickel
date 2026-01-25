@@ -10,7 +10,7 @@ using TeraTaxMod;
 
 namespace TeraTaxMod.Cards
 {
-    internal class MarketCrash : Card, IRegisterable
+    internal class Taunt : Card, IRegisterable
     {
     public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
         {
@@ -23,12 +23,12 @@ namespace TeraTaxMod.Cards
                 Meta = new CardMeta
                 {
                     deck = ModEntry.Instance.TeraTaxDeck.Deck,
-                    rarity = Rarity.uncommon,
+                    rarity = Rarity.common,
                     dontOffer = false,
                     upgradesTo = [Upgrade.A, Upgrade.B]
                 },
-                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "MarketCrash", "name"]).Localize,
-                Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/cardMarketCrash.png")).Sprite,
+                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Taunt", "name"]).Localize,
+                Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/cardTaunt.png")).Sprite,
             });
         }
 
@@ -48,23 +48,16 @@ namespace TeraTaxMod.Cards
                     {
                         new AStatus()
                         {
-                            status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 2,
-                            targetPlayer = false
-                        },
-                        new AStatus()
-                        {
-                            status = Status.tempShield,
-                            statusAmount = 2,
+                            status = Status.shield,
+                            statusAmount = 3,
                             targetPlayer = true
-
                         },
                         new AStatus()
                         {
-                            status = ModEntry.Instance.TeraCharacter.MissingStatus.Status,
+                            status = Status.energyLessNextTurn,
                             statusAmount = 1,
                             targetPlayer = true
-                        },
+                        }
                     };
                     }
                 case Upgrade.A:
@@ -73,19 +66,19 @@ namespace TeraTaxMod.Cards
                     {
                         new AStatus()
                         {
-                            status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 2,
-                            targetPlayer = false
-                        },
-                        new AStatus()
-                        {
-                            status = Status.tempShield,
+                            status = Status.shield,
                             statusAmount = 3,
                             targetPlayer = true
                         },
                         new AStatus()
                         {
-                            status = ModEntry.Instance.TeraCharacter.MissingStatus.Status,
+                            status = Status.tempShield,
+                            statusAmount = 2,
+                            targetPlayer = true
+                        },
+                        new AStatus()
+                        {
+                            status = Status.energyLessNextTurn,
                             statusAmount = 1,
                             targetPlayer = true
                         }
@@ -97,23 +90,23 @@ namespace TeraTaxMod.Cards
                     {
                         new AStatus()
                         {
-                            status = ModEntry.Instance.TeraTaxationStatus.Status,
+                            status = Status.shield,
                             statusAmount = 3,
-                            targetPlayer = false
+                            targetPlayer = true
                         },
                         new AStatus()
                         {
-                            status = Status.tempShield,
-                            statusAmount = 3,
-                            targetPlayer= true  
-
-                        },
-                        new AStatus()
-                        {
-                            status = ModEntry.Instance.TeraCharacter.MissingStatus.Status,
+                            status = Status.tempPayback,
                             statusAmount = 2,
                             targetPlayer = true
+                        },
+                        new AStatus()
+                        {
+                            status = Status.energyLessNextTurn,
+                            statusAmount = 1,
+                            targetPlayer = true
                         }
+
                     };
                     }
                 default:
@@ -122,20 +115,13 @@ namespace TeraTaxMod.Cards
                     {
                         new AStatus()
                         {
-                            status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 2,
-                            targetPlayer = false
-                        },
-                        new AStatus()
-                        {
-                            status = Status.tempShield,
-                            statusAmount = 2,
+                            status = Status.shield,
+                            statusAmount = 3,
                             targetPlayer = true
-
                         },
                         new AStatus()
                         {
-                            status = ModEntry.Instance.TeraCharacter.MissingStatus.Status,
+                            status = Status.energyLessNextTurn,
                             statusAmount = 1,
                             targetPlayer = true
                         }
@@ -150,7 +136,8 @@ namespace TeraTaxMod.Cards
         {
             return new CardData
             {
-                cost = 2,
+                
+                cost = 1,
                 exhaust = false,
             };
         }

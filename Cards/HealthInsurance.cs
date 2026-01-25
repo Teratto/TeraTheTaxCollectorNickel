@@ -10,9 +10,9 @@ using TeraTaxMod;
 
 namespace TeraTaxMod.Cards
 {
-    internal class EggShells : Card, IRegisterable
+    internal class HealthInsurance : Card, IRegisterable
     {
-        public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
+    public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
         {
             helper.Content.Cards.RegisterCard(new CardConfiguration
             {
@@ -23,12 +23,12 @@ namespace TeraTaxMod.Cards
                 Meta = new CardMeta
                 {
                     deck = ModEntry.Instance.TeraTaxDeck.Deck,
-                    rarity = Rarity.common,
-                    dontOffer = true,
+                    rarity = Rarity.uncommon,
+                    dontOffer = false,
                     upgradesTo = [Upgrade.A, Upgrade.B]
                 },
-                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "EggShells", "name"]).Localize,
-                Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/cardEggShells.png")).Sprite,
+                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "HealthInsurance", "name"]).Localize,
+                Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/cardHealthInsurance.png")).Sprite,
             });
         }
 
@@ -46,10 +46,16 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AAttack()
+                        new AHeal()
                         {
-                            damage = GetDmg(s,0),
-                            stunEnemy = true,
+                            healAmount = 1,
+                            targetPlayer = true
+                        },
+                        new AStatus()
+                        {
+                            status = Status.energyLessNextTurn,
+                            statusAmount = 1,
+                            targetPlayer = true
                         }
                     };
                     }
@@ -57,10 +63,16 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AAttack()
+                        new AHeal()
                         {
-                            damage = GetDmg(s,3),
-                            stunEnemy = true,
+                            healAmount = 2,
+                            targetPlayer = true
+                        },
+                        new AStatus()
+                        {
+                            status = Status.energyLessNextTurn,
+                            statusAmount = 1,
+                            targetPlayer = true
                         }
                     };
                     }
@@ -68,12 +80,16 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AAttack()
+                        new AHeal()
                         {
-                            damage = GetDmg(s,0),
-                            stunEnemy = true,
-                            status = Status.lockdown,
-                            statusAmount = 1
+                            healAmount = 5,
+                            targetPlayer = true
+                        },
+                        new AStatus()
+                        {
+                            status = Status.energyLessNextTurn,
+                            statusAmount = 2,
+                            targetPlayer = true
                         }
 
                     };
@@ -82,10 +98,16 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AAttack()
+                        new AHeal()
                         {
-                            damage = GetDmg(s,0),
-                            stunEnemy = true,
+                            healAmount = 1,
+                            targetPlayer = true
+                        },
+                        new AStatus()
+                        {
+                            status = Status.energyLessNextTurn,
+                            statusAmount = 1,
+                            targetPlayer = true
                         }
                     };
                     }
@@ -98,9 +120,9 @@ namespace TeraTaxMod.Cards
         {
             return new CardData
             {
-                cost = 0,
-                exhaust = true,
-                temporary = true,
+                cost = 1,
+                exhaust = upgrade == Upgrade.B ? false : true,
+                singleUse  = upgrade == Upgrade.B ? true : false
             };
         }
 

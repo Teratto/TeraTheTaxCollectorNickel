@@ -10,7 +10,7 @@ using TeraTaxMod;
 
 namespace TeraTaxMod.Cards
 {
-    internal class EggShells : Card, IRegisterable
+    internal class NumberCrunching : Card, IRegisterable
     {
         public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
         {
@@ -24,11 +24,11 @@ namespace TeraTaxMod.Cards
                 {
                     deck = ModEntry.Instance.TeraTaxDeck.Deck,
                     rarity = Rarity.common,
-                    dontOffer = true,
+                    dontOffer = false,
                     upgradesTo = [Upgrade.A, Upgrade.B]
                 },
-                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "EggShells", "name"]).Localize,
-                Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/cardEggShells.png")).Sprite,
+                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "NumberCrunching", "name"]).Localize,
+                Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/CardNumberCrunch.png")).Sprite,
             });
         }
 
@@ -46,10 +46,15 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AAttack()
+                        new ADrawCard()
                         {
-                            damage = GetDmg(s,0),
-                            stunEnemy = true,
+                            count = 4
+                        },
+                        new AStatus()
+                        {
+                            status = ModEntry.Instance.TeraCharacter.MissingStatus.Status,
+                            statusAmount = 1,
+                            targetPlayer = true
                         }
                     };
                     }
@@ -57,10 +62,15 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AAttack()
+                        new ADrawCard()
                         {
-                            damage = GetDmg(s,3),
-                            stunEnemy = true,
+                            count = 5
+                        },
+                        new AStatus()
+                        {
+                            status = ModEntry.Instance.TeraCharacter.MissingStatus.Status,
+                            statusAmount = 1,
+                            targetPlayer = true
                         }
                     };
                     }
@@ -68,12 +78,15 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AAttack()
+                        new ADrawCard()
                         {
-                            damage = GetDmg(s,0),
-                            stunEnemy = true,
-                            status = Status.lockdown,
-                            statusAmount = 1
+                            count = 7
+                        },
+                        new AStatus()
+                        {
+                            status = ModEntry.Instance.TeraCharacter.MissingStatus.Status,
+                            statusAmount = 2,
+                            targetPlayer = true
                         }
 
                     };
@@ -82,10 +95,15 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AAttack()
+                        new ADrawCard()
                         {
-                            damage = GetDmg(s,0),
-                            stunEnemy = true,
+                            count = 4
+                        },
+                        new AStatus()
+                        {
+                            status = ModEntry.Instance.TeraCharacter.MissingStatus.Status,
+                            statusAmount = 1,
+                            targetPlayer = true
                         }
                     };
                     }
@@ -98,9 +116,7 @@ namespace TeraTaxMod.Cards
         {
             return new CardData
             {
-                cost = 0,
-                exhaust = true,
-                temporary = true,
+                cost = 1,
             };
         }
 

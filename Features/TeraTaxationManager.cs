@@ -25,12 +25,17 @@ public class TeraTaxationManager : IKokoroApi.IV2.IStatusLogicApi.IHook
             return;
         
         bool isPlayerShip = args.Ship.isPlayerShip;
-        args.Combat.QueueImmediate(new AHurt() {
-            targetPlayer = isPlayerShip,
-            hurtShieldsFirst = true,
-            hurtAmount = args.NewAmount / taxationDamageThreshold,
-            
-        });
+        if (args.Ship.Get(ModEntry.Instance.TeraTaxationStatus.Status) >= taxationDamageThreshold) 
+        {
+            args.Combat.QueueImmediate(new AHurt()
+            {
+                targetPlayer = isPlayerShip,
+                hurtShieldsFirst = true,
+                hurtAmount = args.NewAmount / taxationDamageThreshold,
+
+            });
+        }
+        
            
         return;
     }

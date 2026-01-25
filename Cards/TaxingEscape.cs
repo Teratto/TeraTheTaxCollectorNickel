@@ -10,7 +10,7 @@ using TeraTaxMod;
 
 namespace TeraTaxMod.Cards
 {
-    internal class MarketCrash : Card, IRegisterable
+    internal class TaxingEscape : Card, IRegisterable
     {
     public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
         {
@@ -23,12 +23,12 @@ namespace TeraTaxMod.Cards
                 Meta = new CardMeta
                 {
                     deck = ModEntry.Instance.TeraTaxDeck.Deck,
-                    rarity = Rarity.uncommon,
+                    rarity = Rarity.common,
                     dontOffer = false,
                     upgradesTo = [Upgrade.A, Upgrade.B]
                 },
-                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "MarketCrash", "name"]).Localize,
-                Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/cardMarketCrash.png")).Sprite,
+                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "TaxingEscape", "name"]).Localize,
+                Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/cardTaxingEscape.png")).Sprite,
             });
         }
 
@@ -46,42 +46,39 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AStatus()
+                        new AMove()
                         {
-                            status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 2,
-                            targetPlayer = false
-                        },
-                        new AStatus()
-                        {
-                            status = Status.tempShield,
-                            statusAmount = 2,
+                            dir = 2,
                             targetPlayer = true
-
+                        },
+                        new AAttack()
+                        {
+                            damage = GetDmg(s,0),
+                            status = ModEntry.Instance.TeraTaxationStatus.Status,
+                            statusAmount = 1
                         },
                         new AStatus()
                         {
                             status = ModEntry.Instance.TeraCharacter.MissingStatus.Status,
                             statusAmount = 1,
                             targetPlayer = true
-                        },
+                        }
                     };
                     }
                 case Upgrade.A:
                     {
                         return new List<CardAction>
                     {
-                        new AStatus()
+                        new AMove()
                         {
-                            status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 2,
-                            targetPlayer = false
-                        },
-                        new AStatus()
-                        {
-                            status = Status.tempShield,
-                            statusAmount = 3,
+                            dir = 2,
                             targetPlayer = true
+                        },
+                        new AAttack()
+                        {
+                            damage = GetDmg(s,0),
+                            status = ModEntry.Instance.TeraTaxationStatus.Status,
+                            statusAmount = 1
                         },
                         new AStatus()
                         {
@@ -95,43 +92,41 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AStatus()
+                        new AAttack()
                         {
+                            damage = GetDmg(s,0),
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 3,
-                            targetPlayer = false
+                            statusAmount = 1
                         },
-                        new AStatus()
+                        new AMove()
                         {
-                            status = Status.tempShield,
-                            statusAmount = 3,
-                            targetPlayer= true  
-
+                            dir = 2,
+                            targetPlayer = true
                         },
+                        
                         new AStatus()
                         {
                             status = ModEntry.Instance.TeraCharacter.MissingStatus.Status,
-                            statusAmount = 2,
+                            statusAmount = 1,
                             targetPlayer = true
                         }
+
                     };
                     }
                 default:
                     {
                         return new List<CardAction>
                     {
-                        new AStatus()
+                        new AMove()
                         {
-                            status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 2,
-                            targetPlayer = false
-                        },
-                        new AStatus()
-                        {
-                            status = Status.tempShield,
-                            statusAmount = 2,
+                            dir = 2,
                             targetPlayer = true
-
+                        },
+                        new AAttack()
+                        {
+                            damage = GetDmg(s,0),
+                            status = ModEntry.Instance.TeraTaxationStatus.Status,
+                            statusAmount = 1
                         },
                         new AStatus()
                         {
@@ -150,8 +145,8 @@ namespace TeraTaxMod.Cards
         {
             return new CardData
             {
-                cost = 2,
-                exhaust = false,
+                cost = 0,
+                flippable = upgrade == Upgrade.A ? true : false
             };
         }
 

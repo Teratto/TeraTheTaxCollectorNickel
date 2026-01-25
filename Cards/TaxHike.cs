@@ -10,9 +10,9 @@ using TeraTaxMod;
 
 namespace TeraTaxMod.Cards
 {
-    internal class EggShells : Card, IRegisterable
+    internal class TaxHike : Card, IRegisterable
     {
-        public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
+    public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
         {
             helper.Content.Cards.RegisterCard(new CardConfiguration
             {
@@ -23,12 +23,12 @@ namespace TeraTaxMod.Cards
                 Meta = new CardMeta
                 {
                     deck = ModEntry.Instance.TeraTaxDeck.Deck,
-                    rarity = Rarity.common,
-                    dontOffer = true,
+                    rarity = Rarity.uncommon,
+                    dontOffer = false,
                     upgradesTo = [Upgrade.A, Upgrade.B]
                 },
-                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "EggShells", "name"]).Localize,
-                Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/cardEggShells.png")).Sprite,
+                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "TaxHike", "name"]).Localize,
+                Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/CardTaxHike.png")).Sprite,
             });
         }
 
@@ -46,10 +46,11 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AAttack()
+                        new AStatus()
                         {
-                            damage = GetDmg(s,0),
-                            stunEnemy = true,
+                            status = ModEntry.Instance.TeraTaxationStatus.Status,
+                            statusAmount = 3,
+                            targetPlayer = false
                         }
                     };
                     }
@@ -57,10 +58,11 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AAttack()
+                        new AStatus()
                         {
-                            damage = GetDmg(s,3),
-                            stunEnemy = true,
+                            status = ModEntry.Instance.TeraTaxationStatus.Status,
+                            statusAmount = 3,
+                            targetPlayer = false
                         }
                     };
                     }
@@ -68,24 +70,23 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AAttack()
+                        new AStatus()
                         {
-                            damage = GetDmg(s,0),
-                            stunEnemy = true,
-                            status = Status.lockdown,
-                            statusAmount = 1
+                            status = ModEntry.Instance.TeraTaxationStatus.Status,
+                            statusAmount = 6,
+                            targetPlayer = false
                         }
-
                     };
                     }
                 default:
                     {
                         return new List<CardAction>
                     {
-                        new AAttack()
+                        new AStatus()
                         {
-                            damage = GetDmg(s,0),
-                            stunEnemy = true,
+                            status = ModEntry.Instance.TeraTaxationStatus.Status,
+                            statusAmount = 3,
+                            targetPlayer = false
                         }
                     };
                     }
@@ -96,11 +97,20 @@ namespace TeraTaxMod.Cards
         
         public override CardData GetData(State state)
         {
-            return new CardData
+            int cost = 2;
+            if (upgrade == Upgrade.A)
             {
-                cost = 0,
-                exhaust = true,
-                temporary = true,
+                cost = 1;
+            }
+            else if (upgrade == Upgrade.B)
+            {
+                cost = 3;
+            }
+            return new CardData()
+
+            {
+                cost = cost,
+                exhaust = true
             };
         }
 
