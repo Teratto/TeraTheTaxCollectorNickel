@@ -24,10 +24,10 @@ namespace TeraTaxMod.Cards
                 {
                     deck = ModEntry.Instance.TeraTaxDeck.Deck,
                     rarity = Rarity.common,
-                    dontOffer = true,
+                    dontOffer = false,
                     upgradesTo = [Upgrade.A, Upgrade.B]
                 },
-                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Egg Toss", "name"]).Localize,
+                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "EggToss", "name"]).Localize,
                 Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/cardEgg.png")).Sprite,
             });
         }
@@ -75,7 +75,7 @@ namespace TeraTaxMod.Cards
                         },
                         new AAddCard()
                         {
-                            //card = EggShells,
+                            card = new EggShells(),
                             destination = CardDestination.Discard,
                             amount = 1,
                         }

@@ -24,7 +24,7 @@ namespace TeraTaxMod.Cards
                 {
                     deck = ModEntry.Instance.TeraTaxDeck.Deck,
                     rarity = Rarity.common,
-                    dontOffer = true,
+                    dontOffer = false,
                     upgradesTo = [Upgrade.A, Upgrade.B]
                 },
                 Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Persistence", "name"]).Localize,

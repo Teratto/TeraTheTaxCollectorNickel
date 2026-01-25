@@ -4,11 +4,11 @@
         "desc": "A debt collector. Uses <c=status>TAX</c> to damage enemies and <c=status>BAILOUT</c> to avoid negative statuses."
     },
     "status": {
-      "TeraTaxation": {
+      "tax": {
         "name": "Tax",
-        "desc": "Deals one damage to enemies per three <c=status>TAX</c> on the enemy."
+        "desc": "On end of turn, deal <c=keyword>1</c> damage for every <c=keyword>3</> <c=status>TAX</c>."
       },
-        "TeraPersistence": {
+        "persistence": {
             "name": "Persistence",
             "desc": "Increase <c=status>TAX</c> by {0} at the start of turn."
         }
@@ -35,12 +35,13 @@
         "Persistence": {
             "name": "Persistence"
         },
-        
-        "ExtractKnowledge": {
-            "name": "Extract Knowledge",
-            "desc": "<c=attack>Attack {0}</c>. If it kills, gain a <c=cardtrait>non-temp</c> <c=card>Ponder</c>.",
-            "descB": "<c=attack>Attack {0}</c>. If it kills, gain a <c=cardtrait>non-temp</c> <c=card>Ponder B</c>."
-        },
+
+      "TaxExemption": {
+        "name": "Tax Exemption",
+        "desc": "<c=downside>Spend 1 enemy tax</c> to gain 1 <c=status>evade</c> and 2 <c=status>temp shield</c>.",
+        "descA": "<c=downside>Spend 1 enemy tax</c> to gain 1 <c=status>evade</c> and 3 <c=status>temp shield</c>.",
+        "descB": "Gain 1 <c=status>temp shield</c>. <c=downside>Spend 1 enemy tax</c> to gain 1 <c=status>evade</c> and 1 <c=status>temp shield</c>."
+      },
         
         "Desperation": {
             "name": "Desperation"

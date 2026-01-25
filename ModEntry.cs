@@ -39,6 +39,7 @@ internal class ModEntry : SimpleMod
     private static List<Type> TeraTaxCommonCardTypes = [
         typeof(Tariff),
         typeof(EggToss),
+        typeof(TaxExemption)
     ];
     private static List<Type> TeraTaxUncommonCardTypes = [
         typeof(MarketCrash),
@@ -48,7 +49,7 @@ internal class ModEntry : SimpleMod
         typeof(Desperation),
     ];
     private static List<Type> TeraTaxSpecialCardTypes = [
-        
+        typeof(EggShells),
     ];
     private static IEnumerable<Type> TeraTaxCardTypes =
         TeraTaxCommonCardTypes
@@ -164,7 +165,8 @@ internal class ModEntry : SimpleMod
 
             {
                 cards = [
-                   
+                   new Tariff(),
+                   new TaxExemption()
                 ],
                 /*
                  * Some characters have starting artifacts, in addition to starting cards.
@@ -186,10 +188,10 @@ internal class ModEntry : SimpleMod
                     .Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Animation/SquintIdle/{i}.png")).Sprite)
                     .ToList()
         });
-            
-            
-           
-   
+
+
+
+
 
         /*
          * Statuses are used to achieve many mechanics.
@@ -220,18 +222,23 @@ internal class ModEntry : SimpleMod
             Name = AnyLocalizations.Bind(["status", "persistence", "name"]).Localize,
             Description = AnyLocalizations.Bind(["status", "persistence", "desc"]).Localize
         });
-        
+
 
         /*
          * Managers are typically made to register themselves when constructed.
          * _ = makes the compiler not complain about the fact that you are constructing something for seemingly no reason.
          */
 
+        TeraTaxationManager taxationManager = new();
+        KokoroApi.StatusLogic.RegisterHook(taxationManager);
+        TeraPersistenceManager persistenceManager = new();
+        KokoroApi.StatusLogic.RegisterHook(persistenceManager);
+
         /*
          * Some classes require so little management that a manager may not be worth writing.
          * In AGainPonder's case, it is simply a need for two sprites and evaluation of an artifact's effect.
          */
-        
+
     }
 
     /*

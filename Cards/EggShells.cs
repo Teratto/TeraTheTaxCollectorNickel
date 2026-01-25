@@ -12,7 +12,7 @@ namespace TeraTaxMod.Cards
 {
     internal class EggShells : Card, IRegisterable
     {
-    public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
+        public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
         {
             helper.Content.Cards.RegisterCard(new CardConfiguration
             {
@@ -27,8 +27,8 @@ namespace TeraTaxMod.Cards
                     dontOffer = true,
                     upgradesTo = [Upgrade.A, Upgrade.B]
                 },
-                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Egg Shells", "name"]).Localize,
-                Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/cardPersistence.png")).Sprite,
+                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "EggShells", "name"]).Localize,
+                Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/cardEggShells.png")).Sprite,
             });
         }
 
@@ -98,7 +98,7 @@ namespace TeraTaxMod.Cards
         {
             return new CardData
             {
-                cost = upgrade == Upgrade.B ? 4 : 3,
+                cost = 0,
                 exhaust = true,
             };
         }
