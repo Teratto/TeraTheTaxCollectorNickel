@@ -127,9 +127,9 @@
             "name": "EARLY BIRD",
             "desc": "At the start of combat, add 1 <c=card>Gets The Worm</c> to your hand."
         },
-        "Lexicon": {
-            "name": "LEXICON",
-            "desc": "Whenever you gain a <c=card>Ponder</c> during combat, it is given the A or B upgrade, alternating."
-        }
+         "YearlyPayments": {
+            "name": "YEARLY PAYMENTS",
+            "desc": "At the start of combat, add 3 <c=status>TAX</c> to the enemy."
+        },
     }
 }

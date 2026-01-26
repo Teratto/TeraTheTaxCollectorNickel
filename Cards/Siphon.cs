@@ -50,7 +50,31 @@ namespace TeraTaxMod.Cards
                         new AStatus()
                         {
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
+                            statusAmount = 2,
+                            targetPlayer = false
+                        },
+                        new AStatus()
+                        {
+                            status = ModEntry.Instance.TeraBailoutStatus.Status,
                             statusAmount = 1,
+                            targetPlayer = true
+                        },
+                        new AStatus()
+                        {
+                            status = ModEntry.Instance.TeraBailoutStatus.Status,
+                            statusAmount = 1,
+                            targetPlayer = false
+                        },
+                    };
+                    }
+                case Upgrade.B:
+                    {
+                        return new List<CardAction>
+                    {
+                        new AStatus()
+                        {
+                            status = ModEntry.Instance.TeraTaxationStatus.Status,
+                            statusAmount = 2,
                             targetPlayer = false
                         },
                         new AStatus()
@@ -74,7 +98,7 @@ namespace TeraTaxMod.Cards
                         new AStatus()
                         {
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 1,
+                            statusAmount = 2,
                             targetPlayer = false
                         },
                         new AStatus()
@@ -91,24 +115,6 @@ namespace TeraTaxMod.Cards
                         },
                     };
                     }
-                case Upgrade.B:
-                    {
-                        return new List<CardAction>
-                    {
-                        new AStatus()
-                        {
-                            status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 1,
-                            targetPlayer = false
-                        },
-                        new AStatus()
-                        {
-                            status = ModEntry.Instance.TeraBailoutStatus.Status,
-                            statusAmount = 1,
-                            targetPlayer = true
-                        }
-                    };
-                    }
                 default:
                     {
                         return new List<CardAction>
@@ -116,7 +122,7 @@ namespace TeraTaxMod.Cards
                         new AStatus()
                         {
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 1,
+                            statusAmount = 2,
                             targetPlayer = false
                         },
                         new AStatus()
@@ -142,7 +148,7 @@ namespace TeraTaxMod.Cards
         {
             return new CardData
             {
-                cost = 0,
+                cost = upgrade == Upgrade.B ? 0 : 1,
                 exhaust = true,
                 buoyant = true,
             };

@@ -82,6 +82,7 @@ internal class ModEntry : SimpleMod
 
     private static List<Type> TeraTaxCommonArtifacts = [
        typeof(EarlyBird),
+       typeof(YearlyPayments),
     ];
     private static List<Type> TeraTaxBossArtifacts = [
         
