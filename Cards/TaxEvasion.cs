@@ -114,7 +114,7 @@ namespace TeraTaxMod.Cards
                                 new AStatus()
                                      {
                                         status = Status.tempShield,
-                                        statusAmount = 1,
+                                        statusAmount = 2,
                                         targetPlayer = true
                                      },
                             };
@@ -130,12 +130,6 @@ namespace TeraTaxMod.Cards
                                 actions.Add(new AStatus()
                                     {
                                         status = Status.evade,
-                                        statusAmount = 1,
-                                        targetPlayer = true
-                                    });
-                                actions.Add(new AStatus()
-                                    {
-                                        status = Status.tempShield,
                                         statusAmount = 1,
                                         targetPlayer = true
                                     });

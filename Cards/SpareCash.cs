@@ -10,7 +10,7 @@ using TeraTaxMod;
 
 namespace TeraTaxMod.Cards
 {
-    internal class Persistence : Card, IRegisterable
+    internal class SpareCash : Card, IRegisterable
     {
     public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
         {
@@ -23,12 +23,12 @@ namespace TeraTaxMod.Cards
                 Meta = new CardMeta
                 {
                     deck = ModEntry.Instance.TeraTaxDeck.Deck,
-                    rarity = Rarity.rare,
+                    rarity = Rarity.common,
                     dontOffer = false,
                     upgradesTo = [Upgrade.A, Upgrade.B]
                 },
-                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Persistence", "name"]).Localize,
-                Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/cardPersistence.png")).Sprite,
+                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "SpareCash", "name"]).Localize,
+                Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/CardPayment.png")).Sprite,
             });
         }
 
@@ -48,9 +48,9 @@ namespace TeraTaxMod.Cards
                     {
                         new AStatus()
                         {
-                            status = ModEntry.Instance.TeraPersistenceStatus.Status,
+                            status = ModEntry.Instance.TeraBailoutStatus.Status,
                             statusAmount = 1,
-                            targetPlayer = false
+                            targetPlayer = true
                         }
                     };
                     }
@@ -60,10 +60,10 @@ namespace TeraTaxMod.Cards
                     {
                         new AStatus()
                         {
-                            status = ModEntry.Instance.TeraPersistenceStatus.Status,
-                            statusAmount = 1,
-                            targetPlayer = false
-                        }
+                            status = ModEntry.Instance.TeraBailoutStatus.Status,
+                            statusAmount = 2,
+                            targetPlayer = true
+                        },
                     };
                     }
                 case Upgrade.B:
@@ -72,11 +72,11 @@ namespace TeraTaxMod.Cards
                     {
                         new AStatus()
                         {
-                            status = ModEntry.Instance.TeraPersistenceStatus.Status,
-                            statusAmount = 2,
-                            targetPlayer = false
-                        }
-                       
+                            status = ModEntry.Instance.TeraBailoutStatus.Status,
+                            statusAmount = 1,
+                            targetPlayer = true
+                        },
+
                     };
                     }
                 default:
@@ -85,9 +85,9 @@ namespace TeraTaxMod.Cards
                     {
                         new AStatus()
                         {
-                            status = ModEntry.Instance.TeraPersistenceStatus.Status,
+                            status = ModEntry.Instance.TeraBailoutStatus.Status,
                             statusAmount = 1,
-                            targetPlayer = false
+                            targetPlayer = true
                         }
                     };
                     }
@@ -100,8 +100,8 @@ namespace TeraTaxMod.Cards
         {
             return new CardData
             {
-                cost = upgrade == Upgrade.B ? 4 : 3,
-                exhaust = true,
+                cost = 0,
+                exhaust = upgrade == Upgrade.B ? false : true
             };
         }
 

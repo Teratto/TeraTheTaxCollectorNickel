@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
+using TeraTaxMod.Artifacts;
 using TeraTaxMod.Cards;
 
 //using TeraTaxMod.Actions;
@@ -28,6 +29,9 @@ internal class ModEntry : SimpleMod
     internal IDeckEntry TeraTaxDeck { get; }
     internal IStatusEntry TeraPersistenceStatus { get; }
     internal IStatusEntry TeraTaxationStatus { get; }
+    internal IStatusEntry TeraStallNextStatus { get; }
+    internal IStatusEntry TeraLockNextStatus { get; }
+    internal IStatusEntry TeraBailoutStatus { get; }
     internal ILocalizationProvider<IReadOnlyList<string>> AnyLocalizations { get; }
     internal ILocaleBoundNonNullLocalizationProvider<IReadOnlyList<string>> Localizations { get; }
 
@@ -42,7 +46,10 @@ internal class ModEntry : SimpleMod
         typeof(TaxEvasion),
         typeof(Taunt),
         typeof(TaxingEscape),
-        typeof(NumberCrunching)
+        typeof(NumberCrunching),
+        typeof(FrenziedGetaway),
+        typeof(SalesTax),
+        typeof(SpareCash)
     ];
     private static List<Type> TeraTaxUncommonCardTypes = [
         typeof(MarketCrash),
@@ -51,14 +58,21 @@ internal class ModEntry : SimpleMod
         typeof(TaxExemption),
         typeof(AllIn),
         typeof(Overdraft),
+        typeof(Siphon)
     ];
     private static List<Type> TeraTaxRareCardTypes = [
         typeof(Persistence),
         typeof(Desperation),
         typeof(Forgiveness),
+        typeof(Tenacity),
+        typeof(Breakout)
     ];
     private static List<Type> TeraTaxSpecialCardTypes = [
         typeof(EggShells),
+        typeof(SpareCash),
+        typeof(GetsTheWorm),
+        typeof(Payment),
+        
     ];
     private static IEnumerable<Type> TeraTaxCardTypes =
         TeraTaxCommonCardTypes
@@ -67,7 +81,7 @@ internal class ModEntry : SimpleMod
             .Concat(TeraTaxSpecialCardTypes);
 
     private static List<Type> TeraTaxCommonArtifacts = [
-       
+       typeof(EarlyBird),
     ];
     private static List<Type> TeraTaxBossArtifacts = [
         
@@ -231,7 +245,42 @@ internal class ModEntry : SimpleMod
             Name = AnyLocalizations.Bind(["status", "persistence", "name"]).Localize,
             Description = AnyLocalizations.Bind(["status", "persistence", "desc"]).Localize
         });
-
+        TeraStallNextStatus = helper.Content.Statuses.RegisterStatus("StallNext", new StatusConfiguration
+        {
+            Definition = new StatusDef
+            {
+                isGood = false,
+                affectedByTimestop = false,
+                color = new Color("FFFFFF"),
+                icon = RegisterSprite(package, "assets/Feature/StallNext.png").Sprite
+            },
+            Name = AnyLocalizations.Bind(["status", "StallNext", "name"]).Localize,
+            Description = AnyLocalizations.Bind(["status", "StallNext", "desc"]).Localize
+        });
+        TeraLockNextStatus = helper.Content.Statuses.RegisterStatus("LockNext", new StatusConfiguration
+        {
+            Definition = new StatusDef
+            {
+                isGood = false,
+                affectedByTimestop = false,
+                color = new Color("FFFFFF"),
+                icon = RegisterSprite(package, "assets/Feature/LockNext.png").Sprite
+            },
+            Name = AnyLocalizations.Bind(["status", "LockNext", "name"]).Localize,
+            Description = AnyLocalizations.Bind(["status", "LockNext", "desc"]).Localize
+        });
+        TeraBailoutStatus = helper.Content.Statuses.RegisterStatus("Bailout", new StatusConfiguration
+        {
+            Definition = new StatusDef
+            {
+                isGood = true,
+                affectedByTimestop = false,
+                color = new Color("FFFFFF"),
+                icon = RegisterSprite(package, "assets/Feature/Bailout.png").Sprite
+            },
+            Name = AnyLocalizations.Bind(["status", "Bailout", "name"]).Localize,
+            Description = AnyLocalizations.Bind(["status", "Bailout", "desc"]).Localize
+        });
 
         /*
          * Managers are typically made to register themselves when constructed.
@@ -242,6 +291,10 @@ internal class ModEntry : SimpleMod
         KokoroApi.StatusLogic.RegisterHook(taxationManager);
         TeraPersistenceManager persistenceManager = new();
         KokoroApi.StatusLogic.RegisterHook(persistenceManager);
+        TeraStallNextTurnManager stallNextManager = new();
+        KokoroApi.StatusLogic.RegisterHook(stallNextManager);
+        TeraLockNextTurnManager lockNextManager = new();
+        KokoroApi.StatusLogic.RegisterHook(lockNextManager);
 
         /*
          * Some classes require so little management that a manager may not be worth writing.

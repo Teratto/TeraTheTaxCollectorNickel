@@ -10,7 +10,7 @@ using TeraTaxMod;
 
 namespace TeraTaxMod.Cards
 {
-    internal class AllIn : Card, IRegisterable
+    internal class Siphon : Card, IRegisterable
     {
     public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
         {
@@ -27,8 +27,8 @@ namespace TeraTaxMod.Cards
                     dontOffer = false,
                     upgradesTo = [Upgrade.A, Upgrade.B]
                 },
-                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "AllIn", "name"]).Localize,
-                Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/CardAllin.png")).Sprite,
+                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Siphon", "name"]).Localize,
+                Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/cardSiphon.png")).Sprite,
             });
         }
 
@@ -40,26 +40,31 @@ namespace TeraTaxMod.Cards
          */
         public override List<CardAction> GetActions(State s, Combat c)
         {
-            int theirTax = c.otherShip.Get(ModEntry.Instance.TeraTaxationStatus.Status);
-            int ourTax = s.ship.Get(ModEntry.Instance.TeraTaxationStatus.Status);
             switch (this.upgrade)
             {
                 case Upgrade.None:
                     {
                         return new List<CardAction>
                     {
+                        
                         new AStatus()
                         {
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = ourTax,
+                            statusAmount = 1,
+                            targetPlayer = false
+                        },
+                        new AStatus()
+                        {
+                            status = ModEntry.Instance.TeraBailoutStatus.Status,
+                            statusAmount = 1,
                             targetPlayer = true
                         },
                         new AStatus()
                         {
-                            status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = theirTax,
+                            status = ModEntry.Instance.TeraBailoutStatus.Status,
+                            statusAmount = 1,
                             targetPlayer = false
-                        }
+                        },
                     };
                     }
                 case Upgrade.A:
@@ -69,15 +74,21 @@ namespace TeraTaxMod.Cards
                         new AStatus()
                         {
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = ourTax,
+                            statusAmount = 1,
+                            targetPlayer = false
+                        },
+                        new AStatus()
+                        {
+                            status = ModEntry.Instance.TeraBailoutStatus.Status,
+                            statusAmount = 2,
                             targetPlayer = true
                         },
                         new AStatus()
                         {
-                            status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = theirTax,
+                            status = ModEntry.Instance.TeraBailoutStatus.Status,
+                            statusAmount = 1,
                             targetPlayer = false
-                        }
+                        },
                     };
                     }
                 case Upgrade.B:
@@ -87,8 +98,14 @@ namespace TeraTaxMod.Cards
                         new AStatus()
                         {
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = theirTax,
+                            statusAmount = 1,
                             targetPlayer = false
+                        },
+                        new AStatus()
+                        {
+                            status = ModEntry.Instance.TeraBailoutStatus.Status,
+                            statusAmount = 1,
+                            targetPlayer = true
                         }
                     };
                     }
@@ -99,15 +116,21 @@ namespace TeraTaxMod.Cards
                         new AStatus()
                         {
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = ourTax,
+                            statusAmount = 1,
+                            targetPlayer = false
+                        },
+                        new AStatus()
+                        {
+                            status = ModEntry.Instance.TeraBailoutStatus.Status,
+                            statusAmount = 1,
                             targetPlayer = true
                         },
                         new AStatus()
                         {
-                            status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = theirTax,
+                            status = ModEntry.Instance.TeraBailoutStatus.Status,
+                            statusAmount = 1,
                             targetPlayer = false
-                        }
+                        },
                     };
                     }
             }
@@ -117,45 +140,12 @@ namespace TeraTaxMod.Cards
         
         public override CardData GetData(State state)
         {
-            switch (this.upgrade)
+            return new CardData
             {
-                case Upgrade.None:
-                    {
-                        return new CardData
-                        {
-                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "AllIn", "desc"])),
-                            cost = 3,
-                            exhaust = true
-                        };
-                    }
-                case Upgrade.A:
-                    {
-                        return new CardData
-                        {
-                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "AllIn", "descA"])),
-                            cost = 2,
-                            exhaust = true
-                        };
-                    }
-                case Upgrade.B:
-                    {
-                        return new CardData
-                        {
-                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "AllIn", "descB"])),
-                            cost = 3,
-                            exhaust = true
-                        };
-                    }
-                default:
-                    {
-                        return new CardData
-                        {
-                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "AllIn", "desc"])),
-                            cost = 3,
-                            exhaust = true
-                        };
-                    }
-            }
+                cost = 0,
+                exhaust = true,
+                buoyant = true,
+            };
         }
 
     }

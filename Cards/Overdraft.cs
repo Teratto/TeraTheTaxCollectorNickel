@@ -152,7 +152,7 @@ namespace TeraTaxMod.Cards
                     {
                         return new CardData
                         {
-                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "Overdraft", "desc"])),
+                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "Overdraft", "desc"], new { damage1 = GetDmg(state, 1), damage2 = GetDmg(state, 2) })),
                             cost = 1
                         };
                     }
@@ -160,7 +160,7 @@ namespace TeraTaxMod.Cards
                     {
                         return new CardData
                         {
-                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "Overdraft", "descA"], new { damage = GetDmg(state, 1) })),
+                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "Overdraft", "descA"], new { damage1 = GetDmg(state, 1), damage2 = GetDmg(state, 3) })),
                             cost = 1,
 
                         };
@@ -169,7 +169,7 @@ namespace TeraTaxMod.Cards
                     {
                         return new CardData
                         {
-                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "Overdraft", "descB"], new { damage = GetDmg(state, 1) })),
+                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "Overdraft", "descB"], new { damage1 = GetDmg(state, 1) } )),
                             cost = 1,
 
                         };
@@ -178,7 +178,7 @@ namespace TeraTaxMod.Cards
                     {
                         return new CardData
                         {
-                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "Overdraft", "desc"], new { damage = GetDmg(state, 1) })),
+                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "Overdraft", "desc"], new { damage1 = GetDmg(state, 1), damage2 = GetDmg(state, 2) })),
                             cost = 1
                         };
                     }

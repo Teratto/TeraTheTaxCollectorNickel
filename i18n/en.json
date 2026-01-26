@@ -3,100 +3,129 @@
         "name": "Tera",
         "desc": "A debt collector. Uses <c=status>TAX</c> to damage enemies and <c=status>BAILOUT</c> to avoid negative statuses."
     },
-    "status": {
+    "status":{
       "tax": {
         "name": "Tax",
         "desc": "On end of turn, deal <c=keyword>1</c> damage for every <c=keyword>3</c> <c=status>TAX</c>."
       },
-        "persistence": {
-            "name": "Persistence",
-            "desc": "Increase <c=status>TAX</c> by {0} at the start of turn."
-        }
+      "persistence": {
+        "name": "Interest",
+        "desc": "Increase <c=status>TAX</c> by {0} at the start of turn."
+      },
+      "StallNext": {
+        "name": "Engine Stall Next Turn",
+        "desc": "<c=downside>Gain <c=keyword>1</c> <c=status>ENGINE STALL</c> at the start of turn</c>  and decrease this status by <c=keyword>1</c>."
+      },
+      "LockNext": {
+        "name": "Engine Lock Next Turn",
+        "desc": "<c=downside>Gain <c=keyword>1</c> <c=status>ENGINE LOCK</c> at the start of turn</c> and decrease this status by <c=keyword>1</c>."
+      },
+      "Bailout": {
+        "name": "Bailout",
+        "desc": "The next time you would gain any amount of a <c=status>negative status</c>, instead remove <c=keyword>1</c> <c=status>BAILOUT</c>."
+      }
     },
-    "action": {
-        "AGainPonder": {
-            "title": "Gain Ponder",
-            "draw": "Add <c=boldPink>{{Count}}</c> <c=card>Ponder</c>s to your <c=white>draw pile</c>.",
-            "discard": "Add <c=boldPink>{{Count}}</c> <c=card>Ponder</c>s to your <c=white>discard pile</c>."
-        },
-        "AOverthink": {
-            "title": "Overthink",
-            "desc": "Discard a <c=card>Ponder</c> in hand, or in the draw pile."
-        }
+  "action": {
+  },
+  "card": {
+    "MarketCrash": {
+      "name": "Market Crash"
     },
-    "card": {
-        "MarketCrash": {
-            "name": "Market Crash"
-        },
-        "Tariff": {
-            "name": "Tariff"
-        },
-        
-        "Persistence": {
-            "name": "Persistence"
-        },
+    "Tariff": {
+      "name": "Tariff"
+    },
 
-      "TaxEvasion": {
-        "name": "Tax Evasion",
-        "desc": "<c=downside>Spend 1 enemy tax</c> to gain 1 <c=status>evade</c> and 2 <c=status>temp shield</c>.",
-        "descA": "<c=downside>Spend 1 enemy tax</c> to gain 1 <c=status>evade</c> and 3 <c=status>temp shield</c>.",
-        "descB": "Gain 1 <c=status>temp shield</c>. <c=downside>Spend 1 enemy tax</c> to gain 1 <c=status>evade</c> and 1 <c=status>temp shield</c>."
-        },
-        "Desperation": {
-            "name": "Desperation"
-        },
-        "EggToss": {
-            "name": "Egg Toss"
-        },
-        "EggShells": {
-            "name": "Egg Shells"
-        },
-        "Taunt": {
-            "name": "Taunt"
-        },
-        "TaxingEscape": {
-            "name": "Taxing Escape"
-        },
-      "NumberCrunching": {
-        "name": "Number Crunching"
-        },
-        "HealthInsurance": {
-            "name": "Health Insurance"
-        },
-        "TaxHike": {
-            "name": "Tax Hike"
-        },
-      "TaxExemption": {
-        "name": "Tax Exemption",
-        "desc": "Gain <c=status>shield</c> equal to enemy <c=status>tax</c>, then <c=downside>remove 1 tax</c>.",
-        "descA": "Gain <c=status>shield</c> equal to enemy <c=status>tax</c>.",
-        "descB": "Gain <c=status>temp shield</c> equal to enemy <c=status>tax</c>, then <c=downside>remove 1 tax</c>."
-      },
-      "Forgiveness": {
-        "name": "Forgiveness",
-        "desc": "<c=downside>Spend 2 enemy tax</c> to <c=status>gain 2 energy</c>.",
-        "descA": "<c=downside>Spend 1 enemy tax</c> to <c=status>gain 2 energy</c>.",
-        "descB": "<c=downside>Spend 2 enemy tax</c> to <c=status>gain 2 energy</c>."
-      },
-      "Overdraft": {
-        "name": "Overdraft",
-        "desc": "Shoot for <c=attack>{{damage}}</c> dmg. <c=downside>Spend 1 enemy tax</c> to shoot again for <c=attack>{{damage}}</c> dmg.",
-        "descA": "Shoot for <c=attack>{{damage}}</c> dmg. <c=downside>Spend 1 enemy tax</c> to shoot again for <c=attack>{{damage + 2}}</c> dmg.",
-        "descB": "Shoot for <c=attack>{{damage}}</c> dmg. <c=downside>Spend 2 enemy tax</c> to shoot for <c=attack>{{damage}}</c> dmg three more times."
-      },
-      "AllIn": {
-        "name": "All In",
-        "desc": "Double <c=downside>ALL</c> tax.",
-        "descA": "Double <c=downside>ALL</c> tax.",
-        "descB": "Double the enemy's tax.'"
-      },
-
+    "Persistence": {
+      "name": "Persistence"
+    },
+    "FrenziedGetaway": {
+      "name": "Frenzied Getaway"
+    },
+    "TaxEvasion": {
+      "name": "Tax Evasion",
+      "desc": "<c=downside>Spend 1 enemy tax</c> to gain 1 <c=status>evade</c> and 2 <c=status>temp shield</c>.",
+      "descA": "<c=downside>Spend 1 enemy tax</c> to gain 1 <c=status>evade</c> and 3 <c=status>temp shield</c>.",
+      "descB": "Gain 2 <c=status>temp shield</c>. <c=downside>Spend 1 enemy tax</c> to gain 1 <c=status>evade</c>."
+    },
+    "Desperation": {
+      "name": "Desperation"
+    },
+    "EggToss": {
+      "name": "Egg Toss"
+    },
+    "EggShells": {
+      "name": "Egg Shells"
+    },
+    "SalesTax": {
+      "name": "Sales Tax"
+    },
+    "Payment": {
+      "name": "Payment"
+    },
+    "Taunt": {
+      "name": "Taunt"
+    },
+    "TaxingEscape": {
+      "name": "Taxing Escape"
+    },
+    "NumberCrunching": {
+      "name": "Number Crunching"
+    },
+    "HealthInsurance": {
+      "name": "Health Insurance"
+    },
+    "TaxHike": {
+      "name": "Tax Hike"
+    },
+    "GetsTheWorm": {
+      "name": "Gets The Worm"
+    },
+    "TaxExemption": {
+      "name": "Tax Exemption",
+      "desc": "Gain <c=status>shield</c> equal to enemy <c=status>tax</c>, then <c=downside>remove 1 tax</c>.",
+      "descA": "Gain <c=status>shield</c> equal to enemy <c=status>tax</c>.",
+      "descB": "Gain <c=status>temp shield</c> equal to enemy <c=status>tax</c>, then <c=downside>remove 1 tax</c>."
+    },
+    "Forgiveness": {
+      "name": "Forgiveness",
+      "desc": "<c=downside>Spend 2 enemy tax</c> to <c=status>gain 2 energy</c>.",
+      "descA": "<c=downside>Spend 1 enemy tax</c> to <c=status>gain 2 energy</c>.",
+      "descB": "<c=downside>Spend 2 enemy tax</c> to <c=status>gain 2 energy</c>."
+    },
+    "Overdraft": {
+      "name": "Overdraft",
+      "desc": "Shoot for <c=attack>{{damage1}}</c> dmg. <c=downside>Spend 1 enemy tax</c> to shoot again for <c=attack>{{damage2}}</c> dmg.",
+      "descA": "Shoot for <c=attack>{{damage1}}</c> dmg. <c=downside>Spend 1 enemy tax</c> to shoot again for <c=attack>{{damage2}}</c> dmg.",
+      "descB": "Shoot for <c=attack>{{damage1}}</c> dmg. <c=downside>Spend 2 enemy tax</c> to shoot for <c=attack>{{damage1}}</c> dmg <c=keyword>three</c> more times."
+    },
+    "AllIn": {
+      "name": "All In",
+      "desc": "Double <c=downside>ALL</c> tax.",
+      "descA": "Double <c=downside>ALL</c> tax.",
+      "descB": "Double the enemy's tax.'"
+    },
+    "Tenacity": {
+      "name": "Tenacity"
 
     },
+    "Breakout": {
+      "name": "Breakout"
+
+    },
+    "Siphon": {
+      "name": "Mutual Funds"
+    },
+ 
+    "SpareCash": {
+      "name": "Spare Cash"
+    }
+
+
+  },
     "artifact": {
-        "BuriedKnowledge": {
-            "name": "BURIED KNOWLEDGE",
-            "desc": "At the start of combat, add 3 <c=card>Ponder</c>s to the discard pile."
+        "EarlyBird": {
+            "name": "EARLY BIRD",
+            "desc": "At the start of combat, add 1 <c=card>Gets The Worm</c> to your hand."
         },
         "Lexicon": {
             "name": "LEXICON",
