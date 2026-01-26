@@ -10,7 +10,7 @@ using TeraTaxMod;
 
 namespace TeraTaxMod.Cards
 {
-    internal class TaxingEscape : Card, IRegisterable
+    internal class AllIn : Card, IRegisterable
     {
     public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
         {
@@ -27,8 +27,8 @@ namespace TeraTaxMod.Cards
                     dontOffer = false,
                     upgradesTo = [Upgrade.A, Upgrade.B]
                 },
-                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "TaxingEscape", "name"]).Localize,
-                Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/cardTaxingEscape.png")).Sprite,
+                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "AllIn", "name"]).Localize,
+                Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/CardAllin.png")).Sprite,
             });
         }
 
@@ -40,28 +40,25 @@ namespace TeraTaxMod.Cards
          */
         public override List<CardAction> GetActions(State s, Combat c)
         {
+            int theirTax = c.otherShip.Get(ModEntry.Instance.TeraTaxationStatus.Status);
+            int ourTax = s.ship.Get(ModEntry.Instance.TeraTaxationStatus.Status);
             switch (this.upgrade)
             {
                 case Upgrade.None:
                     {
                         return new List<CardAction>
                     {
-                        new AMove()
+                        new AStatus()
                         {
-                            dir = 2,
-                            targetPlayer = true
-                        },
-                        new AAttack()
-                        {
-                            damage = GetDmg(s,0),
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 1
+                            statusAmount = ourTax,
+                            targetPlayer = true
                         },
                         new AStatus()
                         {
-                            status = ModEntry.Instance.TeraCharacter.MissingStatus.Status,
-                            statusAmount = 1,
-                            targetPlayer = true
+                            status = ModEntry.Instance.TeraTaxationStatus.Status,
+                            statusAmount = theirTax,
+                            targetPlayer = false
                         }
                     };
                     }
@@ -69,22 +66,17 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AMove()
+                        new AStatus()
                         {
-                            dir = 2,
-                            targetPlayer = true
-                        },
-                        new AAttack()
-                        {
-                            damage = GetDmg(s,0),
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 1
+                            statusAmount = ourTax,
+                            targetPlayer = true
                         },
                         new AStatus()
                         {
-                            status = ModEntry.Instance.TeraCharacter.MissingStatus.Status,
-                            statusAmount = 1,
-                            targetPlayer = true
+                            status = ModEntry.Instance.TeraTaxationStatus.Status,
+                            statusAmount = theirTax,
+                            targetPlayer = false
                         }
                     };
                     }
@@ -92,39 +84,29 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AMove()
+                        new AStatus()
                         {
-                            dir = 2,
-                            targetPlayer = true
-                        },
-                        new AAttack()
-                        {
-                            damage = GetDmg(s,0),
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 1
-                        },
+                            statusAmount = theirTax,
+                            targetPlayer = false
+                        }
                     };
                     }
                 default:
                     {
                         return new List<CardAction>
                     {
-                        new AMove()
+                        new AStatus()
                         {
-                            dir = 2,
-                            targetPlayer = true
-                        },
-                        new AAttack()
-                        {
-                            damage = GetDmg(s,0),
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 1
+                            statusAmount = ourTax,
+                            targetPlayer = true
                         },
                         new AStatus()
                         {
-                            status = ModEntry.Instance.TeraCharacter.MissingStatus.Status,
-                            statusAmount = 1,
-                            targetPlayer = true
+                            status = ModEntry.Instance.TeraTaxationStatus.Status,
+                            statusAmount = theirTax,
+                            targetPlayer = false
                         }
                     };
                     }
@@ -135,11 +117,43 @@ namespace TeraTaxMod.Cards
         
         public override CardData GetData(State state)
         {
-            return new CardData
+            switch (this.upgrade)
             {
-                cost = 0,
-                flippable = upgrade == Upgrade.A ? true : false
-            };
+                case Upgrade.None:
+                    {
+                        return new CardData
+                        {
+                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "AllIn", "desc"])),
+                            cost = 3
+                        };
+                    }
+                case Upgrade.A:
+                    {
+                        return new CardData
+                        {
+                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "AllIn", "descA"])),
+                            cost = 2,
+
+                        };
+                    }
+                case Upgrade.B:
+                    {
+                        return new CardData
+                        {
+                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "AllIn", "descB"])),
+                            cost = 3,
+
+                        };
+                    }
+                default:
+                    {
+                        return new CardData
+                        {
+                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "AllIn", "desc"])),
+                            cost = 3
+                        };
+                    }
+            }
         }
 
     }

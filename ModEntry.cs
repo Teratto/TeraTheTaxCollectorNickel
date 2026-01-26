@@ -48,7 +48,9 @@ internal class ModEntry : SimpleMod
         typeof(MarketCrash),
         typeof(HealthInsurance),
         typeof(TaxHike),
-        typeof(TaxExemption)
+        typeof(TaxExemption),
+        typeof(AllIn),
+        typeof(Overdraft),
     ];
     private static List<Type> TeraTaxRareCardTypes = [
         typeof(Persistence),

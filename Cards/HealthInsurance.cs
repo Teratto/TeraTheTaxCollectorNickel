@@ -88,7 +88,7 @@ namespace TeraTaxMod.Cards
                         new AStatus()
                         {
                             status = Status.energyLessNextTurn,
-                            statusAmount = 2,
+                            statusAmount = 999,
                             targetPlayer = true
                         }
 

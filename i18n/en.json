@@ -41,8 +41,7 @@
         "desc": "<c=downside>Spend 1 enemy tax</c> to gain 1 <c=status>evade</c> and 2 <c=status>temp shield</c>.",
         "descA": "<c=downside>Spend 1 enemy tax</c> to gain 1 <c=status>evade</c> and 3 <c=status>temp shield</c>.",
         "descB": "Gain 1 <c=status>temp shield</c>. <c=downside>Spend 1 enemy tax</c> to gain 1 <c=status>evade</c> and 1 <c=status>temp shield</c>."
-      },
-        
+        },
         "Desperation": {
             "name": "Desperation"
         },
@@ -75,9 +74,21 @@
       },
       "Forgiveness": {
         "name": "Forgiveness",
-        "desc": "<c=downside>Remove 2 enemy tax</c> to <c=status>gain 2 energy</c>.",
-        "descA": "<c=downside>Remove 1 enemy tax</c> to <c=status>gain 2 energy</c>.",
-        "descB": "<c=downside>Remove 2 enemy tax</c> to <c=status>gain 2 energy</c>."
+        "desc": "<c=downside>Spend 2 enemy tax</c> to <c=status>gain 2 energy</c>.",
+        "descA": "<c=downside>Spend 1 enemy tax</c> to <c=status>gain 2 energy</c>.",
+        "descB": "<c=downside>Spend 2 enemy tax</c> to <c=status>gain 2 energy</c>."
+      },
+      "Overdraft": {
+        "name": "Overdraft",
+        "desc": "Shoot for <c=attack>{{damage}}</c> dmg. <c=downside>Spend 1 enemy tax</c> to shoot again for <c=attack>{{damage}}</c> dmg.",
+        "descA": "Shoot for <c=attack>{{damage}}</c> dmg. <c=downside>Spend 1 enemy tax</c> to shoot again for <c=attack>{{damage + 2}}</c> dmg.",
+        "descB": "Shoot for <c=attack>{{damage}}</c> dmg. <c=downside>Spend 2 enemy tax</c> to shoot for <c=attack>{{damage}}</c> dmg three more times."
+      },
+      "AllIn": {
+        "name": "All In",
+        "desc": "Double <c=downside>ALL</c> tax.",
+        "descA": "Double <c=downside>ALL</c> tax.",
+        "descB": "Double the enemy's tax.'"
       },
 
 
