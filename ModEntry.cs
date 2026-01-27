@@ -83,9 +83,12 @@ internal class ModEntry : SimpleMod
     private static List<Type> TeraTaxCommonArtifacts = [
        typeof(EarlyBird),
        typeof(YearlyPayments),
+       typeof(GovernmentGrant),
+       typeof(FlightTraining),
     ];
     private static List<Type> TeraTaxBossArtifacts = [
-        
+        typeof(Capitalism),
+        typeof(Inflation)
     ];
     private static IEnumerable<Type> TeraTaxArtifactTypes =
         TeraTaxCommonArtifacts
@@ -296,6 +299,9 @@ internal class ModEntry : SimpleMod
         KokoroApi.StatusLogic.RegisterHook(stallNextManager);
         TeraLockNextTurnManager lockNextManager = new();
         KokoroApi.StatusLogic.RegisterHook(lockNextManager);
+        TeraBailoutManager bailoutManager = new();
+        KokoroApi.StatusLogic.RegisterHook(bailoutManager);
+
 
         /*
          * Some classes require so little management that a manager may not be worth writing.

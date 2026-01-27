@@ -88,9 +88,9 @@
     },
     "Forgiveness": {
       "name": "Forgiveness",
-      "desc": "<c=downside>Spend 2 enemy tax</c> to <c=status>gain 2 energy</c>.",
-      "descA": "<c=downside>Spend 1 enemy tax</c> to <c=status>gain 2 energy</c>.",
-      "descB": "<c=downside>Spend 2 enemy tax</c> to <c=status>gain 2 energy</c>."
+      "desc": "<c=downside>Spend 1 enemy tax</c> to <c=status>gain 2 energy</c>.",
+      "descA": "<c=downside>Spend 1 enemy tax</c> to <c=status>gain 2 energy</c> and <c=action>draw 1 card</c>.",
+      "descB": "<c=downside>Spend 1 enemy tax</c> to <c=status>gain 2 energy</c>."
     },
     "Overdraft": {
       "name": "Overdraft",
@@ -127,9 +127,25 @@
             "name": "EARLY BIRD",
             "desc": "At the start of combat, add 1 <c=card>Gets The Worm</c> to your hand."
         },
-         "YearlyPayments": {
-            "name": "YEARLY PAYMENTS",
-            "desc": "At the start of combat, add 3 <c=status>TAX</c> to the enemy."
-        },
+      "YearlyPayments": {
+        "name": "YEARLY PAYMENTS",
+        "desc": "At the start of combat, add 3 <c=status>TAX</c> to the enemy."
+      },
+      "GovernmentGrant": {
+        "name": "GOVERNMENT GRANT",
+        "desc": "At the start of combat, gain 2 <c=status>BAILOUT</c>."
+      },
+      "FlightTraining": {
+        "name": "FLIGHT TRAINING",
+        "desc": "Every 3 turns, gain 1 <c=status>EVADE</c>."
+      },
+      "Capitalism": {
+        "name": "CAPITALISM",
+        "desc": "At the start of combat, gain <c=energy>1 energy</c>. <c=downside>Gain one tax a turn (caps at 6)</c>."
+      },
+      "Inflation": {
+        "name": "INFLATION",
+        "desc": "<c=status>TAX</c> now does damage on increments of <c=attack>2</c> instead of <c=attack>3</c>."
+      },
     }
 }

@@ -40,8 +40,7 @@ namespace TeraTaxMod.Cards
          */
         public override List<CardAction> GetActions(State s, Combat c)
         {
-            int requiredTax = 2;
-            int newRequiredTax = 1;
+            int requiredTax = 1;
             int taxAmount = c.otherShip.Get(ModEntry.Instance.TeraTaxationStatus.Status);
 
 
@@ -90,19 +89,23 @@ namespace TeraTaxMod.Cards
                     break;
                 case Upgrade.A:
                     {
-                        if (taxAmount >= newRequiredTax)
+                        if (taxAmount >= requiredTax)
                         {
                             return new List<CardAction>
                             {
                                 new AStatus()
                                      {
                                         status = ModEntry.Instance.TeraTaxationStatus.Status,
-                                        statusAmount = -newRequiredTax,
+                                        statusAmount = -requiredTax,
                                         targetPlayer = false
                                      },
                                 new AEnergy()
                                     {
                                         changeAmount = 2
+                                    },
+                                new ADrawCard()
+                                    {
+                                        count = 1
                                     },
                             };
                         }
