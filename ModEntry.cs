@@ -8,6 +8,8 @@ using System.Collections.Immutable;
 using System.Linq;
 using TeraTaxMod.Artifacts;
 using TeraTaxMod.Cards;
+using TeraTaxMod.Dialogue;
+
 
 //using TeraTaxMod.Actions;
 //using TeraTaxMod.Artifacts;
@@ -90,13 +92,24 @@ internal class ModEntry : SimpleMod
         typeof(Capitalism),
         typeof(Inflation)
     ];
+
+    private static List<Type> TeraTaxDialogueTypes = [
+        typeof(TauntDialogue),
+   ];
+
     private static IEnumerable<Type> TeraTaxArtifactTypes =
         TeraTaxCommonArtifacts
             .Concat(TeraTaxBossArtifacts);
 
     private static IEnumerable<Type> AllRegisterableTypes =
         TeraTaxCardTypes
-            .Concat(TeraTaxArtifactTypes);
+            .Concat(TeraTaxArtifactTypes)
+            .Concat(TeraTaxDialogueTypes);
+
+    //private static List<Type> TeraCharacterEXETypes = [
+        //typeof(TeraCatEXE) - DON'T FORGET TO ADD THIS
+
+   
 
     public ModEntry(IPluginPackage<IModManifest> package, IModHelper helper, ILogger logger) : base(package, helper, logger)
     {
@@ -215,6 +228,78 @@ internal class ModEntry : SimpleMod
                     .Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Animation/SquintIdle/{i}.png")).Sprite)
                     .ToList()
         });
+        helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+        {
+            CharacterType = TeraTaxDeck.UniqueName,
+            LoopTag = "happy",
+            Frames = Enumerable.Range(0, 4)
+                .Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Animation/HappyIdle/{i}.png")).Sprite)
+                .ToList()
+        });
+        helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+        {
+            CharacterType = TeraTaxDeck.UniqueName,
+            LoopTag = "closed",
+            Frames = Enumerable.Range(0, 4)
+                .Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Animation/ClosedIdle/{i}.png")).Sprite)
+                .ToList()
+        });
+        helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+        {
+            CharacterType = TeraTaxDeck.UniqueName,
+            LoopTag = "lookaway",
+            Frames = Enumerable.Range(0, 4)
+               .Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Animation/LookAwayIdle/{i}.png")).Sprite)
+               .ToList()
+        });
+        helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+        {
+            CharacterType = TeraTaxDeck.UniqueName,
+            LoopTag = "lookawaynervous",
+            Frames = Enumerable.Range(0, 4)
+               .Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Animation/LookAwayIdleNervous/{i}.png")).Sprite)
+               .ToList()
+        });
+        helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+        {
+            CharacterType = TeraTaxDeck.UniqueName,
+            LoopTag = "sad",
+            Frames = Enumerable.Range(0, 4)
+               .Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Animation/SadIdle/{i}.png")).Sprite)
+               .ToList()
+        });
+        helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+        {
+            CharacterType = TeraTaxDeck.UniqueName,
+            LoopTag = "scared",
+            Frames = Enumerable.Range(0, 4)
+               .Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Animation/ScaredIdle/{i}.png")).Sprite)
+               .ToList()
+        });
+        helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+        {
+            CharacterType = TeraTaxDeck.UniqueName,
+            LoopTag = "taxes",
+            Frames = Enumerable.Range(0, 4)
+               .Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Animation/TaxesIdle/{i}.png")).Sprite)
+               .ToList()
+        });
+        helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+        {
+            CharacterType = TeraTaxDeck.UniqueName,
+            LoopTag = "happytaxes",
+            Frames = Enumerable.Range(0, 4)
+               .Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Animation/TaxesHappyIdle/{i}.png")).Sprite)
+               .ToList()
+        });
+        helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+        {
+            CharacterType = TeraTaxDeck.UniqueName,
+            LoopTag = "blush",
+            Frames = Enumerable.Range(0, 4)
+               .Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Animation/BlushIdle/{i}.png")).Sprite)
+               .ToList()
+        });
 
 
 
@@ -224,7 +309,7 @@ internal class ModEntry : SimpleMod
          * Statuses are used to achieve many mechanics.
          * However, statuses themselves do not contain any code - they just keep track of how much you have.
          */
-        
+
         TeraTaxationStatus = helper.Content.Statuses.RegisterStatus("Tax", new StatusConfiguration
         {
             Definition = new StatusDef

@@ -48,8 +48,8 @@ namespace TeraTaxMod.Cards
                     {
                         new AAttack()
                         {
-                            damage = GetDmg(s,0),
-                            stunEnemy = true,
+                            damage = GetDmg(s,1),
+                            stunEnemy = true
                         }
                     };
                     }
@@ -60,7 +60,8 @@ namespace TeraTaxMod.Cards
                         new AAttack()
                         {
                             damage = GetDmg(s,3),
-                            stunEnemy = true,
+                            status = ModEntry.Instance.TeraTaxationStatus.Status,
+                            statusAmount = 1
                         }
                     };
                     }
@@ -70,7 +71,7 @@ namespace TeraTaxMod.Cards
                     {
                         new AAttack()
                         {
-                            damage = GetDmg(s,0),
+                            damage = GetDmg(s,3),
                             stunEnemy = true,
                             status = Status.lockdown,
                             statusAmount = 1
@@ -99,8 +100,8 @@ namespace TeraTaxMod.Cards
             return new CardData
             {
                 cost = 0,
-                exhaust = true,
                 temporary = true,
+                exhaust = true
             };
         }
 

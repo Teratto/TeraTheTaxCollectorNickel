@@ -70,18 +70,11 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AStatus()
-                        {
-                            status = Status.shield,
-                            statusAmount = 1,
-                            targetPlayer = true
-
-                        },
                         new AAttack()
                         {
-                            damage = GetDmg(s,1),
+                            damage = GetDmg(s,0),
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 1
+                            statusAmount = 2
                         }
                     };
                     }
