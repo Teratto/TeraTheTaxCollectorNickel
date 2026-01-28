@@ -24,6 +24,8 @@ internal class ModEntry : SimpleMod
     internal Harmony Harmony { get; }
     internal IKokoroApi.IV2 KokoroApi { get; }
 
+    public LocalDB localDB { get; set; } = null!;  // For dialogue machine
+
     internal IPlayableCharacterEntryV2 TeraCharacter {get;}
     //Note: this IPlayableCharacterEntryV2 was originally in the helper.content function. I changed code
     //to try and get the "ismissing" status to work. Let's hope I did this right. If it breaks, remove
@@ -130,6 +132,23 @@ internal class ModEntry : SimpleMod
         Localizations = new MissingPlaceholderLocalizationProvider<IReadOnlyList<string>>(
             new CurrentLocaleOrEnglishLocalizationProvider<IReadOnlyList<string>>(AnyLocalizations)
         );
+
+
+        // The following two are used for the dialogue machine
+        helper.Events.OnModLoadPhaseFinished += (_, phase) =>
+        {
+            if (phase == ModLoadPhase.AfterDbInit)
+            {
+                localDB = new(helper, package);
+            }
+        };
+        helper.Events.OnLoadStringsForLocale += (_, thing) =>
+        {
+            foreach (KeyValuePair<string, string> entry in localDB.GetLocalizationResults(thing.Locale))
+            {
+                thing.Localizations[entry.Key] = entry.Value;
+            }
+        };
 
         /*
          * A deck only defines how cards should be grouped, for things such as codex sorting and Second Opinions.
@@ -316,7 +335,7 @@ internal class ModEntry : SimpleMod
             {
                 isGood = false,
                 affectedByTimestop = false,
-                color = new Color("FFFFFF"),
+                color = new Color("FF00FF"),
                 icon = RegisterSprite(package, "assets/Feature/coin.png").Sprite
             },
             Name = AnyLocalizations.Bind(["status", "tax", "name"]).Localize,
@@ -328,7 +347,7 @@ internal class ModEntry : SimpleMod
             {
                 isGood = false,
                 affectedByTimestop = false,
-                color = new Color("FFFFFF"),
+                color = new Color("FF00FF"),
                 icon = RegisterSprite(package, "assets/Feature/taxes.png").Sprite
             },
             Name = AnyLocalizations.Bind(["status", "persistence", "name"]).Localize,
@@ -340,7 +359,7 @@ internal class ModEntry : SimpleMod
             {
                 isGood = false,
                 affectedByTimestop = false,
-                color = new Color("FFFFFF"),
+                color = new Color("FF00FF"),
                 icon = RegisterSprite(package, "assets/Feature/StallNext.png").Sprite
             },
             Name = AnyLocalizations.Bind(["status", "StallNext", "name"]).Localize,
@@ -352,7 +371,7 @@ internal class ModEntry : SimpleMod
             {
                 isGood = false,
                 affectedByTimestop = false,
-                color = new Color("FFFFFF"),
+                color = new Color("FF00FF"),
                 icon = RegisterSprite(package, "assets/Feature/LockNext.png").Sprite
             },
             Name = AnyLocalizations.Bind(["status", "LockNext", "name"]).Localize,

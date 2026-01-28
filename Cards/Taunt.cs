@@ -56,7 +56,8 @@ namespace TeraTaxMod.Cards
                         {
                             status = Status.energyLessNextTurn,
                             statusAmount = 1,
-                            targetPlayer = true
+                            targetPlayer = true,
+                            dialogueSelector = ".Taunt"
                         }
                     };
                     }
@@ -80,7 +81,8 @@ namespace TeraTaxMod.Cards
                         {
                             status = Status.energyLessNextTurn,
                             statusAmount = 1,
-                            targetPlayer = true
+                            targetPlayer = true,
+                            dialogueSelector = ".Taunt"
                         }
                     };
                     }
@@ -104,7 +106,8 @@ namespace TeraTaxMod.Cards
                         {
                             status = Status.energyLessNextTurn,
                             statusAmount = 1,
-                            targetPlayer = true
+                            targetPlayer = true,
+                            dialogueSelector = ".Taunt"
                         }
 
                     };
@@ -123,7 +126,8 @@ namespace TeraTaxMod.Cards
                         {
                             status = Status.energyLessNextTurn,
                             statusAmount = 1,
-                            targetPlayer = true
+                            targetPlayer = true,
+                            dialogueSelector = ".Taunt"
                         }
                     };
                     }

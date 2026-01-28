@@ -29,13 +29,14 @@ public class TeraPersistenceManager : IKokoroApi.IV2.IStatusLogicApi.IHook
         
         int persistenceAmount = args.Amount;
         bool isPlayerShip = args.Ship.isPlayerShip;
-        
-  
+
+
         args.Combat.QueueImmediate(new AStatus()
             {
                 status = ModEntry.Instance.TeraTaxationStatus.Status,
                 statusAmount = persistenceAmount,
                 targetPlayer = isPlayerShip
+
 
             });
         

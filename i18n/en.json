@@ -22,7 +22,7 @@
       },
       "Bailout": {
         "name": "Bailout",
-        "desc": "The next time you would gain any amount of a <c=status>negative status</c>, instead remove <c=keyword>1</c> <c=status>BAILOUT</c>."
+        "desc": "The next time you would gain any amount of a <c=downside>negative status</c>, instead remove <c=keyword>1</c> <c=status>BAILOUT</c>."
       }
     },
   "action": {
