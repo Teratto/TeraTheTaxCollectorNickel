@@ -161,7 +161,7 @@ namespace TeraTaxMod.Dialogue
                     new()
                     {
                         type = NodeType.combat,
-                        allPresent = [AmTera],
+                        allPresent = [AmTera, AmDrake],
                         lookup = ["Taunt"],
                         oncePerCombatTags = ["Taunt"],
                         oncePerCombat = true,
@@ -561,6 +561,194 @@ namespace TeraTaxMod.Dialogue
                         oncePerCombat = true,
                         dialogue = [
                         new(AmTera, "happy", "You breathe too much!")
+                        ]
+                    }
+                },
+                {
+                    "Taunt_39",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera, AmRiggs],
+                        lookup = ["Taunt"],
+                        oncePerCombatTags = ["Taunt"],
+                        oncePerCombat = true,
+                        dialogue = [
+                        new(AmTera, "neutral", "You're as terrible as those ball things in boba."),
+                        new(AmRiggs, "neutral", "I like my choking hazard!")
+                        ]
+                    }
+                },{
+                    "Taunt_40",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera, AmDizzy],
+                        lookup = ["Taunt"],
+                        oncePerCombatTags = ["Taunt"],
+                        oncePerCombat = true,
+                        dialogue = [
+                        new(AmTera, "happy", "Lookit you, shielding yourself away from all your problems!"),
+                        new(AmDizzy, "explains", "It's very effective.")
+                        ]
+                    }
+                },
+                {
+                    "Taunt_41",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera],
+                        lookup = ["Taunt"],
+                        oncePerCombatTags = ["Taunt"],
+                        oncePerCombat = true,
+                        dialogue = [
+                        new(AmTera, "happy", "You dim-witted, dim dim-wit!")
+                        ]
+                    }
+                },
+                {
+                    "Taunt_42",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera],
+                        lookup = ["Taunt"],
+                        oncePerCombatTags = ["Taunt"],
+                        oncePerCombat = true,
+                        dialogue = [
+                        new(AmTera, "happy", "We're gonna make your ship go kaboom!"),
+                        new(AmRiggs, "gun", "Yeah! Kablooie!")
+                        ]
+                    }
+                },
+                {
+                    "Taunt_43",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera, AmDrake],
+                        lookup = ["Taunt"],
+                        oncePerCombatTags = ["Taunt"],
+                        oncePerCombat = true,
+                        dialogue = [
+                        new(AmTera, "lookawaynervous", "I... I don't know what to say."),
+                        new(AmDrake, "sly", "I do. They're an idiot. Like you.")
+                        ]
+                    }
+                },
+                {
+                    "Taunt_44",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera],
+                        lookup = ["Taunt"],
+                        oncePerCombatTags = ["Taunt"],
+                        oncePerCombat = true,
+                        dialogue = [
+                        new(AmTera, "squint", "I bet you use motion controls. Gross.")
+                        ]
+                    }
+                },
+                {
+                    "Taunt_45",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera],
+                        lookup = ["Taunt"],
+                        oncePerCombatTags = ["Taunt"],
+                        oncePerCombat = true,
+                        dialogue = [
+                        new(AmTera, "lookaway", "Eugh, do you need some makeup or something?")
+                        ]
+                    }
+                },
+                {
+                    "Taunt_46",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera],
+                        lookup = ["Taunt"],
+                        oncePerCombatTags = ["Taunt"],
+                        oncePerCombat = true,
+                        dialogue = [
+                        new(AmTera, "happy", "Pack up and leave, you've already lost!")
+                        ]
+                    }
+                },
+                {
+                    "Taunt_47",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera, AmMax],
+                        lookup = ["Taunt"],
+                        oncePerCombatTags = ["Taunt"],
+                        oncePerCombat = true,
+                        dialogue = [
+                        new(AmTera, "happy", "I bet you're a coding nerd!"),
+                        new(AmMax, "squint", "Was that directed at me?")
+                        ]
+                    }
+                },
+                {
+                    "Taunt_48",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera],
+                        lookup = ["Taunt"],
+                        oncePerCombatTags = ["Taunt"],
+                        oncePerCombat = true,
+                        dialogue = [
+                        new(AmTera, "neutral", "Your head looks like an egg.")
+                        ]
+                    }
+                },
+                {
+                    "Taunt_49",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera],
+                        lookup = ["Taunt"],
+                        oncePerCombatTags = ["Taunt"],
+                        oncePerCombat = true,
+                        dialogue = [
+                        new(AmTera, "squint", "Uh, your mom???")
+                        ]
+                    }
+                },
+                {
+                    "Taunt_50",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera, AmCat],
+                        lookup = ["Taunt"],
+                        oncePerCombatTags = ["Taunt"],
+                        oncePerCombat = true,
+                        dialogue = [
+                        new(AmTera, "happy", "You're not as tasty as a chocolate cookie!"),
+                        new(AmCat, "neutral", "I don't think birds can eat chocolate.")
+                        ]
+                    }
+                },
+                {
+                    "Taunt_51",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera, AmDrake],
+                        lookup = ["Taunt"],
+                        oncePerCombatTags = ["Taunt"],
+                        oncePerCombat = true,
+                        dialogue = [
+                        new(AmTera, "happy", "That guy's an egghead!"),
+                        new(AmDrake, "neutral", "So are you, birdbrain.")
                         ]
                     }
                 },
