@@ -16,7 +16,7 @@ namespace TeraTaxMod.Features;
 
 public class TeraStallNextTurnManager : IKokoroApi.IV2.IStatusLogicApi.IHook
 {
-
+    
 
 
 
@@ -51,6 +51,8 @@ public class TeraStallNextTurnManager : IKokoroApi.IV2.IStatusLogicApi.IHook
 
         return false;
     }
+    public bool? IsAffectedByBoost(IIsAffectedByBoostArgs args)
+            => args.Status == ModEntry.Instance.TeraStallNextStatus.Status ? true : null;
 }
 
 

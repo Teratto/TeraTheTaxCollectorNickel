@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Resources;
 using Nanoray.PluginManager;
 using Nickel;
 using TeraTaxMod.Cards;
@@ -34,8 +35,16 @@ public class Inflation : Artifact, IRegisterable
     }
 
     /*
-     * Unlike Cards, Artifacts have no required methods. Implement the ones you need, and leave the rest unimplemented.
-     * By default, Artifacts have everything implemented with methods that do nothing, so there is no need to call the super.
+     * HIIII HOW ARE YOUUUU 
+     * I'M TERATTO I CODED MOST OF THIS WITH HELP FROM VINTAGE AND SNIPER AND CERES BECAUSE FUCKINNNNNNNNNNNNNNNNNNN MAN
+     * IT'S LIKE "HOW DO I SAY THIS THING" AND THEN IT'S JUST SKIMMING THE GAME'S CODE FOR HOW IT WANTS ***YOU*** TO SAY IT
+     * tl;dr most of my struggling was figuring out how to understand cc's internal code since there's like no resource for that
+     * ok cool bye
+     * also hi again
+     * why are u reading this
+     * this code just registers this artifact, but it actually doesn't do anything isn't that funny
+     * check out taxation manager if u wanna see where the code for this artifact is, it's like two lines
+     * *Inflates you big and round*
      */
-    
+
 }

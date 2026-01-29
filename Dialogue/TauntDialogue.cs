@@ -752,6 +752,21 @@ namespace TeraTaxMod.Dialogue
                         ]
                     }
                 },
+                {
+                    "Taunt_52",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera, AmDrake],
+                        lookup = ["Taunt"],
+                        oncePerCombatTags = ["Taunt"],
+                        oncePerCombat = true,
+                        dialogue = [
+                        new(AmTera, "happy", "That guy's an egghead!"),
+                        new(AmDrake, "neutral", "So are you, birdbrain.")
+                        ]
+                    }
+                },
             });
         }
     }

@@ -41,7 +41,7 @@ public class YearlyPayments : Artifact, IRegisterable
         combat.Queue(new AStatus()
         {
             status = ModEntry.Instance.TeraTaxationStatus.Status,
-            statusAmount = 3,
+            statusAmount = 2,
             targetPlayer = false,
             artifactPulse = Key() 
         });

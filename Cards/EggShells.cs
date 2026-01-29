@@ -61,7 +61,8 @@ namespace TeraTaxMod.Cards
                         {
                             damage = GetDmg(s,3),
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 1
+                            statusAmount = 1,
+                            stunEnemy = true
                         }
                     };
                     }

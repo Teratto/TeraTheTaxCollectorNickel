@@ -347,7 +347,7 @@ internal class ModEntry : SimpleMod
             {
                 isGood = false,
                 affectedByTimestop = false,
-                color = new Color("FF00FF"),
+                color = new Color("FFFFFF"),
                 icon = RegisterSprite(package, "assets/Feature/taxes.png").Sprite
             },
             Name = AnyLocalizations.Bind(["status", "persistence", "name"]).Localize,
@@ -359,7 +359,7 @@ internal class ModEntry : SimpleMod
             {
                 isGood = false,
                 affectedByTimestop = false,
-                color = new Color("FF00FF"),
+                color = new Color("D5B60A"),
                 icon = RegisterSprite(package, "assets/Feature/StallNext.png").Sprite
             },
             Name = AnyLocalizations.Bind(["status", "StallNext", "name"]).Localize,
@@ -371,7 +371,7 @@ internal class ModEntry : SimpleMod
             {
                 isGood = false,
                 affectedByTimestop = false,
-                color = new Color("FF00FF"),
+                color = new Color("29AB87"),
                 icon = RegisterSprite(package, "assets/Feature/LockNext.png").Sprite
             },
             Name = AnyLocalizations.Bind(["status", "LockNext", "name"]).Localize,
@@ -383,7 +383,7 @@ internal class ModEntry : SimpleMod
             {
                 isGood = true,
                 affectedByTimestop = false,
-                color = new Color("FFFFFF"),
+                color = new Color("0B6623"),
                 icon = RegisterSprite(package, "assets/Feature/Bailout.png").Sprite
             },
             Name = AnyLocalizations.Bind(["status", "Bailout", "name"]).Localize,

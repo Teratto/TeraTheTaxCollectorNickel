@@ -23,7 +23,7 @@ public class FlightTraining : Artifact, IRegisterable
                 pools = [ArtifactPool.Common],
                 owner = ModEntry.Instance.TeraTaxDeck.Deck
             },
-            Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "FLightTraining", "name"]).Localize,
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "FlightTraining", "name"]).Localize,
             Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "FlightTraining", "desc"]).Localize,
             /*
              * For Artifacts with just one sprite, registering them at the place of usage helps simplify things.

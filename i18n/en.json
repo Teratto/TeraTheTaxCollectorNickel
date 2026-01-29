@@ -99,10 +99,10 @@
       "descB": "Shoot for <c=attack>{{damage1}}</c> dmg. <c=downside>Spend 2 enemy tax</c> to shoot for <c=attack>{{damage1}}</c> dmg <c=keyword>three</c> more times."
     },
     "AllIn": {
-      "name": "All In",
-      "desc": "Double <c=downside>ALL</c> tax.",
-      "descA": "Double <c=downside>ALL</c> tax.",
-      "descB": "Double the enemy's tax.'"
+      "name": "All-In",
+      "desc": "\nDouble <c=downside>ALL</c> tax.",
+      "descA": "\nDouble <c=downside>ALL</c> tax.",
+      "descB": "\nDouble <c=downside>ALL</c> tax."
     },
     "Tenacity": {
       "name": "Tenacity"
@@ -122,30 +122,30 @@
 
 
   },
-    "artifact": {
-        "EarlyBird": {
-            "name": "EARLY BIRD",
-            "desc": "At the start of combat, add 1 <c=card>Gets The Worm</c> to your hand."
-        },
-      "YearlyPayments": {
-        "name": "YEARLY PAYMENTS",
-        "desc": "At the start of combat, add 3 <c=status>TAX</c> to the enemy."
-      },
-      "GovernmentGrant": {
-        "name": "GOVERNMENT GRANT",
-        "desc": "At the start of combat, gain 2 <c=status>BAILOUT</c>."
-      },
-      "FlightTraining": {
-        "name": "FLIGHT TRAINING",
-        "desc": "Every 3 turns, gain 1 <c=status>EVADE</c>."
-      },
-      "Capitalism": {
-        "name": "CAPITALISM",
-        "desc": "At the start of combat, gain <c=energy>1 energy</c>. <c=downside>Gain one tax a turn (caps at 6)</c>."
-      },
-      "Inflation": {
-        "name": "INFLATION",
-        "desc": "<c=status>TAX</c> now does damage on increments of <c=attack>2</c> instead of <c=attack>3</c>."
-      },
+  "artifact": {
+    "EarlyBird": {
+      "name": "EARLY BIRD",
+      "desc": "At the start of combat, add 1 <c=card>Gets The Worm</c> to your hand."
+    },
+    "FlightTraining": {
+      "name": "FLIGHT TRAINING",
+      "desc": "Every 3 turns, gain 1 <c=status>EVADE</c>."
+    },
+    "YearlyPayments": {
+      "name": "YEARLY PAYMENTS",
+      "desc": "At the start of combat, add 2 <c=status>TAX</c> to the enemy."
+    },
+    "GovernmentGrant": {
+      "name": "GOVERNMENT GRANT",
+      "desc": "At the start of combat, gain 2 <c=status>BAILOUT</c>."
+    },
+    "Capitalism": {
+      "name": "CAPITALISM",
+      "desc": "At the start of combat, gain <c=energy>1 energy</c>. <c=downside>Gain one tax a turn (caps at 3)</c>."
+    },
+    "Inflation": {
+      "name": "INFLATION",
+      "desc": "<c=status>TAX</c> now does damage on increments of <c=keyword>2</c> instead of <c=keyword>3</c>."
     }
+  }
 }

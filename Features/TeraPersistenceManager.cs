@@ -15,7 +15,7 @@ namespace TeraTaxMod.Features;
 
 public class TeraPersistenceManager : IKokoroApi.IV2.IStatusLogicApi.IHook
 {
-
+    
 
 
 
@@ -45,6 +45,8 @@ public class TeraPersistenceManager : IKokoroApi.IV2.IStatusLogicApi.IHook
 
         return false;
     }
+    public bool? IsAffectedByBoost(IIsAffectedByBoostArgs args)
+            => args.Status == ModEntry.Instance.TeraPersistenceStatus.Status ? true : null;
 }
 
 

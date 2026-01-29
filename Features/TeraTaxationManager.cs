@@ -42,7 +42,9 @@ public class TeraTaxationManager : IKokoroApi.IV2.IStatusLogicApi.IHook
            
         return;
     }
-   
+    public bool? IsAffectedByBoost(IIsAffectedByBoostArgs args)
+            => args.Status == ModEntry.Instance.TeraTaxationStatus.Status ? true : null;
+
 
 }
 

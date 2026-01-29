@@ -84,12 +84,19 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
+
+                        new AStatus()
+                        {
+                            status = ModEntry.Instance.TeraTaxationStatus.Status,
+                            statusAmount = ourTax,
+                            targetPlayer = true
+                        },
                         new AStatus()
                         {
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
                             statusAmount = theirTax,
                             targetPlayer = false
-                        }
+                        },
                     };
                     }
                 default:
@@ -143,7 +150,8 @@ namespace TeraTaxMod.Cards
                         {
                             description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "AllIn", "descB"])),
                             cost = 3,
-                            exhaust = true
+                            exhaust = true,
+                            retain = true
                         };
                     }
                 default:
