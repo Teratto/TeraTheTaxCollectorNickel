@@ -415,6 +415,8 @@ internal class ModEntry : SimpleMod
         TeraBailoutManager bailoutManager = new();
         KokoroApi.StatusLogic.RegisterHook(bailoutManager);
 
+        _ = new TeraBailoutManager();
+
 
         /*
          * Some classes require so little management that a manager may not be worth writing.
@@ -450,5 +452,6 @@ internal class ModEntry : SimpleMod
                 .ToImmutableList()
         });
     }
+    
 }
 

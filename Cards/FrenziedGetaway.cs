@@ -64,21 +64,16 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AMove()
-                        {
-                            dir = 1,
-                            targetPlayer = true
-                        },
                         new AStatus()
                         {
                             status = Status.evade,
-                            statusAmount = 2,
+                            statusAmount = 3,
                             targetPlayer = true
                         },
                         new AStatus()
                         {
                             status = ModEntry.Instance.TeraStallNextStatus.Status,
-                            statusAmount = 1,
+                            statusAmount = 2,
                             targetPlayer = true
                         }
                     };
@@ -93,18 +88,18 @@ namespace TeraTaxMod.Cards
                             statusAmount = 4,
                             targetPlayer = true
                         },
-                         new AStatus()
-                        {
-                            status = Status.engineStall,
-                            statusAmount = 1,
-                            targetPlayer = true
-                        },
                         new AStatus()
                         {
                             status = ModEntry.Instance.TeraLockNextStatus.Status,
                             statusAmount = 1,
                             targetPlayer = true
-                        }
+                        },
+                         new AStatus()
+                        {
+                            status = Status.engineStall,
+                            statusAmount = 1,
+                            targetPlayer = true
+                        },   
                     };
                     }
                 default:

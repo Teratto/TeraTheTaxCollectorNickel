@@ -12,35 +12,74 @@ using Microsoft.Extensions.Logging;
 using TeraTaxMod.Artifacts;
 using System.Net.NetworkInformation;
 using static TeraTaxMod.External.IKokoroApi.IV2.IStatusLogicApi;
+using System.Reflection;
+using static TeraTaxMod.External.IKokoroApi.IV2.IStatusRenderingApi;
+
 
 namespace TeraTaxMod.Features;
 
 
 public class TeraBailoutManager : IKokoroApi.IV2.IStatusLogicApi.IHook
 {
-    public int ModifyStatusChange(IModifyStatusChangeArgs args)
+    public TeraBailoutManager()
     {
-        if (args.Status == ModEntry.Instance.TeraBailoutStatus.Status)
-            return args.NewAmount;
-        
-        bool isItGood = DB.statuses[args.Status].isGood;
-
-        bool isPlayerShip = args.Ship.isPlayerShip;
-
-        if ((args.Ship.Get(ModEntry.Instance.TeraBailoutStatus.Status) > 0) && (isItGood == false && args.NewAmount > args.OldAmount || isItGood == true && args.NewAmount < args.OldAmount))
-        {
-   
-            args.Combat.QueueImmediate(new AStatus()
-            {
-                status = ModEntry.Instance.TeraBailoutStatus.Status,
-                statusAmount = -1,
-                targetPlayer = isPlayerShip
-            });
-            return args.OldAmount;
-        }
-
-        return args.NewAmount;
+        ModEntry.Instance.Harmony.Patch(
+            original: AccessTools.DeclaredMethod(typeof(AStatus), nameof(AStatus.Begin)),
+            prefix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(AStatusBailout_Begin_Prefix))
+            );
     }
+
+    public static void AStatusBailout_Begin_Prefix(AStatus __instance, State s, Combat c)
+    {
+        Ship currentShip = __instance.targetPlayer ? s.ship : c.otherShip;
+        if (currentShip == null || currentShip.hull <= 0)
+        { 
+            return;
+        }
+        if (__instance.status == ModEntry.Instance.TeraBailoutStatus.Status || __instance.status == Status.tempShield || __instance.status == Status.shield)
+        {
+            return;
+        }
+        if (__instance.mode != AStatusMode.Add)
+        {
+            return;
+        }
+        bool isItGood = DB.statuses[__instance.status].isGood;
+       
+        int currentStatusValue = currentShip.Get(__instance.status);
+        int currentBailout = currentShip.Get(ModEntry.Instance.TeraBailoutStatus.Status);
+
+        if (__instance.status == Status.heat && currentShip.Get(Status.serenity) > 0)
+        {
+            return;
+        };
+
+        if (__instance.statusAmount > 0 && currentBailout > 0 && isItGood == false)
+        {
+            __instance.statusAmount = 0;
+            c.QueueImmediate(new AStatus()
+            {
+                targetPlayer = __instance.targetPlayer,
+                statusAmount = -1,
+                status = ModEntry.Instance.TeraBailoutStatus.Status,
+                statusPulse = ModEntry.Instance.TeraBailoutStatus.Status,
+            });
+        }
+        if (__instance.statusAmount < 0 && currentBailout > 0 && __instance.status == Status.maxShield)
+        {
+            __instance.statusAmount = 0;
+            c.QueueImmediate(new AStatus()
+            {
+                targetPlayer = __instance.targetPlayer,
+                statusAmount = -1,
+                status = ModEntry.Instance.TeraBailoutStatus.Status,
+                statusPulse = ModEntry.Instance.TeraBailoutStatus.Status,
+            });
+        }
+        return;
+    }
+    
+   
     public bool? IsAffectedByBoost(IIsAffectedByBoostArgs args)
             => args.Status == ModEntry.Instance.TeraBailoutStatus.Status ? true : null;
 
