@@ -46,11 +46,11 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AStatus()
+                        new AAttack()
                         {
+                            damage = GetDmg(s,0),
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 2,
-                            targetPlayer = false
+                            statusAmount = 2
                         },
                         new AStatus()
                         {
@@ -64,11 +64,11 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AStatus()
+                        new AAttack()
                         {
+                            damage = GetDmg(s,0),
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 2,
-                            targetPlayer = false
+                            statusAmount = 2
                         },
                         new AStatus()
                         {
@@ -82,11 +82,11 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AStatus()
+                        new AAttack()
                         {
+                            damage = GetDmg(s,0),
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 2,
-                            targetPlayer = false
+                            statusAmount = 2
                         },
                         new AStatus()
                         {
@@ -101,11 +101,11 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AStatus()
+                        new AAttack()
                         {
+                            damage = GetDmg(s,0),
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 2,
-                            targetPlayer = false
+                            statusAmount = 2
                         },
                         new AStatus()
                         {

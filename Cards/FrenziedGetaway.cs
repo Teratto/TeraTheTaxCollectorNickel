@@ -64,10 +64,15 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
+                        new AMove()
+                        {
+                            dir = 1,
+                            targetPlayer = true
+                        },
                         new AStatus()
                         {
                             status = Status.evade,
-                            statusAmount = 3,
+                            statusAmount = 2,
                             targetPlayer = true
                         },
                         new AStatus()
@@ -86,6 +91,12 @@ namespace TeraTaxMod.Cards
                         {
                             status = Status.evade,
                             statusAmount = 4,
+                            targetPlayer = true
+                        },
+                         new AStatus()
+                        {
+                            status = Status.engineStall,
+                            statusAmount = 1,
                             targetPlayer = true
                         },
                         new AStatus()
@@ -125,6 +136,7 @@ namespace TeraTaxMod.Cards
             {
                 cost = 1,
                 exhaust = false,
+                flippable = upgrade == Upgrade.A ? true : false,
             };
         }
 

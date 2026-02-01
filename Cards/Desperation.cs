@@ -50,13 +50,14 @@ namespace TeraTaxMod.Cards
                         {
                             status = Status.powerdrive,
                             statusAmount = 1,
-                            targetPlayer = true
+                            targetPlayer = true,
                         },
                         new AStatus()
                         {
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
                             statusAmount = 3,
-                            targetPlayer = true
+                            targetPlayer = true,
+                            dialogueSelector = ".Desperation"
                         }
                     };
                     }
@@ -74,7 +75,8 @@ namespace TeraTaxMod.Cards
                         {
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
                             statusAmount = 3,
-                            targetPlayer = true
+                            targetPlayer = true,
+                            dialogueSelector = ".Desperation"
                         }
                     };
                     }
@@ -92,7 +94,8 @@ namespace TeraTaxMod.Cards
                         {
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
                             statusAmount = 6,
-                            targetPlayer = true
+                            targetPlayer = true,
+                            dialogueSelector = ".Desperation"
                         }
 
                     };
@@ -111,7 +114,8 @@ namespace TeraTaxMod.Cards
                         {
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
                             statusAmount = 3,
-                            targetPlayer = true
+                            targetPlayer = true,
+                            dialogueSelector = ".Desperation"
                         }
                     };
                     }

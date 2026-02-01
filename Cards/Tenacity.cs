@@ -72,7 +72,8 @@ namespace TeraTaxMod.Cards
                         },
                         new ADrawCard()
                         {
-                            count = 3
+                            count = 3,
+                            dialogueSelector = ".Tenacity"
                         },
                     };
                     }
@@ -101,7 +102,8 @@ namespace TeraTaxMod.Cards
                         },
                         new ADrawCard()
                         {
-                            count = 3
+                            count = 3,
+                            dialogueSelector = ".Tenacity"
                         },
                     };
                     }
@@ -130,7 +132,8 @@ namespace TeraTaxMod.Cards
                         },
                         new ADrawCard()
                         {
-                            count = 3
+                            count = 3,
+                            dialogueSelector = ".Tenacity"
                         },
                     };
                     }
@@ -145,12 +148,23 @@ namespace TeraTaxMod.Cards
                             statusAmount = 1,
                             targetPlayer = true
                         },
+                        new AVariableHint()
+                        {
+                            status = ModEntry.Instance.TeraTaxationStatus.Status
+                        },
                         new AHurt()
                         {
                             hurtShieldsFirst = true,
-                            hurtAmount = playerTax,
+                            hurtAmount = GetX(s) + 1,
+                            xHint = 1,
                             targetPlayer = true
-                        }
+
+                        },
+                        new ADrawCard()
+                        {
+                            count = 3,
+                            dialogueSelector = ".Tenacity"
+                        },
                     };
                     }
             }

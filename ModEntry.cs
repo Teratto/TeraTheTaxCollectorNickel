@@ -97,6 +97,7 @@ internal class ModEntry : SimpleMod
 
     private static List<Type> TeraTaxDialogueTypes = [
         typeof(TauntDialogue),
+        typeof(CardDialogue),
    ];
 
     private static IEnumerable<Type> TeraTaxArtifactTypes =
@@ -318,6 +319,14 @@ internal class ModEntry : SimpleMod
             Frames = Enumerable.Range(0, 4)
                .Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Animation/BlushIdle/{i}.png")).Sprite)
                .ToList()
+        });
+        helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+        {
+            CharacterType = TeraTaxDeck.UniqueName,
+            LoopTag = "egg",
+            Frames = Enumerable.Range(0, 0)
+              .Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Animation/teraegg.png")).Sprite)
+              .ToList()
         });
 
 

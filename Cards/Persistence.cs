@@ -98,11 +98,41 @@ namespace TeraTaxMod.Cards
         
         public override CardData GetData(State state)
         {
-            return new CardData
+            switch (this.upgrade)
             {
-                cost = upgrade == Upgrade.B ? 4 : 3,
-                exhaust = true,
-            };
+                case Upgrade.None:
+                    {
+                        return new CardData
+                        {
+                            cost = 3,
+                            exhaust = true
+                        };
+                    }
+                case Upgrade.A:
+                    {
+                        return new CardData
+                        {
+                            cost = 2,
+                            exhaust = true
+                        };
+                    }
+                case Upgrade.B:
+                    {
+                        return new CardData
+                        { 
+                            cost = 4,
+                            exhaust = true,
+                        };
+                    }
+                default:
+                    {
+                        return new CardData
+                        {
+                            cost = 3,
+                            exhaust = true
+                        };
+                    }
+            }
         }
 
     }

@@ -27,7 +27,7 @@ public class TeraBailoutManager : IKokoroApi.IV2.IStatusLogicApi.IHook
 
         bool isPlayerShip = args.Ship.isPlayerShip;
 
-        if ((args.Ship.Get(ModEntry.Instance.TeraBailoutStatus.Status) > 0) && (isItGood == false && args.NewAmount > 0 || isItGood == true && args.NewAmount < 0))
+        if ((args.Ship.Get(ModEntry.Instance.TeraBailoutStatus.Status) > 0) && (isItGood == false && args.NewAmount > args.OldAmount || isItGood == true && args.NewAmount < args.OldAmount))
         {
    
             args.Combat.QueueImmediate(new AStatus()

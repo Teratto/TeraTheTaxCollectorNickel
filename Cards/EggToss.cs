@@ -50,6 +50,7 @@ namespace TeraTaxMod.Cards
                         {
                             damage = GetDmg(s,0),
                             stunEnemy = true,
+                            dialogueSelector = ".EggToss"
                         }
                     };
                     }
@@ -61,6 +62,7 @@ namespace TeraTaxMod.Cards
                         {
                             damage = GetDmg(s,0),
                             stunEnemy = true,
+                            dialogueSelector = ".EggToss"
                         }
                     };
                     }
@@ -78,6 +80,7 @@ namespace TeraTaxMod.Cards
                             card = new EggShells(),
                             destination = CardDestination.Discard,
                             amount = 1,
+                            dialogueSelector = ".EggToss"
                         }
                        
                     };
@@ -90,6 +93,7 @@ namespace TeraTaxMod.Cards
                         {
                             damage = GetDmg(s,0),
                             stunEnemy = true,
+                            dialogueSelector = ".EggToss"
                         }
                     };
                     }

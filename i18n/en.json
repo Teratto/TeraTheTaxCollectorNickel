@@ -1,7 +1,7 @@
 ﻿{
     "character": {
         "name": "Tera",
-        "desc": "A debt collector. Uses <c=status>TAX</c> to damage enemies and <c=status>BAILOUT</c> to negate <c=keyword>negative statuses</c>."
+      "desc": [ "<c=266fd8>TERA</c>", "A debt collector. His cards use <c=status>TAX</c> to damage enemies and <c=status>BAILOUT</c> to negate <c=keyword>negative statuses</c>." ]
     },
     "status":{
       "tax": {
