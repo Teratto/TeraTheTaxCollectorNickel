@@ -416,6 +416,7 @@ internal class ModEntry : SimpleMod
         KokoroApi.StatusLogic.RegisterHook(bailoutManager);
 
         _ = new TeraBailoutManager();
+        _ = new FlightTraining();
 
 
         /*

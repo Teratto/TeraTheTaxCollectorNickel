@@ -45,7 +45,8 @@ public class TeraBailoutManager : IKokoroApi.IV2.IStatusLogicApi.IHook
             return;
         }
         bool isItGood = DB.statuses[__instance.status].isGood;
-       
+        bool governmentGrantsGet = s.EnumerateAllArtifacts().Find(a => a.GetType() == typeof(GovernmentGrant)) != null;
+
         int currentStatusValue = currentShip.Get(__instance.status);
         int currentBailout = currentShip.Get(ModEntry.Instance.TeraBailoutStatus.Status);
 
@@ -64,17 +65,17 @@ public class TeraBailoutManager : IKokoroApi.IV2.IStatusLogicApi.IHook
                 status = ModEntry.Instance.TeraBailoutStatus.Status,
                 statusPulse = ModEntry.Instance.TeraBailoutStatus.Status,
             });
-        }
-        if (__instance.statusAmount < 0 && currentBailout > 0 && __instance.status == Status.maxShield)
-        {
-            __instance.statusAmount = 0;
-            c.QueueImmediate(new AStatus()
+
+            if (governmentGrantsGet == true)
             {
-                targetPlayer = __instance.targetPlayer,
-                statusAmount = -1,
-                status = ModEntry.Instance.TeraBailoutStatus.Status,
-                statusPulse = ModEntry.Instance.TeraBailoutStatus.Status,
-            });
+                c.QueueImmediate(new AStatus()
+                {
+                    status = ModEntry.Instance.TeraTaxationStatus.Status,
+                    statusAmount = 1,
+                    targetPlayer = false,
+                });
+
+            }
         }
         return;
     }

@@ -31,7 +31,15 @@ namespace TeraTaxMod.Cards
                 Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/CardTaxExemption.png")).Sprite,
             });
         }
-
+        public interface IVariableHintTargetPlayerApi
+        {
+            
+        }
+        private int GetX(Combat c)
+        {
+            var x = c.otherShip.Get(ModEntry.Instance.TeraTaxationStatus.Status);
+            return x;
+        }
 
         /*
          * Each card has a list of actions, which decides both what is rendered on the card, and what actually happens on play.
@@ -47,10 +55,14 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
+                        new AVariableHint()
+                        {
+                            status = ModEntry.Instance.TeraTaxationStatus.Status
+                        },
                         new AStatus()
                         {
                             status = Status.shield,
-                            statusAmount = enemyTax,
+                            statusAmount = GetX(c) + 1,
                             targetPlayer = true
                         },
                         new AStatus()
@@ -65,10 +77,14 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                         new AStatus()
+                        new AVariableHint()
+                        {
+                            status = ModEntry.Instance.TeraTaxationStatus.Status
+                        },
+                        new AStatus()
                         {
                             status = Status.shield,
-                            statusAmount = enemyTax,
+                            statusAmount = GetX(c) + 1,
                             targetPlayer = true
                         },
                     };
@@ -77,10 +93,14 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                         new AStatus()
+                        new AVariableHint()
+                        {
+                            status = ModEntry.Instance.TeraTaxationStatus.Status
+                        },
+                        new AStatus()
                         {
                             status = Status.tempShield,
-                            statusAmount = enemyTax,
+                            statusAmount = GetX(c) + 1,
                             targetPlayer = true
                         },
                         new AStatus()
@@ -96,10 +116,14 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
+                        new AVariableHint()
+                        {
+                            status = ModEntry.Instance.TeraTaxationStatus.Status
+                        },
                         new AStatus()
                         {
                             status = Status.shield,
-                            statusAmount = enemyTax,
+                            statusAmount = GetX(c) + 1,
                             targetPlayer = true
                         },
                         new AStatus()
@@ -123,7 +147,6 @@ namespace TeraTaxMod.Cards
                     {
                         return new CardData
                         {
-                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "TaxExemption", "desc"])),
                             cost = 1
                         };
                     }
@@ -131,16 +154,13 @@ namespace TeraTaxMod.Cards
                     {
                         return new CardData
                         {
-                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "TaxExemption", "descA"])),
                             cost = 1,
-
                         };
                     }
                 case Upgrade.B:
                     {
                         return new CardData
                         {
-                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "TaxExemption", "descB"])),
                             cost = 1,
 
                         };
@@ -149,7 +169,6 @@ namespace TeraTaxMod.Cards
                     {
                         return new CardData
                         {
-                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "TaxExemption", "desc"])),
                             cost = 1
                         };
                     }

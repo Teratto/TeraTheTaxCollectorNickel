@@ -129,7 +129,7 @@
     },
     "FlightTraining": {
       "name": "FLIGHT TRAINING",
-      "desc": "Every 3 turns, gain 1 <c=status>EVADE</c>."
+      "desc": "Every 2 times you gain a <c=downside>negative status</c>, gain 1 <c=status>EVADE</c>."
     },
     "YearlyPayments": {
       "name": "YEARLY PAYMENTS",
@@ -137,7 +137,7 @@
     },
     "GovernmentGrant": {
       "name": "GOVERNMENT GRANT",
-      "desc": "At the start of combat, gain 2 <c=status>BAILOUT</c>."
+      "desc": "At the start of combat, gain 1 <c=status>BAILOUT</c>. Apply 1 <c=status>TAX</c> to the enemy every time you lose <c=status>BAILOUT</c>."
     },
     "Capitalism": {
       "name": "CAPITALISM",

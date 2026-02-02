@@ -3,6 +3,7 @@ using System.Reflection;
 using Nanoray.PluginManager;
 using Nickel;
 using TeraTaxMod.Cards;
+using TeraTaxMod.Features;
 
 namespace TeraTaxMod.Artifacts;
 
@@ -41,7 +42,7 @@ public class GovernmentGrant : Artifact, IRegisterable
         combat.Queue(new AStatus()
         {
             status = ModEntry.Instance.TeraBailoutStatus.Status,
-            statusAmount = 2,
+            statusAmount = 1,
             targetPlayer = true,
             artifactPulse = Key() 
         });

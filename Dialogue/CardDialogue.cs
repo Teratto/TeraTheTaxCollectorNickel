@@ -421,7 +421,7 @@ namespace TeraTaxMod.Dialogue
                         oncePerRunTags = ["Desperation"],
                         oncePerRun = true,
                         dialogue = [
-                        new(AmPeri, "neutral", "Cannons powered up. It's time to unleash some firepower."),
+                        new(AmPeri, "neutral", "It's time to unleash some firepower."),
                         new(AmTera, "lookawaynervous", "I hope it's worth the price."),
                         
                         ]

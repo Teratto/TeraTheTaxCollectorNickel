@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
+using HarmonyLib;
+using JetBrains.Annotations;
 using Nanoray.PluginManager;
 using Nickel;
 using TeraTaxMod.Cards;
@@ -30,29 +33,44 @@ public class FlightTraining : Artifact, IRegisterable
              */
             Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Artifact/FlightTraining.png")).Sprite
         });
+        ModEntry.Instance.Harmony.Patch(
+            original: AccessTools.DeclaredMethod(typeof(AStatus), nameof(AStatus.Begin)),
+            postfix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(FlightTraining_Postfix))
+            );
+
+    }
+    public override int? GetDisplayNumber(State s)
+    {
+        return badAmount;
     }
 
-    /*
-     * Unlike Cards, Artifacts have no required methods. Implement the ones you need, and leave the rest unimplemented.
-     * By default, Artifacts have everything implemented with methods that do nothing, so there is no need to call the super.
-     */
-    private int currentTurn;
-    public override void OnTurnStart(State state, Combat combat)
+
+    public int badAmount = 0;
+    public static void FlightTraining_Postfix(AStatus __instance, State s, Combat c)
     {
-        currentTurn++;
-        if (currentTurn >= 3)
+        bool isItGood = DB.statuses[__instance.status].isGood;
+        Ship currentShip = __instance.targetPlayer ? s.ship : c.otherShip;
+
+        if (s.EnumerateAllArtifacts().FirstOrDefault(a => a is FlightTraining) is not { } artifact)
+            return;
+
+        var flightTrainingArti = (FlightTraining)artifact;
+
+        if (isItGood == false && __instance.statusAmount > 0 && currentShip == s.ship) 
         {
-            combat.QueueImmediate(new AStatus()
+            flightTrainingArti.badAmount += 1;
+        }
+        if (flightTrainingArti.badAmount >= 2)
+        {
+            c.QueueImmediate(new AStatus()
             {
                 statusAmount = 1,
                 status = Status.evade,
                 targetPlayer = true
             });
-            currentTurn = 0;
+            flightTrainingArti.badAmount = 0;
         }
+       
     }
-    public override int? GetDisplayNumber(State s)
-    {
-        return currentTurn;
-    }
+
 }

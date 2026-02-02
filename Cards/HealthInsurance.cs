@@ -122,7 +122,8 @@ namespace TeraTaxMod.Cards
             {
                 cost = 1,
                 exhaust = upgrade == Upgrade.B ? false : true,
-                singleUse  = upgrade == Upgrade.B ? true : false
+                singleUse  = upgrade == Upgrade.B ? true : false,
+                retain = upgrade == Upgrade.B ? true : false
             };
         }
 
