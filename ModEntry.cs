@@ -75,14 +75,18 @@ internal class ModEntry : SimpleMod
         typeof(EggShells),
         typeof(SpareCash),
         typeof(GetsTheWorm),
-        typeof(Payment),
         
+    ];
+    private static List<Type> TeraEXECardTypes =
+    [
+        typeof(TeraCatEXE)
     ];
     private static IEnumerable<Type> TeraTaxCardTypes =
         TeraTaxCommonCardTypes
             .Concat(TeraTaxUncommonCardTypes)
             .Concat(TeraTaxRareCardTypes)
-            .Concat(TeraTaxSpecialCardTypes);
+            .Concat(TeraTaxSpecialCardTypes)
+            .Concat(TeraEXECardTypes);
 
     private static List<Type> TeraTaxCommonArtifacts = [
        typeof(EarlyBird),
@@ -228,14 +232,20 @@ internal class ModEntry : SimpleMod
                    new Tariff(),
                    new TaxEvasion()
                 ],
-                /*
-                 * Some characters have starting artifacts, in addition to starting cards.
-                 * This is where they would be added, much like their starter cards.
-                 * This can be safely removed if you have no starting artifacts.
-                 */
-                artifacts = [
+
+            },
+            SoloStarters = new StarterDeck
+            {
+                cards = [
+                    new Taunt(),
+                    new TaxEvasion(), 
+                    new SpareCash(),
+                    new Tariff(),
+                    new DodgeColorless(),
+                    new CannonColorless()
                 ]
             },
+            ExeCardType = typeof(TeraCatEXE),
             Description = AnyLocalizations.Bind(["character", "desc"]).Localize
         });
 

@@ -428,6 +428,21 @@ namespace TeraTaxMod.Dialogue
                     }
                 },
                 {
+                    "Desperation_5",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera],
+                        lookup = ["Desperation"],
+                        oncePerRunTags = ["Desperation"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmTera, "closed", "Just breathe. Everything is gonna be okay.")
+
+                        ]
+                    }
+                },
+                {
                     "Tenacity_0",
                     new()
                     {
@@ -496,6 +511,178 @@ namespace TeraTaxMod.Dialogue
                         oncePerRun = true,
                         dialogue = [
                         new(AmTera, "taxes", "Hmm... I think there's something here. Gimme a sec.")
+                        ]
+                    }
+                },
+                {
+                    "Breakout_0",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera,],
+                        lookup = ["Breakout"],
+                        oncePerRunTags = ["Breakout"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmTera, "happytaxes", "Gotta hit 'em where it hurts.")
+                        ]
+                    }
+                },
+                {
+                    "Breakout_1",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera,],
+                        lookup = ["Breakout"],
+                        oncePerRunTags = ["Breakout"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmTera, "happy", "It's my lucky break!")
+                        ]
+                    }
+                },
+                {
+                    "Breakout_2",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera,],
+                        lookup = ["Breakout"],
+                        oncePerRunTags = ["Breakout"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmTera, "happy", "Yeah yeah! Let's get 'em!")
+                        ]
+                    }
+                },
+                {
+                    "Breakout_3",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera, AmIsaac],
+                        lookup = ["Breakout"],
+                        oncePerRunTags = ["Breakout"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmTera, "happy", "Time to get some payback!"),
+                        new(AmIsaac, "explains", "They're the ones paying us back, obviously.")
+                        ]
+                    }
+                },
+                {
+                    "Breakout_4",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera, AmCat],
+                        lookup = ["Breakout"],
+                        oncePerRunTags = ["Breakout"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmTera, "neutral", "This should help a ton."),
+                        new(AmCat, "squint", "I still don't know how your tax works.")
+                        ]
+                    }
+                },
+                {
+                    "Breakout_5",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera,],
+                        lookup = ["Breakout"],
+                        oncePerRunTags = ["Breakout"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmTera, "happytaxes", "Things are lookin' up for us.")
+                        ]
+                    }
+                },
+                {
+                    "Forgiveness_0",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera,],
+                        lookup = ["Forgiveness"],
+                        oncePerRunTags = ["Forgiveness"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmTera, "closed", "You've been pardoned.")
+                        ]
+                    }
+                },
+                {
+                    "Forgiveness_1",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera, AmDizzy],
+                        lookup = ["Forgiveness"],
+                        oncePerRunTags = ["Forgiveness"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmDizzy, "neutral", "Does this mean you forgive me for exploding the Cobalt?"),
+                        new(AmTera, "squint", "Not even close.")
+                        ]
+                    }
+                },
+                {
+                    "Forgiveness_2",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera, AmDrake],
+                        lookup = ["Forgiveness"],
+                        oncePerRunTags = ["Forgiveness"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmTera, "neutral", "We all make mistakes sometimes."),
+                        new(AmDrake, "squint", "Why are you staring at me?")
+                        ]
+                    }
+                },
+                {
+                    "Forgiveness_3",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera],
+                        lookup = ["Forgiveness"],
+                        oncePerRunTags = ["Forgiveness"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmTera, "blush", "Doing nice things makes me feel all giddy.")
+                        ]
+                    }
+                },
+                {
+                    "Forgiveness_4",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera],
+                        lookup = ["Forgiveness"],
+                        oncePerRunTags = ["Forgiveness"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmTera, "taxes", "Just this once, I'll let you slip up on your taxes.")
+                        ]
+                    }
+                },
+                {
+                    "Forgiveness_5",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera],
+                        lookup = ["Forgiveness"],
+                        oncePerRunTags = ["Forgiveness"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmTera, "neutral", "Let me ease up on their payments for a bit.")
                         ]
                     }
                 },

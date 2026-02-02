@@ -61,7 +61,8 @@ namespace TeraTaxMod.Cards
                                      },
                                 new AEnergy()
                                     {
-                                        changeAmount = 2
+                                        changeAmount = 2,
+                                        dialogueSelector = ".Forgiveness"
                                      },
                             };
                         }
@@ -81,8 +82,9 @@ namespace TeraTaxMod.Cards
                                      },
                                 new AEnergy()
                                     {
-                                        changeAmount = 2
-                                     },
+                                        changeAmount = 2,
+                                        dialogueSelector = ".Forgiveness"
+                                    },
                             };
                         }
                     }
@@ -105,7 +107,8 @@ namespace TeraTaxMod.Cards
                                     },
                                 new ADrawCard()
                                     {
-                                        count = 1
+                                        count = 1,
+                                        dialogueSelector = ".Forgiveness"
                                     },
                             };
                         }
@@ -126,7 +129,8 @@ namespace TeraTaxMod.Cards
                                      },
                                 new AEnergy()
                                     {
-                                        changeAmount = 2
+                                        changeAmount = 2,
+                                        dialogueSelector = ".Forgiveness"
                                      },
                             };
                         }

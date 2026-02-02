@@ -59,9 +59,6 @@
     "SalesTax": {
       "name": "Sales Tax"
     },
-    "Payment": {
-      "name": "Payment"
-    },
     "Taunt": {
       "name": "Taunt"
     },
@@ -115,9 +112,15 @@
     "Siphon": {
       "name": "Mutual Funds"
     },
- 
+
     "SpareCash": {
       "name": "Spare Cash"
+    },
+    "TeraCatEXE": {
+      "name": "Tera.EXE",
+      "desc": "Enemy +2 <c=status>tax</c>. Add 1 of 3 <c=cardtrait>discount, temp</c> <c=266fd8>Tera</c> cards to your hand.",
+      "descA": "Enemy +2 <c=status>tax</c>. Add 1 of 3 <c=cardtrait>discount, temp</c> <c=266fd8>Tera</c> cards to your hand.",
+      "descB": "Enemy +2 <c=status>tax</c>. Add 1 of 5 <c=cardtrait>discount, temp</c> <c=266fd8>Tera</c> cards to your hand."
     }
 
 
@@ -129,7 +132,7 @@
     },
     "FlightTraining": {
       "name": "FLIGHT TRAINING",
-      "desc": "Every 2 times you gain a <c=downside>negative status</c>, gain 1 <c=status>EVADE</c>."
+      "desc": "Gain 1 <c=status>EVADE</c> every 3 times the enemy gains <c=status>TAX</c>. \n<c=downside>Caps at 2 per turn.</c>"
     },
     "YearlyPayments": {
       "name": "YEARLY PAYMENTS",

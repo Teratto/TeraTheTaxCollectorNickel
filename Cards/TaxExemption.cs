@@ -31,10 +31,7 @@ namespace TeraTaxMod.Cards
                 Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/CardTaxExemption.png")).Sprite,
             });
         }
-        public interface IVariableHintTargetPlayerApi
-        {
-            
-        }
+    
         private int GetX(Combat c)
         {
             var x = c.otherShip.Get(ModEntry.Instance.TeraTaxationStatus.Status);
@@ -55,10 +52,11 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AVariableHint()
-                        {
-                            status = ModEntry.Instance.TeraTaxationStatus.Status
-                        },
+                        ModEntry.Instance.KokoroApi.VariableHintTargetPlayerTargetPlayer.MakeVariableHint(
+                            new AVariableHint
+                            {
+                                status = ModEntry.Instance.TeraTaxationStatus.Status,
+                            }).SetTargetPlayer(false).AsCardAction,
                         new AStatus()
                         {
                             status = Status.shield,
@@ -77,10 +75,11 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AVariableHint()
-                        {
-                            status = ModEntry.Instance.TeraTaxationStatus.Status
-                        },
+                        ModEntry.Instance.KokoroApi.VariableHintTargetPlayerTargetPlayer.MakeVariableHint(
+                            new AVariableHint
+                            {
+                                status = ModEntry.Instance.TeraTaxationStatus.Status,
+                            }).SetTargetPlayer(false).AsCardAction,
                         new AStatus()
                         {
                             status = Status.shield,
@@ -93,10 +92,11 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AVariableHint()
-                        {
-                            status = ModEntry.Instance.TeraTaxationStatus.Status
-                        },
+                        ModEntry.Instance.KokoroApi.VariableHintTargetPlayerTargetPlayer.MakeVariableHint(
+                            new AVariableHint
+                            {
+                                status = ModEntry.Instance.TeraTaxationStatus.Status,
+                            }).SetTargetPlayer(false).AsCardAction,
                         new AStatus()
                         {
                             status = Status.tempShield,
@@ -116,10 +116,11 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AVariableHint()
-                        {
-                            status = ModEntry.Instance.TeraTaxationStatus.Status
-                        },
+                        ModEntry.Instance.KokoroApi.VariableHintTargetPlayerTargetPlayer.MakeVariableHint(
+                            new AVariableHint
+                            {
+                                status = ModEntry.Instance.TeraTaxationStatus.Status,
+                            }).SetTargetPlayer(false).AsCardAction,
                         new AStatus()
                         {
                             status = Status.shield,

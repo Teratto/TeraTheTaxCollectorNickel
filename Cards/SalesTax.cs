@@ -84,9 +84,10 @@ namespace TeraTaxMod.Cards
                         },
                         new AAddCard()
                         {
-                            card = new SpareCash(),
+                            card = new SpareCash() {temporaryOverride = true },
                             destination = CardDestination.Discard,
                             amount = 1,
+                           
                         }
                     };
                     }

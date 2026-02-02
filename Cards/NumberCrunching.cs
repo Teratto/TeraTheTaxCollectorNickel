@@ -64,7 +64,7 @@ namespace TeraTaxMod.Cards
                     {
                         new ADrawCard()
                         {
-                            count = 5
+                            count = 6
                         },
                         new AStatus()
                         {
@@ -80,12 +80,12 @@ namespace TeraTaxMod.Cards
                     {
                         new ADrawCard()
                         {
-                            count = 7
+                            count = 10
                         },
                         new AStatus()
                         {
                             status = ModEntry.Instance.TeraCharacter.MissingStatus.Status,
-                            statusAmount = 2,
+                            statusAmount = 1,
                             targetPlayer = true
                         }
 
@@ -116,7 +116,8 @@ namespace TeraTaxMod.Cards
         {
             return new CardData
             {
-                cost = 1,
+                cost = upgrade == Upgrade.B ? 0 : 1,
+                exhaust = upgrade == Upgrade.B ? true : false,
             };
         }
 

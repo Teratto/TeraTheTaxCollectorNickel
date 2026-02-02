@@ -131,7 +131,6 @@ namespace TeraTaxMod.Cards
             {
                 cost = 1,
                 exhaust = false,
-                flippable = upgrade == Upgrade.A ? true : false,
             };
         }
 
