@@ -53,7 +53,7 @@ internal class ModEntry : SimpleMod
         typeof(NumberCrunching),
         typeof(FrenziedGetaway),
         typeof(SalesTax),
-        typeof(SpareCash)
+        typeof(SpareCash),
     ];
     private static List<Type> TeraTaxUncommonCardTypes = [
         typeof(MarketCrash),
@@ -61,8 +61,8 @@ internal class ModEntry : SimpleMod
         typeof(TaxHike),
         typeof(TaxExemption),
         typeof(AllIn),
+        typeof(Siphon),
         typeof(Overdraft),
-        typeof(Siphon)
     ];
     private static List<Type> TeraTaxRareCardTypes = [
         typeof(Persistence),
@@ -73,7 +73,6 @@ internal class ModEntry : SimpleMod
     ];
     private static List<Type> TeraTaxSpecialCardTypes = [
         typeof(EggShells),
-        typeof(SpareCash),
         typeof(GetsTheWorm),
         
     ];
