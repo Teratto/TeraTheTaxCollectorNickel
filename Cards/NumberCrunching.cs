@@ -85,7 +85,7 @@ namespace TeraTaxMod.Cards
                         new AStatus()
                         {
                             status = ModEntry.Instance.TeraCharacter.MissingStatus.Status,
-                            statusAmount = 1,
+                            statusAmount = 2,
                             targetPlayer = true
                         }
 
@@ -116,8 +116,7 @@ namespace TeraTaxMod.Cards
         {
             return new CardData
             {
-                cost = upgrade == Upgrade.B ? 0 : 1,
-                exhaust = upgrade == Upgrade.B ? true : false,
+                cost = 1,   
             };
         }
 

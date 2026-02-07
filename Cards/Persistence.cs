@@ -50,7 +50,8 @@ namespace TeraTaxMod.Cards
                         {
                             status = ModEntry.Instance.TeraPersistenceStatus.Status,
                             statusAmount = 1,
-                            targetPlayer = false
+                            targetPlayer = false,
+                            dialogueSelector = ".Persistence"
                         }
                     };
                     }
@@ -62,7 +63,8 @@ namespace TeraTaxMod.Cards
                         {
                             status = ModEntry.Instance.TeraPersistenceStatus.Status,
                             statusAmount = 1,
-                            targetPlayer = false
+                            targetPlayer = false,
+                            dialogueSelector = ".Persistence"
                         }
                     };
                     }
@@ -74,7 +76,8 @@ namespace TeraTaxMod.Cards
                         {
                             status = ModEntry.Instance.TeraPersistenceStatus.Status,
                             statusAmount = 2,
-                            targetPlayer = false
+                            targetPlayer = false,
+                            dialogueSelector = ".Persistence"
                         }
                        
                     };
@@ -87,7 +90,8 @@ namespace TeraTaxMod.Cards
                         {
                             status = ModEntry.Instance.TeraPersistenceStatus.Status,
                             statusAmount = 1,
-                            targetPlayer = false
+                            targetPlayer = false,
+                            dialogueSelector = ".Persistence"
                         }
                     };
                     }

@@ -64,7 +64,7 @@ namespace TeraTaxMod.Dialogue
                     {
                         type = NodeType.combat,
                         allPresent = [AmTera],
-                        lookup = ["EggTOss"],
+                        lookup = ["EggToss"],
                         oncePerRunTags = ["EggNormal"],
                         oncePerRun = true,
                         dialogue = [
@@ -74,20 +74,6 @@ namespace TeraTaxMod.Dialogue
                 },
                  {
                     "EggToss_4",
-                    new()
-                    {
-                        type = NodeType.combat,
-                        allPresent = [AmTera],
-                        lookup = ["EggToss"],
-                        oncePerRunTags = ["EggNormal"],
-                        oncePerRun = true,
-                        dialogue = [
-                        new(AmTera, "egg", "I believe in you...")
-                        ]
-                    }
-                },
-                 {
-                    "EggToss_5",
                     new()
                     {
                         type = NodeType.combat,
@@ -102,7 +88,7 @@ namespace TeraTaxMod.Dialogue
                     }
                 },
                  {
-                    "EggToss_6",
+                    "EggToss_5",
                     new()
                     {
                         type = NodeType.combat,
@@ -117,7 +103,7 @@ namespace TeraTaxMod.Dialogue
                     }
                 },
                  {
-                    "EggToss_7",
+                    "EggToss_6",
                     new()
                     {
                         type = NodeType.combat,
@@ -132,7 +118,7 @@ namespace TeraTaxMod.Dialogue
                     }
                 },
                  {
-                    "EggToss_8",
+                    "EggToss_7",
                     new()
                     {
                         type = NodeType.combat,
@@ -147,7 +133,7 @@ namespace TeraTaxMod.Dialogue
                     }
                 },
                  {
-                    "EggToss_9",
+                    "EggToss_8",
                     new()
                     {
                         type = NodeType.combat,
@@ -162,7 +148,7 @@ namespace TeraTaxMod.Dialogue
                     }
                 },
                  {
-                    "EggToss_10",
+                    "EggToss_9",
                     new()
                     {
                         type = NodeType.combat,
@@ -177,7 +163,7 @@ namespace TeraTaxMod.Dialogue
                     }
                 },
                  {
-                    "EggToss_11",
+                    "EggToss_10",
                     new()
                     {
                         type = NodeType.combat,
@@ -192,7 +178,7 @@ namespace TeraTaxMod.Dialogue
                     }
                 },
                  {
-                    "EggToss_12",
+                    "EggToss_11",
                     new()
                     {
                         type = NodeType.combat,
@@ -683,6 +669,221 @@ namespace TeraTaxMod.Dialogue
                         oncePerRun = true,
                         dialogue = [
                         new(AmTera, "neutral", "Let me ease up on their payments for a bit.")
+                        ]
+                    }
+                },
+                {
+                    "Persistence_0",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera],
+                        lookup = ["Persistence"],
+                        oncePerRunTags = ["Persistence"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmTera, "happytaxes", "These taxes are never gonna end.")
+                        ]
+                    }
+                },
+                {
+                    "Persistence_1",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera],
+                        lookup = ["Persistence"],
+                        oncePerRunTags = ["Persistence"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmTera, "squint", "C'mon, c'mon, this HAS to work.")
+                        ]
+                    }
+                },
+                {
+                    "Persistence_2",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera, AmPeri],
+                        lookup = ["Persistence"],
+                        oncePerRunTags = ["Persistence"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmPeri, "neutral", "Tera, status report."),
+                        new(AmTera, "happy", "They're happily taxed and ready to suffer!")
+                        ]
+                    }
+                },
+                {
+                    "Persistence_3",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera],
+                        lookup = ["Persistence"],
+                        oncePerRunTags = ["Persistence"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmTera, "happytaxes", "Ah, the two things guaranteed in life: death and taxes.")
+                        ]
+                    }
+                },
+                {
+                    "Persistence_4",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera],
+                        lookup = ["Persistence"],
+                        oncePerRunTags = ["Persistence"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmTera, "lookawaynervous", "I was told to never give up. Let's hope that works now.")
+                        ]
+                    }
+                },
+                {
+                    "Persistence_5",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera, AmBooks],
+                        lookup = ["Persistence"],
+                        oncePerRunTags = ["Persistence"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmBooks, "intense", "All these forms are so confusing..."),
+                        new(AmTera, "squint", "Don't worry Books. That's the point.")
+                        ]
+                    }
+                },
+                {
+                    "SpareCash_0",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera, AmDizzy],
+                        lookup = ["SpareCash"],
+                        oncePerRunTags = ["SpareCash"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmDizzy, "neutral", "Patching our generator with money should stop any energy leaks."),
+                        new(AmTera, "sad", "Wait, that's my cash!")
+                        ]
+                    }
+                },
+                {
+                    "SpareCash_1",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera],
+                        lookup = ["SpareCash"],
+                        oncePerRunTags = ["SpareCash"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmTera, "sad", "I was saving that!")
+                        ]
+                    }
+                },
+                {
+                    "SpareCash_2",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera, AmDrake],
+                        lookup = ["SpareCash"],
+                        oncePerRunTags = ["SpareCash"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmTera, "lookawaynervous", "W-where'd all my money in the cargo bay go?"),
+                        new(AmDrake, "sly", "Don't worry about it.")
+                        ]
+                    }
+                },
+                {
+                    "SpareCash_3",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera],
+                        lookup = ["SpareCash"],
+                        oncePerRunTags = ["SpareCash"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmTera, "neutral", "Always worthwhile to have some spare change.")
+                        ]
+                    }
+                },
+                {
+                    "SpareCash_4",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera],
+                        lookup = ["SpareCash"],
+                        oncePerRunTags = ["SpareCash"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmTera, "neutral", "Break in case of emergency.")
+                        ]
+                    }
+                },
+                {
+                    "SpareCash_5",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera, AmIsaac],
+                        lookup = ["SpareCash"],
+                        oncePerRunTags = ["SpareCash"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmTera, "neutral", "When in doubt, a bribe always works."),
+                        new(AmIsaac, "writing", "Bribes... Solve... Problems...")
+                        ]
+                    }
+                },
+                {
+                    "TeraEXE_0",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmCat],
+                        lookup = ["TeraEXE"],
+                        oncePerCombatTags = ["TeraEXE"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmCat, "squint", "Unfortunately, it looks like Tera is needed here.")
+                        ]
+                    }
+                },
+                {
+                    "TeraEXE_1",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmCat],
+                        lookup = ["TeraEXE"],
+                        oncePerCombatTags = ["TeraEXE"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmCat, "neutral", "Tera sometimes has good ideas.")
+                        ]
+                    }
+                },
+                 {
+                    "TeraEXE_2",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmCat],
+                        lookup = ["TeraEXE"],
+                        oncePerCombatTags = ["TeraEXE"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmCat, "neutral", "Simulating Tera is easy. Just never stop panicking.")
                         ]
                     }
                 },

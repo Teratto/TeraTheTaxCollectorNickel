@@ -39,6 +39,7 @@ public class TeraCatEXE : Card, IRegisterable
                         cost = 1,
                         exhaust = true,
                         description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "TeraCatEXE", "desc"]))
+
                     };
                 }
             case Upgrade.A:
@@ -94,6 +95,7 @@ public class TeraCatEXE : Card, IRegisterable
                             canSkip = false,
                             inCombat = true,
                             discount = -1,
+                            dialogueSelector = ".TeraEXE"
                         },  
                     };
                 }
@@ -116,6 +118,7 @@ public class TeraCatEXE : Card, IRegisterable
                             canSkip = false,
                             inCombat = true,
                             discount = -1,
+                            dialogueSelector = ".TeraEXE"
                         },
                     };
                 }
@@ -139,6 +142,7 @@ public class TeraCatEXE : Card, IRegisterable
                             canSkip = false,
                             inCombat = true,
                             discount = -1,
+                            dialogueSelector = ".TeraEXE"
                         },
                     };
                 }
@@ -161,6 +165,7 @@ public class TeraCatEXE : Card, IRegisterable
                             canSkip = false,
                             inCombat = true,
                             discount = -1,
+                            dialogueSelector = ".TeraEXE"
                         },
                     };
                 }

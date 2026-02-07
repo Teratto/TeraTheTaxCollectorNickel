@@ -50,7 +50,8 @@ namespace TeraTaxMod.Cards
                         {
                             status = ModEntry.Instance.TeraBailoutStatus.Status,
                             statusAmount = 1,
-                            targetPlayer = true
+                            targetPlayer = true,
+                            dialogueSelector = ".SpareCash"
                         }
                     };
                     }
@@ -62,7 +63,8 @@ namespace TeraTaxMod.Cards
                         {
                             status = ModEntry.Instance.TeraBailoutStatus.Status,
                             statusAmount = 2,
-                            targetPlayer = true
+                            targetPlayer = true,
+                            dialogueSelector = ".SpareCash"
                         },
                     };
                     }
@@ -74,7 +76,8 @@ namespace TeraTaxMod.Cards
                         {
                             status = ModEntry.Instance.TeraBailoutStatus.Status,
                             statusAmount = 1,
-                            targetPlayer = true
+                            targetPlayer = true,
+                            dialogueSelector = ".SpareCash"
                         },
 
                     };
@@ -87,7 +90,8 @@ namespace TeraTaxMod.Cards
                         {
                             status = ModEntry.Instance.TeraBailoutStatus.Status,
                             statusAmount = 1,
-                            targetPlayer = true
+                            targetPlayer = true,
+                            dialogueSelector = ".SpareCash"
                         }
                     };
                     }
