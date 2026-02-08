@@ -545,6 +545,7 @@ internal class CombatDialogue : IRegisterable
                 turnStart = true,
                 maxTurnsThisCombat = 1,
                 oncePerRun = true,
+                oncePerRunTags = ["TeraDontShipYap"],
                 oncePerCombatTags = ["Tiderunner"],
                 allPresent = [AmTera],
                 dialogue = [
@@ -557,6 +558,7 @@ internal class CombatDialogue : IRegisterable
                 hasArtifactTypes = [typeof(TideRunner)],
                 turnStart = true,
                 maxTurnsThisCombat = 1,
+                oncePerRunTags = ["TeraDontShipYap"],
                 oncePerRun = true,
                 oncePerCombatTags = ["Tiderunner"],
                 allPresent = [AmTera],
@@ -564,12 +566,20 @@ internal class CombatDialogue : IRegisterable
                     new(AmTera, "happy", "Squawk! Tera wants a cracker!")
                     ]
             }},
+            {"ArtifactTridimensionalCockpit_Multi_Tera_0", new()
             {
-                "ArtifactTridimensionalCockpit_Multi_5", new()
-                {
-                edit = [new(EMod.countFromStart, 1, AmTera, "lookaway", "Personally, I think it's VERY valid to be cowardly.")]
-                }
-            },
+                type = NodeType.combat,
+                hasArtifactTypes = [typeof(TridimensionalCockpit)],
+                turnStart = true,
+                maxTurnsThisCombat = 1,
+                oncePerRun = true,
+                oncePerCombatTags = ["TridimensionalCockpit"],
+                allPresent = [AmTera, AmDrake],
+                dialogue = [
+                    new(AmDrake, "squint", "This cockpit change seems cowardly."),
+                    new(AmTera, "lookaway", "Personally, I think it's VERY valid to be cowardly.")
+                    ]
+            }},
             {"BlockedALotOfAttacksWithArmor_Multi_Tera_0", new()
             {
                 type = NodeType.combat,
@@ -628,6 +638,550 @@ internal class CombatDialogue : IRegisterable
                 allPresent = [AmTera],
                 dialogue = [
                     new(AmTera, "sad", "W-wait, how do we operate a ship without a computer?")
+                    ]
+            }},
+            {"CheapCardPlayed_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                maxCostOfCardJustPlayed = 0,
+                oncePerRun = true,
+                oncePerCombatTags = ["CheapCardPlayed"],
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "happy", "No energy required!")
+                    ]
+            }},
+            {"CrabFacts1_Multi_0", new(){
+                edit = [
+                    new(EMod.countFromStart, 2, AmTera, "neutral", "Wait, I thought crabs were like, government drones?")
+                ]
+            }},
+            {"CrabFacts2_Multi_0", new(){
+                edit = [
+                    new(EMod.countFromStart, 2, AmTera, "squint", "Are you sure these facts aren't government cover-ups?")
+                ]
+            }},
+            {"CrabFactsAreOverNow_Multi_0", new(){
+                edit = [
+                    new(EMod.countFromStart, 1, AmTera, "squint", "I'm watching you, government crab drone.")
+                ]
+            }},
+            {"DrakeWentMissing_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                priority = true,
+                lastTurnPlayerStatuses = [Status.missingDrake],
+                oncePerRun = true,
+                oncePerCombatTags = ["drakeWentMissing"],
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "lookawaynervous", "D-Drake?")
+                    ]
+            }},
+            {"DrakeWentMissing_Multi_Tera_1", new()
+            {
+                type = NodeType.combat,
+                priority = true,
+                lastTurnPlayerStatuses = [Status.missingDrake],
+                oncePerRun = true,
+                oncePerCombatTags = ["drakeWentMissing"],
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "lookawaynervous", "Drake being gone makes me feel a lot worse.")
+                    ]
+            }},
+            {"DualNotEnoughDronesShouts_Multi_0", new(){
+                edit = [
+                    new(EMod.countFromStart, 1, AmTera, "squint", "It's coming out of YOUR taxes, bucko.")
+                ]
+            }},
+            {"Duo_AboutToDieAndLoop_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                enemyShotJustHit = true,
+                maxHull = 2,
+                oncePerRun = true,
+                oncePerCombatTags = ["aboutToDie"],
+                allPresent = [AmTera, AmRiggs],
+                dialogue = [
+                    new(AmTera, "sad", "I don't wanna die!"),
+                    new(AmRiggs, "neutral", "Yeah, me neither.")
+                    ]
+            }},
+            {"Duo_AboutToDieAndLoop_Multi_Tera_1", new()
+            {
+                type = NodeType.combat,
+                enemyShotJustHit = true,
+                maxHull = 2,
+                oncePerRun = true,
+                oncePerCombatTags = ["aboutToDie"],
+                allPresent = [AmTera, AmDizzy],
+                dialogue = [
+                    new(AmTera, "lookawaynervous", "Is this where we reset?"),
+                    new(AmDizzy, "neutral", "Probably.")
+                    ]
+            }},
+            {"Duo_AboutToDieAndLoop_Multi_Tera_2", new()
+            {
+                type = NodeType.combat,
+                enemyShotJustHit = true,
+                maxHull = 2,
+                oncePerRun = true,
+                oncePerCombatTags = ["aboutToDie"],
+                allPresent = [AmTera, AmPeri],
+                dialogue = [
+                    new(AmTera, "sad", "Are we gonna explode?!"),
+                    new(AmPeri, "neutral", "Tera, breathe.")
+                    ]
+            }},
+            {"Duo_AboutToDieAndLoop_Multi_Tera_3", new()
+            {
+                type = NodeType.combat,
+                enemyShotJustHit = true,
+                maxHull = 2,
+                oncePerRun = true,
+                oncePerCombatTags = ["aboutToDie"],
+                allPresent = [AmTera, AmCat],
+                dialogue = [
+                    new(AmTera, "lookawaynervous", "Please don't tell me we reset here..."),
+                    new(AmCat, "neutral", "Alright, I won't.")
+                    ]
+            }},
+            {"Duo_AboutToDieAndLoop_Multi_Tera_4", new()
+            {
+                type = NodeType.combat,
+                enemyShotJustHit = true,
+                maxHull = 2,
+                oncePerRun = true,
+                oncePerCombatTags = ["aboutToDie"],
+                allPresent = [AmTera, AmIsaac],
+                dialogue = [
+                    new(AmTera, "sad", "I don't wanna die!"),
+                    new(AmIsaac, "neutral", "You get used to it.")
+                    ]
+            }},
+            {"Duo_AboutToDieAndLoop_Multi_Tera_5", new()
+            {
+                type = NodeType.combat,
+                enemyShotJustHit = true,
+                maxHull = 2,
+                oncePerRun = true,
+                oncePerCombatTags = ["aboutToDie"],
+                allPresent = [AmTera, AmDrake],
+                dialogue = [
+                    new(AmTera, "neutral", "If I die, Drake's going down with me!"),
+                    new(AmDrake, "mad", "We're ALL going down, bird brain.")
+                    ]
+            }},
+            {"Duo_AboutToDieAndLoop_Multi_Tera_6", new()
+            {
+                type = NodeType.combat,
+                enemyShotJustHit = true,
+                maxHull = 2,
+                oncePerRun = true,
+                oncePerCombatTags = ["aboutToDie"],
+                allPresent = [AmTera, AmMax],
+                dialogue = [
+                    new(AmTera, "neutral", "Hurry, hack their ship before we go kaboom!"),
+                    new(AmMax, "gloves", "Um, beep boop?")
+                    ]
+            }},
+            {"Duo_AboutToDieAndLoop_Multi_Tera_7", new()
+            {
+                type = NodeType.combat,
+                enemyShotJustHit = true,
+                maxHull = 2,
+                oncePerRun = true,
+                oncePerCombatTags = ["aboutToDie"],
+                allPresent = [AmTera, AmBooks],
+                dialogue = [
+                    new(AmTera, "sad", "We're gonna explode!"),
+                    new(AmBooks, "neutral", "No! We can do it!")
+                    ]
+            }},
+            {"Duo_AboutToDieAndLoop_Multi_Tera_8", new()
+            {
+                type = NodeType.combat,
+                enemyShotJustHit = true,
+                maxHull = 2,
+                oncePerRun = true,
+                oncePerCombatTags = ["aboutToDie"],
+                allPresent = [AmTera, AmIsaac],
+                dialogue = [
+                    new(AmIsaac, "neutral", "About time to loop again."),
+                    new(AmTera, "lookawaynervous", "B-but I don't wanna loop yet!")
+                    ]
+            }},
+            {"Duo_AboutToDieAndLoop_Multi_Tera_9", new()
+            {
+                type = NodeType.combat,
+                enemyShotJustHit = true,
+                maxHull = 2,
+                oncePerRun = true,
+                oncePerCombatTags = ["aboutToDie"],
+                allPresent = [AmTera, AmDrake],
+                dialogue = [
+                    new(AmDrake, "mad", "This run would be better if this bird wasn't here."),
+                    new(AmTera, "lookawaynervous", "...")
+                    ]
+            }},
+            {"Duo_AboutToDieAndLoop_Multi_Tera_10", new()
+            {
+                type = NodeType.combat,
+                enemyShotJustHit = true,
+                maxHull = 2,
+                oncePerRun = true,
+                oncePerCombatTags = ["aboutToDie"],
+                allPresent = [AmTera, AmDizzy],
+                dialogue = [
+                    new(AmDizzy, "neutral", "Welp."),
+                    new(AmTera, "neutral", "Darn.")
+                    ]
+            }},
+            {"Duo_AboutToDieAndLoop_Multi_Tera_11", new()
+            {
+                type = NodeType.combat,
+                enemyShotJustHit = true,
+                maxHull = 2,
+                oncePerRun = true,
+                oncePerCombatTags = ["aboutToDie"],
+                allPresent = [AmTera, AmBooks],
+                dialogue = [
+                    new(AmBooks, "neutral", "Tera! Tax us outta here!"),
+                    new(AmTera, "squint", "I... What?")
+                    ]
+            }},
+            {"Duo_AboutToDieAndLoop_Multi_Tera_12", new()
+            {
+                type = NodeType.combat,
+                enemyShotJustHit = true,
+                maxHull = 2,
+                oncePerRun = true,
+                oncePerCombatTags = ["aboutToDie"],
+                allPresent = [AmTera, AmMax],
+                dialogue = [
+                    new(AmBooks, "neutral", "It's over man."),
+                    new(AmTera, "lookawaynervous", "Yeah... I can feel it.")
+                  
+                    ]
+            }},
+            {"Duo_AboutToDieAndLoop_Multi_Tera_13", new()
+            {
+                type = NodeType.combat,
+                enemyShotJustHit = true,
+                maxHull = 2,
+                oncePerRun = true,
+                oncePerCombatTags = ["aboutToDie"],
+                allPresent = [AmTera, AmCat],
+                dialogue = [
+                    new(AmCat, "neutral", "It's time to reset."),
+                    new(AmTera, "lookawaynervous", "CAT? Don't scare me like this!")
+                    ]
+            }},
+            {"Duo_AboutToDieAndLoop_Multi_Tera_14", new()
+            {
+                type = NodeType.combat,
+                enemyShotJustHit = true,
+                maxHull = 2,
+                oncePerRun = true,
+                oncePerCombatTags = ["aboutToDie"],
+                allPresent = [AmTera, AmPeri],
+                dialogue = [
+                    new(AmPeri, "mad", "It's not looking good."),
+                    new(AmTera, "lookawaynervous", "Shoot, is it over?")
+                    ]
+            }},
+            {"EmptyHandWithEnergy_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                handEmpty = true,
+                minEnergy = 1,
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "neutral", "Wait, what do we do now?")
+                    ]
+            }},
+            {"EmptyHandWithEnergy_Multi_Tera_1", new()
+            {
+                type = NodeType.combat,
+                handEmpty = true,
+                minEnergy = 1,
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "squint", "Nothing to spend our energy on...")
+                    ]
+            }},
+            {"EnemyArmorHit_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                playerShotJustHit = true,
+                minDamageBlockedByEnemyArmorThisTurn = 1,
+                oncePerCombat = true,
+                oncePerRun = true,
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "squint", "Can we maybe, not aim at their armor?")
+                    ]
+            }},
+            {"EnemyHasBrittle_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                enemyHasBrittlePart = true,
+                oncePerRunTags = ["yelledAboutBrittle"],
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "happy", "Yeah yeah! Hit that brittle point!")
+                    ]
+            }},
+            {"EnemyHasWeakness_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                enemyHasBrittlePart = true,
+                oncePerRunTags = ["yelledAboutWeakness"],
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "squint", "Their ship seems kinda shoddy... we should hit that weak point.")
+                    ]
+            }},
+            {"EuniceMiss_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                playerShotJustMissed = true,
+                oncePerCombat = true,
+                doesNotHaveArtifacts = ["Recalibrator", "GrazerBeam"],
+                allPresent = [AmTera, AmDrake],
+                dialogue = [
+                    new(AmDrake, "sly", "I taught you better than that."),
+                    new(AmTera, "lookawaynervous", "I'm trying!")
+                    ]
+            }},
+            {"ExpensiveCardPlayed_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                minCostOfCardJustPlayed = 4,
+                oncePerCombatTags = ["ExpensiveCardPlayed"],
+                oncePerRun = true,
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "neutral", "Man, that card was costly.")
+                    ]
+            }},
+            {"FreezeIsMaxSize_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                turnStart = true,
+                oncePerCombatTags = ["biggestCrystalShout"],
+                enemyIntent = "biggestCrystal",
+                allPresent = [AmTera, "crystal"],
+                dialogue = [
+                    new(AmTera, "neutral", "Wow, that's a BIG crystal.")
+                    ]
+            }},
+            {"HackerJustHit_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                playerShotJustHit = true,
+                minDamageDealtToEnemyThisAction = 1,
+                whoDidThat = Deck.hacker,
+                allPresent = [AmTera, AmMax],
+                dialogue = [
+                    new(AmTera, "happy", "Nice one Max!")
+                    ]
+            }},
+            {"TeraJustHit_Multi_0", new()
+            {
+                type = NodeType.combat,
+                oncePerRun = true,
+                playerShotJustHit = true,
+                minDamageDealtToEnemyThisAction = 1,
+                whoDidThat = AmTeraDeck,
+                allPresent = [AmTera,],
+                dialogue = [
+                    new(AmTera, "neutral", "Woa, firing cannons isn't as hard as I thought.")
+                    ]
+            }},
+            {"TeraJustHit_Multi_1", new()
+            {
+                type = NodeType.combat,
+                playerShotJustHit = true,
+                minDamageDealtToEnemyThisAction = 1,
+                whoDidThat = AmTeraDeck,
+                allPresent = [AmTera,],
+                dialogue = [
+                    new(AmTera, "neutral", "We got this.")
+                    ]
+            }},
+            {"TeraJustHit_Multi_2", new()
+            {
+                type = NodeType.combat,
+                playerShotJustHit = true,
+                minDamageDealtToEnemyThisAction = 1,
+                whoDidThat = AmTeraDeck,
+                allPresent = [AmTera,],
+                dialogue = [
+                    new(AmTera, "happy", "Woa, I hit them!")
+                    ]
+            }},
+            {"TeraJustHit_Multi_3", new()
+            {
+                type = NodeType.combat,
+                playerShotJustHit = true,
+                minDamageDealtToEnemyThisAction = 1,
+                whoDidThat = AmTeraDeck,
+                allPresent = [AmTera,],
+                dialogue = [
+                    new(AmTera, "happy", "Heck yeah!")
+                    ]
+            }},
+            {"TeraJustHit_Multi_4", new()
+            {
+                type = NodeType.combat,
+                playerShotJustHit = true,
+                minDamageDealtToEnemyThisAction = 1,
+                whoDidThat = AmTeraDeck,
+                allPresent = [AmTera,],
+                dialogue = [
+                    new(AmTera, "happy", "Pew pew!")
+                    ]
+            }},
+            {"TeraJustHit_Multi_5", new()
+            {
+                type = NodeType.combat,
+                playerShotJustHit = true,
+                minDamageDealtToEnemyThisAction = 1,
+                whoDidThat = AmTeraDeck,
+                allPresent = [AmTera, AmPeri],
+                dialogue = [
+                    new(AmPeri, "neutral", "Nice shot, Tera."),
+                    new(AmTera, "blush", "Thank you!")
+                    ]
+            }},
+            {"TeraJustHit_Multi_6", new()
+            {
+                type = NodeType.combat,
+                playerShotJustHit = true,
+                minDamageDealtToEnemyThisAction = 1,
+                whoDidThat = AmTeraDeck,
+                allPresent = [AmTera, AmDrake],
+                dialogue = [
+                    new(AmTera, "happy", "Not too shabby!"),
+                    new(AmDrake, "neutral", "Don't get ahead of yourself."),
+                    ]
+            }},
+            {"JustHitGeneric_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                playerShotJustHit = true,
+                minDamageDealtToEnemyThisAction = 1,
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "happy", "Nice one!"),
+                    ]
+            }},
+            {"JustHitGeneric_Multi_Tera_1", new()
+            {
+                type = NodeType.combat,
+                playerShotJustHit = true,
+                minDamageDealtToEnemyThisAction = 1,
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "happy", "That's a hit!"),
+                    ]
+            }},
+            {"JustHitGeneric_Multi_Tera_2", new()
+            {
+                type = NodeType.combat,
+                playerShotJustHit = true,
+                minDamageDealtToEnemyThisAction = 1,
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "neutral", "Phew, it hit."),
+                    ]
+            }},
+            {"JustHitGeneric_Multi_Tera_3", new()
+            {
+                type = NodeType.combat,
+                playerShotJustHit = true,
+                minDamageDealtToEnemyThisAction = 1,
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "neutral", "Good shot."),
+                    ]
+            }},
+            {"JustHitGeneric_Multi_Tera_4", new()
+            {
+                type = NodeType.combat,
+                playerShotJustHit = true,
+                minDamageDealtToEnemyThisAction = 1,
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "happy", "Good aim!"),
+                    ]
+            }},
+            {"HandOnlyHasTrashCard_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                handFullOfTrash = true,
+                oncePerCombatTags = ["handOnlyHasTrashCards"],
+                oncePerRun = true,
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "squint", "Don't we pay taxes to like, have people get RID of trash?"),
+                    ]
+            }},
+            {"JustPlayedADraculaCard_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                whoDidThat = Deck.dracula,
+                oncePerRun = true,
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "blush", "Man, that Dracula guy was awesome."),
+                    ]
+            }},
+            {"JustPlayedASashaCard_Multi_2", new(){
+                edit = [
+                    new(EMod.countFromStart, 1, AmTera, "squint", "S-sports?")
+                ]
+            }},
+            {"JustPlayedAToothCard_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                whoDidThat = Deck.tooth,
+                oncePerRunTags = ["usedAToothCard"],
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "squint", "Eugh, we're REALLY trusting that guy?"),
+                    ]
+            }},
+            {"ManyFlips_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                minTimesYouFlippedACardThisTurn = 4,
+                oncePerCombat = true,
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "squint", "My head hurts. Can't we just choose?"),
+                    ]
+            }},
+            {"ManyFlipsAndTeraIsGettingTired_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                minTimesYouFlippedACardThisTurn = 20,
+                oncePerCombat = true,
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "squint", "Can you... stop that?"),
+                    ]
+            }},
+            {"ManyFlipsAndTeraIsGettingTired_Multi_Tera_1", new()
+            {
+                type = NodeType.combat,
+                minTimesYouFlippedACardThisTurn = 100,
+                oncePerCombat = true,
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "squint", "I'm just, going to ignore you now."),
                     ]
             }},
         });

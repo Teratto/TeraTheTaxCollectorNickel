@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Nanoray.PluginManager;
 using Nickel;
+using Nickel.Common;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -176,6 +177,33 @@ internal class ModEntry : SimpleMod
             DefaultCardArt = StableSpr.cards_colorless,
             BorderSprite = RegisterSprite(package, "assets/Animation/border_tera.png").Sprite,
             Name = AnyLocalizations.Bind(["character", "name"]).Localize
+
+        });
+        helper.ModRegistry.AwaitApi<IMoreDifficultiesApi>(
+            "TheJazMaster.MoreDifficulties",
+            new SemanticVersion(1, 3, 0),
+            api => api.RegisterAltStarters(
+                deck: TeraTaxDeck.Deck,
+                starterDeck: new StarterDeck
+                {
+                    cards = [
+                        new Overdraft(),
+                        new TaxingEscape(),
+                    ]
+                }
+
+            )
+        );
+        helper.ModRegistry.AwaitApi<ICustomRunOptionsApi>("Shockah.CustomRunOptions", cro =>
+        {
+            cro.RegisterPartialDuoDeck(TeraTaxDeck.Deck, new StarterDeck
+            {
+                cards = [
+                    new Tariff(),
+                    new TaxEvasion(),
+                    new EggToss()
+                ]
+            });
         });
 
         /*
