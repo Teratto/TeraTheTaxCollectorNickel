@@ -618,6 +618,18 @@ internal class CombatDialogue : IRegisterable
                     new(AmTera, "lookawaynervous", "W-where'd Books go?")
                     ]
             }},
+            {"CatWentMissing_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                priority = true,
+                lastTurnPlayerStatuses = [Status.missingCat],
+                oncePerRun = true,
+                oncePerCombatTags = ["CatWentMissing"],
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "sad", "W-wait, how do we operate a ship without a computer?")
+                    ]
+            }},
         });
     }
 }

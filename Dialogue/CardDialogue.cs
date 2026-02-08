@@ -887,6 +887,20 @@ namespace TeraTaxMod.Dialogue
                         ]
                     }
                 },
+                 {
+                    "TeraEXE_3",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmCat],
+                        lookup = ["TeraEXE"],
+                        oncePerCombatTags = ["TeraEXE"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmCat, "neutral", "Little bit of tax should do the trick.")
+                        ]
+                    }
+                },
             });
         }
     }
