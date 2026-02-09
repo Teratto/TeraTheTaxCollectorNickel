@@ -583,7 +583,7 @@ internal class CombatDialogue : IRegisterable
             {"BlockedALotOfAttacksWithArmor_Multi_Tera_0", new()
             {
                 type = NodeType.combat,
-                enemyShotJustHit = true, 
+                enemyShotJustHit = true,
                 minDamageBlockedByPlayerArmorThisTurn = 3,
                 oncePerRun = true,
                 oncePerCombatTags = ["YowzaThatWasALOTofArmorBlock"],
@@ -621,7 +621,7 @@ internal class CombatDialogue : IRegisterable
                 type = NodeType.combat,
                 priority = true,
                 lastTurnPlayerStatuses = [Status.missingBooks],
-                oncePerRun = true, 
+                oncePerRun = true,
                 oncePerCombatTags = ["booksWentMissing"],
                 allPresent = [AmTera],
                 dialogue = [
@@ -770,7 +770,7 @@ internal class CombatDialogue : IRegisterable
                 allPresent = [AmTera, AmDrake],
                 dialogue = [
                     new(AmTera, "neutral", "If I die, Drake's going down with me!"),
-                    new(AmDrake, "mad", "We're ALL going down, bird brain.")
+                    new(AmDrake, "mad", "We're ALL going down, birdbrain.")
                     ]
             }},
             {"Duo_AboutToDieAndLoop_Multi_Tera_6", new()
@@ -821,7 +821,7 @@ internal class CombatDialogue : IRegisterable
                 oncePerCombatTags = ["aboutToDie"],
                 allPresent = [AmTera, AmDrake],
                 dialogue = [
-                    new(AmDrake, "mad", "This run would be better if this bird wasn't here."),
+                    new(AmDrake, "mad", "This run would be better if Tera actually listened to me."),
                     new(AmTera, "lookawaynervous", "...")
                     ]
             }},
@@ -862,7 +862,7 @@ internal class CombatDialogue : IRegisterable
                 dialogue = [
                     new(AmBooks, "neutral", "It's over man."),
                     new(AmTera, "lookawaynervous", "Yeah... I can feel it.")
-                  
+
                     ]
             }},
             {"Duo_AboutToDieAndLoop_Multi_Tera_13", new()
@@ -972,7 +972,7 @@ internal class CombatDialogue : IRegisterable
                 turnStart = true,
                 oncePerCombatTags = ["biggestCrystalShout"],
                 enemyIntent = "biggestCrystal",
-                allPresent = [AmTera, "crystal"],
+                allPresent = [AmTera, AmCrystal],
                 dialogue = [
                     new(AmTera, "neutral", "Wow, that's a BIG crystal.")
                     ]
@@ -1068,6 +1068,30 @@ internal class CombatDialogue : IRegisterable
                     new(AmDrake, "neutral", "Don't get ahead of yourself."),
                     ]
             }},
+            {"TeraJustHit_Multi_7", new()
+            {
+                type = NodeType.combat,
+                playerShotJustHit = true,
+                minDamageDealtToEnemyThisAction = 1,
+                whoDidThat = AmTeraDeck,
+                allPresent = [AmTera, AmDrake],
+                dialogue = [
+                    new(AmTera, "happy", "Just like you taught me!"),
+                    new(AmDrake, "sly", "You learned from the best."),
+                    ]
+            }},
+             {"TeraJustHit_Multi_8", new()
+            {
+                type = NodeType.combat,
+                playerShotJustHit = true,
+                minDamageDealtToEnemyThisAction = 1,
+                whoDidThat = AmTeraDeck,
+                allPresent = [AmTera, AmDrake],
+                dialogue = [
+                    new(AmDrake, "neutral", "I gotta admit, I'm impressed."),
+                    new(AmTera, "blush", "Hehe..."),
+                    ]
+            }},
             {"JustHitGeneric_Multi_Tera_0", new()
             {
                 type = NodeType.combat,
@@ -1139,6 +1163,11 @@ internal class CombatDialogue : IRegisterable
                     new(AmTera, "blush", "Man, that Dracula guy was awesome."),
                     ]
             }},
+            {"DualNotEnoughDronesShouts_Multi_2", new(){
+                edit = [
+                    new(EMod.countFromStart, 1, AmTera, "squint", "Hey! Birds aren't drones!")
+                ]
+            }},
             {"JustPlayedASashaCard_Multi_2", new(){
                 edit = [
                     new(EMod.countFromStart, 1, AmTera, "squint", "S-sports?")
@@ -1182,6 +1211,224 @@ internal class CombatDialogue : IRegisterable
                 allPresent = [AmTera],
                 dialogue = [
                     new(AmTera, "squint", "I'm just, going to ignore you now."),
+                    ]
+            }},
+            {"ManyTurns_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                oncePerRun = true,
+                minTurnsThisCombat = 9,
+                turnStart = true,
+                oncePerCombatTags = ["manyTurns"],
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "lookawaynervous", "How long have we been flying? I'm starting to get sick..."),
+                    new (new List<DialogueThing>
+                    {
+                        new (AmRiggs, "neutral", "I'll get the barf bag!"),
+                        new (AmPeri, "neutral", "Please use the oxygen mask."),
+                        new (AmDizzy, "neutral", "Even birds get sick of flying. Cool."),
+                        new (AmIsaac, "writing", "Birds... hate... flying..."),
+                        new (AmDrake, "neutral", "And this is why you're not a pirate."),
+                        new (AmMax, "neutral", "I'd love to see how bad VR would get for you."),
+                        new (AmBooks, "neutral", "Just think happy thoughts! Happy not flying thoughts!"),
+                        new (AmCat, "neutral", "Tera, you never fail to surprise me.")
+                    }),
+                    ]
+            }},
+            {"VeryManyTurns_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                oncePerRun = true,
+                minTurnsThisCombat = 9,
+                turnStart = true,
+                oncePerCombatTags = ["manyTurns"],
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "neutral", "Been flying for so long, I'm used to being sick now."),
+                    ]
+            }},
+            {"MechaPossumShouts_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                priority = true,
+                enemyIntent = "mechaPossumShout",
+                once = true,
+                oncePerRunTags = ["mechaPossumShout"],
+                allPresent = [AmTera, AmRiggs2],
+                dialogue = [
+                    new(AmTera, "scared", "Has punching always been allowed?"),
+                    new(AmRiggs2, "neutral", "Yes."),
+                    ]
+            }},
+            {"OneHitPointThisIsFine_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                enemyShotJustHit = true,
+                maxHull = 1,
+                oncePerRun = true,
+                oncePerCombatTags = ["aboutToDie"],
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "scared", "W-why does our ship sound like that?")
+                    ]
+            }},
+            {"OneHitPointThisIsFine_Multi_Tera_1", new()
+            {
+                type = NodeType.combat,
+                enemyShotJustHit = true,
+                maxHull = 1,
+                oncePerRun = true,
+                oncePerCombatTags = ["aboutToDie"],
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "sad", "No! I'm too young to die!")
+                    ]
+            }},
+            {"EuniceJustHit_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                playerShotJustHit = true,
+                minDamageDealtToEnemyThisAction = 1,
+                whoDidThat = Deck.eunice,
+                allPresent = [AmTera, AmDrake],
+                dialogue = [
+                    new(AmTera, "happy", "Nice one, Drake!")
+                    ]
+            }},
+            {"EuniceJustHit_Multi_Tera_1", new()
+            {
+                type = NodeType.combat,
+                playerShotJustHit = true,
+                minDamageDealtToEnemyThisAction = 1,
+                whoDidThat = Deck.eunice,
+                allPresent = [AmTera, AmDrake],
+                dialogue = [
+                    new(AmTera, "happy", "Your aim is amazing!"),
+                    new(AmDrake, "sly", "I know. Don't remind me.")
+                    ]
+            }},
+            {"OverheatDrakeFix_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                wasGoingToOverheatButStopped = true,
+                oncePerCombatTags = ["OverheatDrakeFix"],
+                whoDidThat = Deck.eunice,
+                oncePerRun = true,
+                allPresent = [AmTera, AmDrake],
+                dialogue = [
+                    new(AmTera, "lookaway", "Thank you for not roasting me alive."),
+                    new(AmDrake, "sly", "Aww, but you would have been delicious!")
+                    ]
+            }},
+            {"OverheatDrakeFix_Multi_Tera_1", new()
+            {
+                type = NodeType.combat,
+                wasGoingToOverheatButStopped = true,
+                oncePerCombatTags = ["OverheatDrakeFix"],
+                whoDidThat = Deck.eunice,
+                allPresent = [AmTera, AmDrake],
+                dialogue = [
+                    new(AmDrake, "neutral", "See? Everything's all under control."),
+                    new(AmTera, "scared", "I really hope you're sure about that!")
+                    ]
+            }},
+             {"OverheatDrakeFix_Multi_6", new(){
+                edit = [
+                    new(EMod.countFromStart, 1, AmTera, "neutral", "Phew, thank you Drake.")
+                ]
+            }},
+            {"OverheatDrakesFault_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                goingToOverheat = true,
+                oncePerCombatTags = ["OverheatDrakesFault"],
+                allPresent = [AmTera, AmDrake],
+                dialogue = [
+                    new(AmTera, "squint", "Eunice!"),
+                    new(AmDrake, "squint", "Don't call me that.")
+                    ]
+            }},
+            {"OverheatDrakesFault_Multi_Tera_1", new()
+            {
+                type = NodeType.combat,
+                goingToOverheat = true,
+                oncePerCombatTags = ["OverheatDrakesFault"],
+                allPresent = [AmTera, AmDrake],
+                dialogue = [
+                    new(AmDrake, "shyBlush", "Ah, consequences, we meet again."),
+                    new(AmTera, "squint", "Drake! C'mon, you're more careful than this!")
+                    ]
+            }},
+            {"OverheatDrakesFault_Multi_Tera_2", new()
+            {
+                type = NodeType.combat,
+                goingToOverheat = true,
+                oncePerCombatTags = ["OverheatDrakesFault"],
+                allPresent = [AmTera, AmDrake],
+                dialogue = [
+                    new(AmTera, "squint", "Drake, what the heck!"),
+                    new(AmTera, "shyBlush", "My hubris has bested me.")
+                    ]
+            }},
+            {"OverheatDrakesFault_Multi_9", new(){
+                edit = [
+                    new(EMod.countFromStart, 1, AmTera, "scared", "Drake! What are you doing!?!")
+                ]
+            }},
+            {"OverheatGeneric_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                goingToOverheat = true,
+                oncePerCombatTags = ["OverheatGeneric"],
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "scared", "Ack! Too hot, too hot!"),
+                    ]
+            }},
+            {"OverheatGeneric_Multi_Tera_1", new()
+            {
+                type = NodeType.combat,
+                goingToOverheat = true,
+                oncePerCombatTags = ["OverheatGeneric"],
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "sad", "Please someone find the AC already!"),
+                    ]
+            }},
+            {"PeriJustHit_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                playerShotJustHit = true,
+                minDamageDealtToEnemyThisAction = 1,
+                whoDidThat = Deck.peri,
+                oncePerRun = true,
+                oncePerCombatTags = ["PeriHitEmYo"],
+                allPresent = [AmTera, AmMax],
+                dialogue = [
+                    new(AmTera, "happy", "Nice one Max!")
+                    ]
+            }},
+            {"PeriWentMissing_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                priority = true,
+                lastTurnPlayerStatuses = [Status.missingPeri],
+                oncePerRun = true,
+                oncePerCombatTags = ["periWentMissing"],
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "lookawaynervous", "Shoot, I don't know if we can do this without Peri...")
+                    ]
+            }},
+            {"PlayedManyCards_Multi_0", new()
+            {
+                type = NodeType.combat,
+                minCardsPlayedThisTurn = 6,
+                handEmpty = true,
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "happy", "Maximum value!")
                     ]
             }},
         });

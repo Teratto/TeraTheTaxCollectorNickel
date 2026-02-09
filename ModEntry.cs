@@ -103,6 +103,7 @@ internal class ModEntry : SimpleMod
         typeof(TauntDialogue),
         typeof(CardDialogue),
         typeof(CombatDialogue),
+        typeof(EventDialogue)
    ];
 
     private static IEnumerable<Type> TeraTaxArtifactTypes =
@@ -382,7 +383,7 @@ internal class ModEntry : SimpleMod
             {
                 isGood = false,
                 affectedByTimestop = false,
-                color = new Color("FF00FF"),
+                color = new Color("FFD700"),
                 icon = RegisterSprite(package, "assets/Feature/coin.png").Sprite
             },
             Name = AnyLocalizations.Bind(["status", "tax", "name"]).Localize,

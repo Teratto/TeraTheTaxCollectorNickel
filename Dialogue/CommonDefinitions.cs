@@ -33,6 +33,8 @@ static class CommonDefinitions
     internal static string AmBooks => Deck.shard.Key();
     internal static string AmMax => Deck.hacker.Key();
     internal const string AmVoid = "void";
+    internal const string AmCrystal = "crystal";
+    internal const string AmRiggs2 = "pirateBoss";
     internal const string AmShopkeeper = "nerd";
     internal const string AmBrimford = "walrus";
 
