@@ -93,7 +93,7 @@
       "name": "Overdraft",
       "desc": "Shoot for <c=attack>{{damage1}}</c> dmg. <c=downside>Spend 1 enemy tax</c> to shoot again for <c=attack>{{damage2}}</c> dmg.",
       "descA": "Shoot for <c=attack>{{damage1}}</c> dmg. <c=downside>Spend 1 enemy tax</c> to shoot again for <c=attack>{{damage2}}</c> dmg.",
-      "descB": "Shoot for <c=attack>{{damage1}}</c> dmg. <c=downside>Spend 2 enemy tax</c> to shoot for <c=attack>{{damage1}}</c> dmg <c=keyword>three</c> more times."
+      "descB": "Shoot for <c=attack>{{damage1}}</c> dmg. <c=downside>Spend 2 enemy tax</c> to shoot for <c=attack>{{damage1}}</c> dmg <c=keyword>four</c> more times."
     },
     "AllIn": {
       "name": "All-In",

@@ -75,7 +75,7 @@ namespace TeraTaxMod.Cards
                             {
                                 new AAttack()
                                 {
-                                    damage = GetDmg(s,1),
+                                    damage = GetDmg(s,2),
                                  
                                 }
                             };
@@ -103,6 +103,10 @@ namespace TeraTaxMod.Cards
                         if (taxAmount >= bigRequiredTax)
                         {
 
+                            actions.Add(new AAttack()
+                            {
+                                damage = GetDmg(s, 1)
+                            });
                             actions.Add(new AAttack()
                             {
                                 damage = GetDmg(s, 1)
@@ -160,7 +164,7 @@ namespace TeraTaxMod.Cards
                     {
                         return new CardData
                         {
-                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "Overdraft", "descA"], new { damage1 = GetDmg(state, 1), damage2 = GetDmg(state, 3) })),
+                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "Overdraft", "descA"], new { damage1 = GetDmg(state, 2), damage2 = GetDmg(state, 3) })),
                             cost = 1,
 
                         };
