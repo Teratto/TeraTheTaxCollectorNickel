@@ -529,7 +529,7 @@ internal class CombatDialogue : IRegisterable
             {"ArtifactShieldPrepIsGone_Multi_Tera_0", new()
             {
                 type = NodeType.combat,
-                doesNotHaveArtifactTypes = [typeof(ShieldPrep)],
+                doesNotHaveArtifactTypes = [typeof(ShieldPrep), typeof(WarpMastery)],
                 turnStart = true,
                 maxTurnsThisCombat = 1,
                 oncePerRunTags = ["ShieldPrepIsGoneYouFool"],
@@ -1574,7 +1574,7 @@ internal class CombatDialogue : IRegisterable
                 maxDamageDealtToPlayerThisTurn = 1,
                 allPresent = [AmTera],
                 dialogue = [
-                    new(AmTera, "closed", "We can survive this one.")
+                    new(AmTera, "closed", "It's okay, that wasn't too bad.")
                     ]
             }},
             {"WeGotShotButTookNoDamage_Multi_Tera_0", new()
@@ -1649,9 +1649,26 @@ internal class CombatDialogue : IRegisterable
             }},
             {"ShopKeepBattleInsult", new(){
                 edit = [
-                    new(EMod.countFromStart, 0, AmTera, "scared", "Oh. Oh no.,")
+                    new(EMod.countFromStart, 0, AmTera, "scared", "Oh. Oh no.")
                 ]
             }},
+            {"LookOutMissile_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                priority = true,
+                once = true,
+                justOverheated = true,
+                oncePerRunTags = ["goodMissleAdvice"],
+                anyDronesHostile = ["missile_normal",
+                                    "missile_heavy",
+                                    "missile_corrode",
+                                    "missile_breacher"],
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "lookaway", "I can't tax a missile. <c=stuffLabel>Shoot it</c>, maybe?")
+                    ]
+            }},
+            
         });
     }
 }

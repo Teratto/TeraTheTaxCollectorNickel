@@ -84,7 +84,7 @@ namespace TeraTaxMod.Cards
 
                             actions.Add(new AAttack()
                             {
-                                damage = GetDmg(s, 3),
+                                damage = GetDmg(s, 2),
                                 
                             });
                         };
@@ -164,7 +164,7 @@ namespace TeraTaxMod.Cards
                     {
                         return new CardData
                         {
-                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "Overdraft", "descA"], new { damage1 = GetDmg(state, 2), damage2 = GetDmg(state, 3) })),
+                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "Overdraft", "descA"], new { damage1 = GetDmg(state, 2), damage2 = GetDmg(state, 2) })),
                             cost = 1,
 
                         };

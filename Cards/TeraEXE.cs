@@ -38,8 +38,8 @@ public class TeraCatEXE : Card, IRegisterable
                     {
                         cost = 1,
                         exhaust = true,
-                        description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "TeraCatEXE", "desc"]))
-
+                        description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "TeraCatEXE", "desc"])),
+                        artTint = "266fd8"
                     };
                 }
             case Upgrade.A:
@@ -48,7 +48,8 @@ public class TeraCatEXE : Card, IRegisterable
                     {
                         cost = 0,
                         exhaust = true,
-                        description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "TeraCatEXE", "descA"]))
+                        description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "TeraCatEXE", "descA"])),
+                        artTint = "266fd8"
                     };
                 }
             case Upgrade.B:
@@ -57,7 +58,8 @@ public class TeraCatEXE : Card, IRegisterable
                     {
                         cost = 1,
                         exhaust = true,
-                        description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "TeraCatEXE", "descB"]))
+                        description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "TeraCatEXE", "descB"])),
+                         artTint = "266fd8"
                     };
                 }
             default:
@@ -66,7 +68,8 @@ public class TeraCatEXE : Card, IRegisterable
                     {
                         cost = 1,
                         exhaust = true,
-                        description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "TeraCatEXE", "desc"]))
+                        description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "TeraCatEXE", "desc"])),
+                        artTint = "266fd8"
                     };
                 }
         }
