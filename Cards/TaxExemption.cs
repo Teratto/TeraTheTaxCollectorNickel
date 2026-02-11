@@ -60,7 +60,8 @@ namespace TeraTaxMod.Cards
                         new AStatus()
                         {
                             status = Status.shield,
-                            statusAmount = GetX(c) + 1,
+                            xHint = 1,
+                            statusAmount = GetX(c),
                             targetPlayer = true
                         },
                         new AStatus()
@@ -82,8 +83,9 @@ namespace TeraTaxMod.Cards
                             }).SetTargetPlayer(false).AsCardAction,
                         new AStatus()
                         {
+                            xHint = 1,
                             status = Status.shield,
-                            statusAmount = GetX(c) + 1,
+                            statusAmount = GetX(c),
                             targetPlayer = true
                         },
                     };
@@ -99,8 +101,9 @@ namespace TeraTaxMod.Cards
                             }).SetTargetPlayer(false).AsCardAction,
                         new AStatus()
                         {
+                            xHint = 1,
                             status = Status.tempShield,
-                            statusAmount = GetX(c) + 1,
+                            statusAmount = GetX(c),
                             targetPlayer = true
                         },
                         new AStatus()
@@ -123,8 +126,9 @@ namespace TeraTaxMod.Cards
                             }).SetTargetPlayer(false).AsCardAction,
                         new AStatus()
                         {
+                            xHint = 1,
                             status = Status.shield,
-                            statusAmount = GetX(c) + 1,
+                            statusAmount = GetX(c),
                             targetPlayer = true
                         },
                         new AStatus()

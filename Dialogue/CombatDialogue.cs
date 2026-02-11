@@ -1356,7 +1356,7 @@ internal class CombatDialogue : IRegisterable
                 oncePerCombatTags = ["OverheatDrakesFault"],
                 allPresent = [AmTera, AmDrake],
                 dialogue = [
-                    new(AmDrake, "shyBlush", "Ah, consequences, we meet again."),
+                    new(AmDrake, "slyBlush", "Ah, consequences, we meet again."),
                     new(AmTera, "squint", "Drake! C'mon, you're more careful than this!")
                     ]
             }},
@@ -1368,7 +1368,7 @@ internal class CombatDialogue : IRegisterable
                 allPresent = [AmTera, AmDrake],
                 dialogue = [
                     new(AmTera, "squint", "Drake, what the heck!"),
-                    new(AmTera, "shyBlush", "My hubris has bested me.")
+                    new(AmDrake, "slyBlush", "My hubris has bested me.")
                     ]
             }},
             {"OverheatDrakesFault_Multi_9", new(){
@@ -1445,6 +1445,63 @@ internal class CombatDialogue : IRegisterable
                 allPresent = [AmTera],
                 dialogue = [
                     new(AmTera, "happy", "We are OWNING them!")
+                    ]
+            }},
+            {"ThatsALotOfDamageToThemByTera_Multi_Tera_0", new()
+            {
+                type = NodeType.combat,
+                minDamageDealtToEnemyThisTurn = 10,
+                whoDidThat = AmTeraDeck,
+                playerShotJustHit = true,
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "happytaxes", "Awe yeah, it's tax time.")
+                    ]
+            }},
+            {"ThatsALotOfDamageToThemByTera_Multi_Tera_1", new()
+            {
+                type = NodeType.combat,
+                minDamageDealtToEnemyThisTurn = 10,
+                whoDidThat = AmTeraDeck,
+                playerShotJustHit = true,
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "happy", "Get ABSOLUTELY destroyed!")
+                    ]
+            }},
+            {"ThatsALotOfDamageToThemByTera_Multi_Tera_2", new()
+            {
+                type = NodeType.combat,
+                minDamageDealtToEnemyThisTurn = 10,
+                whoDidThat = AmTeraDeck,
+                playerShotJustHit = true,
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "happy", "How's' it feel now, huh?!?")
+                    ]
+            }},
+            {"ThatsALotOfDamageToThemByTera_Multi_Tera_3", new()
+            {
+                type = NodeType.combat,
+                minDamageDealtToEnemyThisTurn = 10,
+                whoDidThat = AmTeraDeck,
+                playerShotJustHit = true,
+                allPresent = [AmTera, AmDrake],
+                dialogue = [
+                    new(AmDrake, "I knew you had it in you."),
+                    new(AmTera, "blush", "T-Thank you!")
+                    ]
+            }},
+            {"ThatsALotOfDamageToThemByTera_Multi_Tera_4", new()
+            {
+                type = NodeType.combat,
+                minDamageDealtToEnemyThisTurn = 10,
+                whoDidThat = AmTeraDeck,
+                playerShotJustHit = true,
+                allPresent = [AmTera, AmDrake],
+                dialogue = [
+                    new(AmTera, "happy", "I am DESTROYING them right now!"),
+                    new(AmDrake, "Once a pirate, always a pirate.")
                     ]
             }},
             {"ThatsALotOfDamageToUs_Multi_Tera_0", new()

@@ -72,7 +72,7 @@ namespace TeraTaxMod.Cards
                         },
                         new ADrawCard()
                         {
-                            count = 3,
+                            count = 4,
                             dialogueSelector = ".Tenacity"
                         },
                     };
@@ -102,7 +102,7 @@ namespace TeraTaxMod.Cards
                         },
                         new ADrawCard()
                         {
-                            count = 3,
+                            count = 4,
                             dialogueSelector = ".Tenacity"
                         },
                     };
@@ -132,7 +132,7 @@ namespace TeraTaxMod.Cards
                         },
                         new ADrawCard()
                         {
-                            count = 3,
+                            count = 4,
                             dialogueSelector = ".Tenacity"
                         },
                     };
@@ -162,7 +162,7 @@ namespace TeraTaxMod.Cards
                         },
                         new ADrawCard()
                         {
-                            count = 3,
+                            count = 4,
                             dialogueSelector = ".Tenacity"
                         },
                     };

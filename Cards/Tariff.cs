@@ -60,7 +60,7 @@ namespace TeraTaxMod.Cards
                     {
                         new AAttack()
                         {
-                            damage = GetDmg(s,2),
+                            damage = GetDmg(s,1),
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
                             statusAmount = 1
                         }
@@ -99,7 +99,7 @@ namespace TeraTaxMod.Cards
         {
             return new CardData
             {
-                cost = 1,
+                cost = upgrade == Upgrade.A ? 0 : 1,
                 exhaust = false,
             };
         }

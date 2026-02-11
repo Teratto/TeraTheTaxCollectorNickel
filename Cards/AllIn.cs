@@ -28,7 +28,7 @@ namespace TeraTaxMod.Cards
                     upgradesTo = [Upgrade.A, Upgrade.B]
                 },
                 Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "AllIn", "name"]).Localize,
-                Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/CardAllin.png")).Sprite,
+                Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Card/CardDebtonate.png")).Sprite,
             });
         }
 
