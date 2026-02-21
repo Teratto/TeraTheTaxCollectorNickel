@@ -105,11 +105,6 @@ namespace TeraTaxMod.Cards
                                     {
                                         changeAmount = 2
                                     },
-                                new ADrawCard()
-                                    {
-                                        count = 1,
-                                        dialogueSelector = ".Forgiveness"
-                                    },
                             };
                         }
                     }
@@ -162,6 +157,7 @@ namespace TeraTaxMod.Cards
                         {
                             description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "Forgiveness", "descA"])),
                             cost = 0,
+                            retain = true,
                             
                         };
                     }
@@ -171,7 +167,7 @@ namespace TeraTaxMod.Cards
                         {
                             description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "Forgiveness", "descB"])),
                             cost = 0,
-                            retain = true
+                            infinite = true
                         };
                     }
                 default:

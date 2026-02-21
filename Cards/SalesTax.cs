@@ -68,7 +68,7 @@ namespace TeraTaxMod.Cards
                         },
                         new ADrawCard()
                         {
-                            count = 1
+                            count = 2
                         }
                     };
                     }

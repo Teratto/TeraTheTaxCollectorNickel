@@ -21,30 +21,35 @@ namespace TeraTaxMod;
 
 internal class ModEntry : SimpleMod
 {
+
     internal static ModEntry Instance { get; private set; } = null!;
     internal Harmony Harmony { get; }
     internal IKokoroApi.IV2 KokoroApi { get; }
 
-    public LocalDB localDB { get; set; } = null!;  // For dialogue machine
+   
 
-    internal IPlayableCharacterEntryV2 TeraCharacter {get;}
+    internal static IPlayableCharacterEntryV2 TeraCharacter { get; private set; } = null!;
     //Note: this IPlayableCharacterEntryV2 was originally in the helper.content function. I changed code
     //to try and get the "ismissing" status to work. Let's hope I did this right. If it breaks, remove
     //this from internal and add it back to the helper.content function.
+
     internal IDeckEntry TeraTaxDeck { get; }
     internal IStatusEntry TeraPersistenceStatus { get; }
     internal IStatusEntry TeraTaxationStatus { get; }
     internal IStatusEntry TeraStallNextStatus { get; }
     internal IStatusEntry TeraLockNextStatus { get; }
     internal IStatusEntry TeraBailoutStatus { get; }
+    public LocalDB localDB { get; set; } = null!;  // For dialogue machine
     internal ILocalizationProvider<IReadOnlyList<string>> AnyLocalizations { get; }
     internal ILocaleBoundNonNullLocalizationProvider<IReadOnlyList<string>> Localizations { get; }
+    
 
     /*
      * The following lists contain references to all types that will be registered to the game.
      * All cards and artifacts must be registered before they may be used in the game.
      * In theory only one collection could be used, containing all registrable types, but it is seperated this way for ease of organization.
      */
+    
     private static List<Type> TeraTaxCommonCardTypes = [
         typeof(Tariff),
         typeof(EggToss),
@@ -98,13 +103,14 @@ internal class ModEntry : SimpleMod
         typeof(Capitalism),
         typeof(Inflation)
     ];
-
     private static List<Type> TeraTaxDialogueTypes = [
         typeof(TauntDialogue),
         typeof(CardDialogue),
         typeof(CombatDialogue),
         typeof(EventDialogue)
    ];
+
+
 
     private static IEnumerable<Type> TeraTaxArtifactTypes =
         TeraTaxCommonArtifacts
@@ -115,8 +121,6 @@ internal class ModEntry : SimpleMod
             .Concat(TeraTaxArtifactTypes)
             .Concat(TeraTaxDialogueTypes);
 
-    //private static List<Type> TeraCharacterEXETypes = [
-        //typeof(TeraCatEXE) - DON'T FORGET TO ADD THIS
 
    
 
@@ -141,21 +145,7 @@ internal class ModEntry : SimpleMod
         );
 
 
-        // The following two are used for the dialogue machine
-        helper.Events.OnModLoadPhaseFinished += (_, phase) =>
-        {
-            if (phase == ModLoadPhase.AfterDbInit)
-            {
-                localDB = new(helper, package);
-            }
-        };
-        helper.Events.OnLoadStringsForLocale += (_, thing) =>
-        {
-            foreach (KeyValuePair<string, string> entry in localDB.GetLocalizationResults(thing.Locale))
-            {
-                thing.Localizations[entry.Key] = entry.Value;
-            }
-        };
+       
 
         /*
          * A deck only defines how cards should be grouped, for things such as codex sorting and Second Opinions.
@@ -211,8 +201,7 @@ internal class ModEntry : SimpleMod
          * All the IRegisterable types placed into the static lists at the start of the class are initialized here.
          * This snippet invokes all of them, allowing them to register themselves with the package and helper.
          */
-        foreach (var type in AllRegisterableTypes)
-            AccessTools.DeclaredMethod(type, nameof(IRegisterable.Register))?.Invoke(null, [package, helper]);
+        
         
         /*
          * Characters have required animations, recommended animations, and you have the option to add more.
@@ -240,7 +229,8 @@ internal class ModEntry : SimpleMod
             ]
         });
 
-        TeraCharacter = helper.Content.Characters.V2.RegisterPlayableCharacter("Tera", new()
+
+        TeraCharacter = helper.Content.Characters.V2.RegisterPlayableCharacter("Tera", new PlayableCharacterConfigurationV2
         {
             Deck = TeraTaxDeck.Deck,
             BorderSprite = RegisterSprite(package, "assets/Animation/panel_tera.png").Sprite,
@@ -456,12 +446,24 @@ internal class ModEntry : SimpleMod
 
         _ = new TeraBailoutManager();
         _ = new FlightTraining();
+        foreach (var type in AllRegisterableTypes)
+            AccessTools.DeclaredMethod(type, nameof(IRegisterable.Register))?.Invoke(null, [package, helper]);
 
-
-        /*
-         * Some classes require so little management that a manager may not be worth writing.
-         * In AGainPonder's case, it is simply a need for two sprites and evaluation of an artifact's effect.
-         */
+        // The following two are used for the dialogue machine
+        helper.Events.OnModLoadPhaseFinished += (_, phase) =>
+        {
+            if (phase == ModLoadPhase.AfterDbInit)
+            {
+                localDB = new(helper, package);
+            }
+        };
+        helper.Events.OnLoadStringsForLocale += (_, thing) =>
+        {
+            foreach (KeyValuePair<string, string> entry in localDB.GetLocalizationResults(thing.Locale))
+            {
+                thing.Localizations[entry.Key] = entry.Value;
+            }
+        };
 
     }
 

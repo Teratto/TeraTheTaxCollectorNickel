@@ -860,7 +860,7 @@ internal class CombatDialogue : IRegisterable
                 oncePerCombatTags = ["aboutToDie"],
                 allPresent = [AmTera, AmMax],
                 dialogue = [
-                    new(AmBooks, "neutral", "It's over man."),
+                    new(AmMax, "neutral", "It's over man."),
                     new(AmTera, "lookawaynervous", "Yeah... I can feel it.")
 
                     ]
@@ -1404,9 +1404,9 @@ internal class CombatDialogue : IRegisterable
                 whoDidThat = Deck.peri,
                 oncePerRun = true,
                 oncePerCombatTags = ["PeriHitEmYo"],
-                allPresent = [AmTera, AmMax],
+                allPresent = [AmTera, AmPeri],
                 dialogue = [
-                    new(AmTera, "happy", "Nice one Max!")
+                    new(AmTera, "happy", "Good aim, Peri!")
                     ]
             }},
             {"PeriWentMissing_Multi_Tera_0", new()
@@ -1725,7 +1725,239 @@ internal class CombatDialogue : IRegisterable
                     new(AmTera, "lookaway", "I can't tax a missile. <c=stuffLabel>Shoot it</c>, maybe?")
                     ]
             }},
-            
+            {"TeraWentMissing_0", new()
+            {
+                type = NodeType.combat,
+                priority = true,
+                lastTurnPlayerStatuses = [MissingTera],
+                oncePerRun = true,
+                oncePerCombatTags = ["teraWentMissing"],
+                allPresent = [AmTera, AmPeri],
+                dialogue = [
+                    new(AmPeri, "mad", "Tera, get back to your station.")
+                    ]
+            }},
+            {"TeraWentMissing_1", new()
+            {
+                type = NodeType.combat,
+                priority = true,
+                lastTurnPlayerStatuses = [MissingTera],
+                oncePerRun = true,
+                oncePerCombatTags = ["teraWentMissing"],
+                allPresent = [AmTera, AmPeri],
+                dialogue = [
+                    new(AmPeri, "Please stop hiding under your chair.")
+                    ]
+            }},
+            {"TeraWentMissing_2", new()
+            {
+                type = NodeType.combat,
+                priority = true,
+                
+                oncePerRun = true,
+                oncePerCombatTags = ["teraWentMissing"],
+                allPresent = [ AmDizzy],
+                lastTurnPlayerStatuses = [MissingTera],
+                dialogue = [
+                    new(AmDizzy, "Ah, the bird's hiding under the control panel again.")
+                    ]
+            }},
+            {"TeraWentMissing_3", new()
+            {
+                type = NodeType.combat,
+                priority = true,
+                lastTurnPlayerStatuses = [MissingTera],
+                oncePerRun = true,
+                oncePerCombatTags = ["teraWentMissing"],
+                allPresent = [AmTera, AmRiggs],
+                dialogue = [
+                    new(AmRiggs, "Ah! Tera knocked over my boba!")
+                    ]
+            }},
+            {"TeraWentMissing_4", new()
+            {
+                type = NodeType.combat,
+                priority = true,
+                lastTurnPlayerStatuses = [MissingTera],
+                oncePerRun = true,
+                oncePerCombatTags = ["teraWentMissing"],
+                allPresent = [AmTera, AmRiggs],
+                dialogue = [
+                    new(AmRiggs, "There he goes again.")
+                    ]
+            }},
+            {"TeraWentMissing_5", new()
+            {
+                type = NodeType.combat,
+                priority = true,
+                
+                oncePerRun = true,
+                oncePerCombatTags = ["teraWentMissing"],
+                allPresent = [ AmDizzy],
+                lastTurnPlayerStatuses = [MissingTera],
+                dialogue = [
+                    new(AmDizzy, "Never seen a bird waddle that fast.")
+                    ]
+            }},
+            {"TeraWentMissing_6", new()
+            {
+                type = NodeType.combat,
+                priority = true,
+                lastTurnPlayerStatuses = [MissingTera],
+                oncePerRun = true,
+                oncePerCombatTags = ["teraWentMissing"],
+                allPresent = [AmTera, AmIsaac],
+                dialogue = [
+                    new(AmIsaac, "Aww, he did the head bob thing as he ran away.")
+                    ]
+            }},
+            {"TeraWentMissing_7", new()
+            {
+                type = NodeType.combat,
+                priority = true,
+                lastTurnPlayerStatuses = [MissingTera],
+                oncePerRun = true,
+                oncePerCombatTags = ["teraWentMissing"],
+                allPresent = [AmTera, AmIsaac],
+                dialogue = [
+                    new(AmIsaac, "shy", "I can see him poking his beak out from my pile of drones.")
+                    ]
+            }},
+            {"TeraWentMissing_8", new()
+            {
+                type = NodeType.combat,
+                priority = true,
+                lastTurnPlayerStatuses = [MissingTera],
+                oncePerRun = true,
+                oncePerCombatTags = ["teraWentMissing"],
+                allPresent = [AmTera, AmDrake],
+                dialogue = [
+                    new(AmDrake, "squint", "What did I tell you about running away?")
+                    ]
+            }},
+            {"TeraWentMissing_9", new()
+            {
+                type = NodeType.combat,
+                priority = true,
+                lastTurnPlayerStatuses = [MissingTera],
+                oncePerRun = true,
+                oncePerCombatTags = ["teraWentMissing"],
+                allPresent = [AmTera, AmDrake],
+                dialogue = [
+                    new(AmDrake, "sly", "Chickening out already, Tera?")
+                    ]
+            }},
+            {"TeraWentMissing_10", new()
+            {
+                type = NodeType.combat,
+                priority = true,
+                lastTurnPlayerStatuses = [MissingTera],
+                oncePerRun = true,
+                oncePerCombatTags = ["teraWentMissing"],
+                allPresent = [AmTera, AmDrake],
+                dialogue = [
+                    new(AmDrake, "Pirates don't run away from their problems, ya know.")
+                    ]
+            }},
+            {"TeraWentMissing_11", new()
+            {
+                type = NodeType.combat,
+                priority = true,
+                lastTurnPlayerStatuses = [MissingTera],
+                oncePerRun = true,
+                oncePerCombatTags = ["teraWentMissing"],
+                allPresent = [AmTera, AmMax],
+                dialogue = [
+                    new(AmMax, "Stop running by my monitors!")
+                    ]
+            }},
+            {"TeraWentMissing_12", new()
+            {
+                type = NodeType.combat,
+                priority = true,
+                lastTurnPlayerStatuses = [MissingTera],
+                oncePerRun = true,
+                oncePerCombatTags = ["teraWentMissing"],
+                allPresent = [AmTera, AmMax],
+                dialogue = [
+                    new(AmMax, "Didn't know birds can run that fast.")
+                    ]
+            }},
+            {"TeraWentMissing_13", new()
+            {
+                type = NodeType.combat,
+                priority = true,
+                lastTurnPlayerStatuses = [MissingTera],
+                oncePerRun = true,
+                oncePerCombatTags = ["teraWentMissing"],
+                allPresent = [AmTera, AmMax],
+                dialogue = [
+                    new(AmMax, "Is there like, a bug in his code or something?")
+                    ]
+            }},
+            {"TeraWentMissing_14", new()
+            {
+                type = NodeType.combat,
+                priority = true,
+             
+                oncePerRun = true,
+                oncePerCombatTags = ["teraWentMissing"],
+                allPresent = [ AmBooks],
+                lastTurnPlayerStatuses = [MissingTera],
+                dialogue = [
+                    new(AmBooks, "While you're gone, can you snag me some cookies?")
+                    ]
+            }},
+            {"TeraWentMissing_15", new()
+            {
+                type = NodeType.combat,
+                priority = true,
+              
+                oncePerRun = true,
+                oncePerCombatTags = ["teraWentMissing"],
+                allPresent = [ AmBooks],
+                lastTurnPlayerStatuses = [MissingTera],
+                dialogue = [
+                    new(AmBooks, "Teehee, look at that bird go!")
+                    ]
+            }},
+            {"TeraWentMissing_16", new()
+            {
+                type = NodeType.combat,
+                priority = true,
+                lastTurnPlayerStatuses = [MissingTera],
+                oncePerRun = true,
+                oncePerCombatTags = ["teraWentMissing"],
+                allPresent = [AmTera, AmCat],
+                dialogue = [
+                    new(AmCat, "squint", "Tera, to the cock pit. Now.")
+                    ]
+            }},
+            {"TeraWentMissing_17", new()
+            {
+                type = NodeType.combat,
+                priority = true,
+                lastTurnPlayerStatuses = [MissingTera],
+                oncePerRun = true,
+                oncePerCombatTags = ["teraWentMissing"],
+                allPresent = [AmTera, AmCat],
+                dialogue = [
+                    new(AmCat, "Sometimes I wonder why I brought him on this ship.")
+                    ]
+            }},
+            {"TeraWentMissing_18", new()
+            {
+                type = NodeType.combat,
+                priority = true,
+                
+                oncePerRun = true,
+                oncePerCombatTags = ["teraWentMissing"],
+                allPresent = [ AmDizzy],
+                lastTurnPlayerStatuses = [MissingTera],
+                dialogue = [
+                    new(AmDizzy, "explains", "Ah, a bird's natural fight or flight response.")
+                    ]
+            }},
         });
     }
 }

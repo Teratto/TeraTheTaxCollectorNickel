@@ -86,7 +86,7 @@ namespace TeraTaxMod.Cards
                         new AStatus()
                         {
                             status = ModEntry.Instance.TeraBailoutStatus.Status,
-                            statusAmount = 1,
+                            statusAmount = 2,
                             targetPlayer = true
                         },
                     };
@@ -105,12 +105,6 @@ namespace TeraTaxMod.Cards
                         {
                             status = ModEntry.Instance.TeraBailoutStatus.Status,
                             statusAmount = 1,
-                            targetPlayer = false
-                        },
-                        new AStatus()
-                        {
-                            status = ModEntry.Instance.TeraBailoutStatus.Status,
-                            statusAmount = 2,
                             targetPlayer = true
                         },
                     };

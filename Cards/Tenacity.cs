@@ -47,131 +47,236 @@ namespace TeraTaxMod.Cards
             int playerTax = s.ship.Get(ModEntry.Instance.TeraTaxationStatus.Status);
             switch (this.upgrade)
             {
+
                 case Upgrade.None:
                     {
-                        return new List<CardAction>
-                    {
-                        new AStatus()
+                        if (s.ship.Get(ModEntry.Instance.TeraBailoutStatus.Status) > 0)
                         {
-                            
-                            status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 1,
-                            targetPlayer = true
-                        },
-                        new AVariableHint()
+                            return new List<CardAction>
+                            {
+                                new AStatus()
+                                {
+
+                                status = ModEntry.Instance.TeraTaxationStatus.Status,
+                                statusAmount = 1,
+                                targetPlayer = true
+                                },
+                                new AVariableHint()
+                                {
+                                status = ModEntry.Instance.TeraTaxationStatus.Status
+                                },
+                                new AHurt()
+                                {
+                                hurtShieldsFirst = true,
+                                hurtAmount = GetX(s),
+                                xHint = 1,
+                                targetPlayer = true
+
+                                },
+                                new ADrawCard()
+                                {
+                                count = 4,
+                                dialogueSelector = ".Tenacity"
+                                },
+                            };
+                        }
+                        else
                         {
-                            status = ModEntry.Instance.TeraTaxationStatus.Status
-                        },
-                        new AHurt()
-                        {
-                            hurtShieldsFirst = true,
-                            hurtAmount = GetX(s) + 1,
-                            xHint = 1,
-                            targetPlayer = true
-                            
-                        },
-                        new ADrawCard()
-                        {
-                            count = 4,
-                            dialogueSelector = ".Tenacity"
-                        },
-                    };
+                            return new List<CardAction>
+                            {
+                                new AStatus()
+                                {
+
+                                status = ModEntry.Instance.TeraTaxationStatus.Status,
+                                statusAmount = 1,
+                                targetPlayer = true
+                                },
+                                new AVariableHint()
+                                {
+                                status = ModEntry.Instance.TeraTaxationStatus.Status
+                                },
+                                new AHurt()
+                                {
+                                hurtShieldsFirst = true,
+                                hurtAmount = GetX(s) + 1,
+                                xHint = 1,
+                                targetPlayer = true
+
+                                },
+                                new ADrawCard()
+                                {
+                                count = 4,
+                                dialogueSelector = ".Tenacity"
+                                },
+                            };
+
+                        }
                     }
                 case Upgrade.A:
                     {
                         return new List<CardAction>
-                    {
-                        new AVariableHint()
-                        {
-                            status = ModEntry.Instance.TeraTaxationStatus.Status
-                        },
-                        new AHurt()
-                        {
-                            hurtShieldsFirst = true,
-                            hurtAmount = GetX(s),
-                            xHint = 1,
-                            targetPlayer = true
+                            {
+                                
+                                new AVariableHint()
+                                {
+                                status = ModEntry.Instance.TeraTaxationStatus.Status
+                                },
+                                new AHurt()
+                                {
+                                hurtShieldsFirst = true,
+                                hurtAmount = GetX(s),
+                                xHint = 1,
+                                targetPlayer = true
 
-                        },
-                        new AStatus()
-                        {
+                                },
+                                new AStatus()
+                                {
 
-                            status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 1,
-                            targetPlayer = true
-                        },
-                        new ADrawCard()
-                        {
-                            count = 4,
-                            dialogueSelector = ".Tenacity"
-                        },
-                    };
+                                status = ModEntry.Instance.TeraTaxationStatus.Status,
+                                statusAmount = 1,
+                                targetPlayer = true
+                                },
+                                new ADrawCard()
+                                {
+                                count = 4,
+                                dialogueSelector = ".Tenacity"
+                                },
+                            };
                     }
+                    break;
                 case Upgrade.B:
                     {
-                        return new List<CardAction>
-                    {
-                        new AStatus()
+                        if (s.ship.Get(ModEntry.Instance.TeraBailoutStatus.Status) > 0)
                         {
+                            return new List<CardAction>
+                            {
+                                new AStatus()
+                                {
 
-                            status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 1,
-                            targetPlayer = true
-                        },
-                        new AVariableHint()
-                        {
-                            status = ModEntry.Instance.TeraTaxationStatus.Status
-                        },
-                        new AHurt()
-                        {
-                            hurtShieldsFirst = true,
-                            hurtAmount = GetX(s) + 1,
-                            xHint = 1,
-                            targetPlayer = true
+                                status = ModEntry.Instance.TeraTaxationStatus.Status,
+                                statusAmount = 1,
+                                targetPlayer = true
+                                },
+                                new AVariableHint()
+                                {
+                                status = ModEntry.Instance.TeraTaxationStatus.Status
+                                },
+                                new AHurt()
+                                {
+                                hurtShieldsFirst = true,
+                                hurtAmount = GetX(s),
+                                xHint = 1,
+                                targetPlayer = true
 
-                        },
-                        new ADrawCard()
+                                },
+                                new ADrawCard()
+                                {
+                                count = 4,
+                                dialogueSelector = ".Tenacity"
+                                },
+                            };
+                        }
+                        else
                         {
-                            count = 4,
-                            dialogueSelector = ".Tenacity"
-                        },
-                    };
+                            return new List<CardAction>
+                            {
+                                new AStatus()
+                                {
+
+                                status = ModEntry.Instance.TeraTaxationStatus.Status,
+                                statusAmount = 1,
+                                targetPlayer = true
+                                },
+                                new AVariableHint()
+                                {
+                                status = ModEntry.Instance.TeraTaxationStatus.Status
+                                },
+                                new AHurt()
+                                {
+                                hurtShieldsFirst = true,
+                                hurtAmount = GetX(s) + 1,
+                                xHint = 1,
+                                targetPlayer = true
+
+                                },
+                                new ADrawCard()
+                                {
+                                count = 4,
+                                dialogueSelector = ".Tenacity"
+                                },
+                            };
+
+                        }
                     }
                 default:
                     {
-                        return new List<CardAction>
-                    {
-                        new AStatus()
+                        if (s.ship.Get(ModEntry.Instance.TeraBailoutStatus.Status) > 0)
                         {
+                            return new List<CardAction>
+                            {
+                                new AStatus()
+                                {
 
-                            status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 1,
-                            targetPlayer = true
-                        },
-                        new AVariableHint()
-                        {
-                            status = ModEntry.Instance.TeraTaxationStatus.Status
-                        },
-                        new AHurt()
-                        {
-                            hurtShieldsFirst = true,
-                            hurtAmount = GetX(s) + 1,
-                            xHint = 1,
-                            targetPlayer = true
+                                status = ModEntry.Instance.TeraTaxationStatus.Status,
+                                statusAmount = 1,
+                                targetPlayer = true
+                                },
+                                new AVariableHint()
+                                {
+                                status = ModEntry.Instance.TeraTaxationStatus.Status
+                                },
+                                new AHurt()
+                                {
+                                hurtShieldsFirst = true,
+                                hurtAmount = GetX(s),
+                                xHint = 1,
+                                targetPlayer = true
 
-                        },
-                        new ADrawCard()
+                                },
+                                new ADrawCard()
+                                {
+                                count = 4,
+                                dialogueSelector = ".Tenacity"
+                                },
+                            };
+                        }
+                        else
                         {
-                            count = 4,
-                            dialogueSelector = ".Tenacity"
-                        },
-                    };
+                            return new List<CardAction>
+                            {
+                                new AStatus()
+                                {
+
+                                status = ModEntry.Instance.TeraTaxationStatus.Status,
+                                statusAmount = 1,
+                                targetPlayer = true
+                                },
+                                new AVariableHint()
+                                {
+                                status = ModEntry.Instance.TeraTaxationStatus.Status
+                                },
+                                new AHurt()
+                                {
+                                hurtShieldsFirst = true,
+                                hurtAmount = GetX(s) + 1,
+                                xHint = 1,
+                                targetPlayer = true
+
+                                },
+                                new ADrawCard()
+                                {
+                                count = 4,
+                                dialogueSelector = ".Tenacity"
+                                },
+                            };
+
+                        }
                     }
             }
 
         }
 
-        
+
         public override CardData GetData(State state)
         {
             return new CardData

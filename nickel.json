@@ -1,6 +1,6 @@
 {
   "UniqueName": "TeraTheTaxCollector",
-  "Version": "0.1.0",
+  "Version": "1.0.0",
   "Author": "Teratto",
   "Description": "Introduces a silly tax bird to Cobalt Core.",
   "RequiredApiVersion": "1.5.7",

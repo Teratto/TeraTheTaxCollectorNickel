@@ -282,7 +282,7 @@ namespace TeraTaxMod.Dialogue
                 type = NodeType.@event,
                 lookup = [ "zone_first" ],
                 once = true,
-                allPresent = [ AmTera ],
+                allPresent = [ AmTera, AmPeri ],
                 requiredScenes = ["Tera_Intro_0", "Peri_1"],
                 bg = "BGRunStart",
                 dialogue = [
@@ -301,7 +301,7 @@ namespace TeraTaxMod.Dialogue
                 type = NodeType.@event,
                 lookup = [ "zone_first" ],
                 once = true,
-                allPresent = [ AmTera ],
+                allPresent = [ AmTera, AmMax ],
                 requiredScenes = ["Tera_Intro_0", "Hacker_1"],
                 bg = "BGRunStart",
                 dialogue = [
@@ -318,7 +318,7 @@ namespace TeraTaxMod.Dialogue
                 type = NodeType.@event,
                 lookup = [ "zone_first" ],
                 once = true,
-                allPresent = [ AmTera ],
+                allPresent = [ AmTera, AmDrake ],
                 requiredScenes = ["Tera_Intro_0", "Eunice_1"],
                 bg = "BGRunStart",
                 dialogue = [
@@ -342,7 +342,7 @@ namespace TeraTaxMod.Dialogue
                 type = NodeType.@event,
                 lookup = [ "zone_first" ],
                 once = true,
-                allPresent = [ AmTera ],
+                allPresent = [ AmTera, AmDrake ],
                 requiredScenes = ["Tera_Eunice_0"],
                 bg = "BGRunStart",
                 dialogue = [
@@ -362,7 +362,7 @@ namespace TeraTaxMod.Dialogue
                 type = NodeType.@event,
                 lookup = [ "zone_first" ],
                 once = true,
-                allPresent = [ AmTera ],
+                allPresent = [ AmTera, AmDrake ],
                 requiredScenes = ["Tera_Eunice_1"],
                 bg = "BGRunStart",
                 dialogue = [

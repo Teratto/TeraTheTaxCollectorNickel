@@ -44,7 +44,7 @@ static class CommonDefinitions
     internal readonly static string JohnsonFrugal = "Shockah.Johnson::Frugality";
 
 
-    internal static Status MissingTera => ModEntry.Instance.TeraCharacter.MissingStatus.Status;
+    internal static Status MissingTera => ModEntry.TeraCharacter.MissingStatus.Status;
 
     //internal static Status TryGetMissing(this string who)
     //{

@@ -59,7 +59,7 @@ namespace TeraTaxMod.Cards
                         },
                         new AStatus()
                         {
-                            status = ModEntry.Instance.TeraCharacter.MissingStatus.Status,
+                            status = ModEntry.TeraCharacter.MissingStatus.Status,
                             statusAmount = 1,
                             targetPlayer = true
                         }
@@ -82,7 +82,7 @@ namespace TeraTaxMod.Cards
                         },
                         new AStatus()
                         {
-                            status = ModEntry.Instance.TeraCharacter.MissingStatus.Status,
+                            status = ModEntry.TeraCharacter.MissingStatus.Status,
                             statusAmount = 1,
                             targetPlayer = true
                         }
@@ -122,7 +122,7 @@ namespace TeraTaxMod.Cards
                         },
                         new AStatus()
                         {
-                            status = ModEntry.Instance.TeraCharacter.MissingStatus.Status,
+                            status = ModEntry.TeraCharacter.MissingStatus.Status,
                             statusAmount = 1,
                             targetPlayer = true
                         }

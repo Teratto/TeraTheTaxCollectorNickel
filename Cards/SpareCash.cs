@@ -52,6 +52,7 @@ namespace TeraTaxMod.Cards
                             statusAmount = 1,
                             targetPlayer = true,
                             dialogueSelector = ".SpareCash"
+
                         }
                     };
                     }
@@ -65,6 +66,10 @@ namespace TeraTaxMod.Cards
                             statusAmount = 2,
                             targetPlayer = true,
                             dialogueSelector = ".SpareCash"
+                        },
+                        new ADrawCard()
+                        {
+                            count = 1,
                         },
                     };
                     }
@@ -105,7 +110,7 @@ namespace TeraTaxMod.Cards
             return new CardData
             {
                 cost = 0,
-                exhaust = upgrade == Upgrade.B ? false : true
+                exhaust = upgrade == Upgrade.B ? false : true,
             };
         }
 

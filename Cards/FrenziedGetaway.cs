@@ -93,13 +93,7 @@ namespace TeraTaxMod.Cards
                             status = ModEntry.Instance.TeraLockNextStatus.Status,
                             statusAmount = 1,
                             targetPlayer = true
-                        },
-                         new AStatus()
-                        {
-                            status = Status.engineStall,
-                            statusAmount = 1,
-                            targetPlayer = true
-                        },   
+                        }
                     };
                     }
                 default:
@@ -130,7 +124,7 @@ namespace TeraTaxMod.Cards
             return new CardData
             {
                 cost = 1,
-                exhaust = false,
+                exhaust = upgrade == Upgrade.B ? true : false,
             };
         }
 

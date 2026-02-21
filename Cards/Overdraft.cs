@@ -161,7 +161,7 @@ namespace TeraTaxMod.Cards
                         };
                     }
                 case Upgrade.A:
-                    {
+                    { 
                         return new CardData
                         {
                             description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "Overdraft", "descA"], new { damage1 = GetDmg(state, 2), damage2 = GetDmg(state, 2) })),

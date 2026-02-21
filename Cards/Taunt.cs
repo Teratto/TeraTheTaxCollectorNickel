@@ -92,14 +92,8 @@ namespace TeraTaxMod.Cards
                     {
                         new AStatus()
                         {
-                            status = Status.shield,
+                            status = Status.tempShield,
                             statusAmount = 3,
-                            targetPlayer = true
-                        },
-                        new AStatus()
-                        {
-                            status = Status.tempPayback,
-                            statusAmount = 2,
                             targetPlayer = true
                         },
                         new AStatus()
@@ -140,8 +134,8 @@ namespace TeraTaxMod.Cards
         {
             return new CardData
             {
-                
-                cost = 1,
+
+                cost = upgrade == Upgrade.B ? 0 : 1,
                 exhaust = false,
             };
         }

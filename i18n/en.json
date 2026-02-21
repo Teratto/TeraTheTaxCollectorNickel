@@ -86,7 +86,7 @@
     "Forgiveness": {
       "name": "Forgiveness",
       "desc": "<c=downside>Spend 1 enemy tax</c> to <c=status>gain 2 energy</c>.",
-      "descA": "<c=downside>Spend 1 enemy tax</c> to <c=status>gain 2 energy</c> and <c=action>draw 1 card</c>.",
+      "descA": "<c=downside>Spend 1 enemy tax</c> to <c=status>gain 2 energy</c>.",
       "descB": "<c=downside>Spend 1 enemy tax</c> to <c=status>gain 2 energy</c>."
     },
     "Overdraft": {
