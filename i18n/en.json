@@ -23,6 +23,10 @@
       "Bailout": {
         "name": "Bailout",
         "desc": "The next time you would gain any amount of a <c=downside>negative status</c>, instead remove <c=keyword>1</c> <c=status>BAILOUT</c>."
+      },
+      "Dividends": {
+        "name": "Dividends",
+        "desc": "On end of turn, if you do not have <c=status>BAILOUT</c>, gain one."
       }
     },
   "action": {
@@ -110,7 +114,7 @@
 
     },
     "Siphon": {
-      "name": "Mutual Funds"
+      "name": "Sharehold"
     },
 
     "SpareCash": {

@@ -23,7 +23,7 @@ namespace TeraTaxMod.Cards
                 Meta = new CardMeta
                 {
                     deck = ModEntry.Instance.TeraTaxDeck.Deck,
-                    rarity = Rarity.rare,
+                    rarity = Rarity.uncommon,
                     dontOffer = false,
                     upgradesTo = [Upgrade.A, Upgrade.B]
                 },

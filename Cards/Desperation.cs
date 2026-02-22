@@ -46,11 +46,13 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AStatus()
+                        new AEnergy()
                         {
-                            status = Status.powerdrive,
-                            statusAmount = 1,
-                            targetPlayer = true,
+                            changeAmount = 3,
+                        },
+                        new ADrawCard()
+                        {
+                            count = 3,
                         },
                         new AStatus()
                         {
@@ -65,11 +67,13 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AStatus()
+                        new AEnergy()
                         {
-                            status = Status.powerdrive,
-                            statusAmount = 1,
-                            targetPlayer = true
+                            changeAmount = 3,
+                        },
+                        new ADrawCard()
+                        {
+                            count = 3,
                         },
                         new AStatus()
                         {
@@ -84,19 +88,21 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AStatus()
+                        new AEnergy()
                         {
-                            status = Status.powerdrive,
-                            statusAmount = 2,
-                            targetPlayer = true
+                            changeAmount = 3,
+                        },
+                        new ADrawCard()
+                        {
+                            count = 5,
                         },
                         new AStatus()
                         {
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 6,
+                            statusAmount = 3,
                             targetPlayer = true,
                             dialogueSelector = ".Desperation"
-                        }
+                        },
 
                     };
                     }
@@ -104,11 +110,13 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AStatus()
+                        new AEnergy()
                         {
-                            status = Status.powerdrive,
-                            statusAmount = 1,
-                            targetPlayer = true
+                            changeAmount = 3,
+                        },
+                        new ADrawCard()
+                        {
+                            count = 3,
                         },
                         new AStatus()
                         {
@@ -128,7 +136,7 @@ namespace TeraTaxMod.Cards
         {
             return new CardData
             {
-                cost = upgrade == Upgrade.A ? 1 : 2,
+                cost = upgrade == Upgrade.A ? 0 : 1,
                 exhaust = true,
             };
         }

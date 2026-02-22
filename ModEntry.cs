@@ -39,6 +39,7 @@ internal class ModEntry : SimpleMod
     internal IStatusEntry TeraStallNextStatus { get; }
     internal IStatusEntry TeraLockNextStatus { get; }
     internal IStatusEntry TeraBailoutStatus { get; }
+    internal IStatusEntry TeraDividendsStatus { get; }
     public LocalDB localDB { get; set; } = null!;  // For dialogue machine
     internal ILocalizationProvider<IReadOnlyList<string>> AnyLocalizations { get; }
     internal ILocaleBoundNonNullLocalizationProvider<IReadOnlyList<string>> Localizations { get; }
@@ -60,6 +61,7 @@ internal class ModEntry : SimpleMod
         typeof(FrenziedGetaway),
         typeof(SalesTax),
         typeof(Overdraft),
+        typeof(Breakout)
     ];
     private static List<Type> TeraTaxUncommonCardTypes = [
         typeof(MarketCrash),
@@ -67,7 +69,7 @@ internal class ModEntry : SimpleMod
         typeof(TaxHike),
         typeof(TaxExemption),
         typeof(AllIn),
-        typeof(Siphon),
+      
         typeof(SpareCash),
     ];
     private static List<Type> TeraTaxRareCardTypes = [
@@ -75,7 +77,8 @@ internal class ModEntry : SimpleMod
         typeof(Desperation),
         typeof(Forgiveness),
         typeof(Tenacity),
-        typeof(Breakout)
+   
+        typeof(Siphon),
     ];
     private static List<Type> TeraTaxSpecialCardTypes = [
         typeof(EggShells),
@@ -427,6 +430,18 @@ internal class ModEntry : SimpleMod
             Name = AnyLocalizations.Bind(["status", "Bailout", "name"]).Localize,
             Description = AnyLocalizations.Bind(["status", "Bailout", "desc"]).Localize
         });
+        TeraDividendsStatus = helper.Content.Statuses.RegisterStatus("Dividends", new StatusConfiguration
+        {
+            Definition = new StatusDef
+            {
+                isGood = true,
+                affectedByTimestop = false,
+                color = new Color("4CBB17"),
+                icon = RegisterSprite(package, "assets/Feature/Dividends.png").Sprite
+            },
+            Name = AnyLocalizations.Bind(["status", "Dividends", "name"]).Localize,
+            Description = AnyLocalizations.Bind(["status", "Dividends", "desc"]).Localize
+        });
 
         /*
          * Managers are typically made to register themselves when constructed.
@@ -443,6 +458,8 @@ internal class ModEntry : SimpleMod
         KokoroApi.StatusLogic.RegisterHook(lockNextManager);
         TeraBailoutManager bailoutManager = new();
         KokoroApi.StatusLogic.RegisterHook(bailoutManager);
+        TeraDividendsManager dividendsManager = new();
+        KokoroApi.StatusLogic.RegisterHook(dividendsManager);
 
         _ = new TeraBailoutManager();
         _ = new FlightTraining();
