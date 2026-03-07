@@ -34,9 +34,9 @@ namespace TeraTaxMod.Dialogue
                 priority = false,
                 requireCharsUnlocked = ["eunice"],
                 requiredScenes = ["pirate_1"],
-                allPresent = [AmTera],
+                allPresent = [AmTera, AmDrakeEnemy],
                 dialogue = [
-                    new(AmDrake, "Ready for your final lesson?", flipped: true),
+                    new(AmDrakeEnemy, "Ready for your final lesson?", flipped: true),
                     new(AmTera, "lookawaynervous", "I-I guess so.")
                 ]
             }},
@@ -47,10 +47,10 @@ namespace TeraTaxMod.Dialogue
                 priority = false,
                 requireCharsUnlocked = ["eunice"],
                 requiredScenes = ["pirate_1"],
-                allPresent = [AmTera],
+                allPresent = [AmTera, AmDrakeEnemy],
                 dialogue = [
                     new(AmTera, "lookawaynervous", "D-Do we really have to do this?"),
-                    new(AmDrake, "Gotta prove who's the better pirate.", flipped: true)
+                    new(AmDrakeEnemy, "Gotta prove who's the better pirate.", flipped: true)
                 ]
             }},
             {$"Pirate_Infinite_AfterCrew_Multi_Tera_2", new(){
@@ -60,10 +60,88 @@ namespace TeraTaxMod.Dialogue
                 priority = false,
                 requireCharsUnlocked = ["eunice"],
                 requiredScenes = ["pirate_1"],
-                allPresent = [AmTera],
+                allPresent = [AmTera, AmDrakeEnemy],
                 dialogue = [
                     new(AmTera, "scared", "That's NOT who I think it is."),
-                    new(AmDrake, "Oh, but it is.", flipped: true)
+                    new(AmDrakeEnemy, "Oh, but it is.", flipped: true)
+                ]
+            }},
+            {$"Pirate_Infinite_AfterCrew_Multi_Tera_3", new(){
+                type = NodeType.@event,
+                lookup = ["before_pirate"],
+                once = false,
+                priority = false,
+                requireCharsUnlocked = ["eunice"],
+                requiredScenes = ["pirate_1"],
+                allPresent = [AmTera, AmDrakeEnemy],
+                dialogue = [
+                    new(AmTera, "scared", "D-Drake?"),
+                    new(AmDrakeEnemy, "Hello again, bird brain.", flipped: true)
+                ]
+            }},
+            {$"Pirate_Infinite_AfterCrew_Multi_Tera_4", new(){
+                type = NodeType.@event,
+                lookup = ["before_pirate"],
+                once = false,
+                priority = false,
+                requireCharsUnlocked = ["eunice"],
+                requiredScenes = ["pirate_1"],
+                allPresent = [AmTera, AmDrakeEnemy],
+                dialogue = [
+                    new(AmTera, "lookaway", "What if we just, turned around?"),
+                    new(AmDrakeEnemy, "You think I would let that happen?", flipped: true)
+                ]
+            }},
+            {$"Pirate_Infinite_AfterCrew_Multi_Tera_5", new(){
+                type = NodeType.@event,
+                lookup = ["before_pirate"],
+                once = false,
+                priority = false,
+                requireCharsUnlocked = ["eunice"],
+                requiredScenes = ["pirate_1"],
+                allPresent = [AmTera, AmDrakeEnemy],
+                dialogue = [
+                    new(AmTera, "neutral", "Just like old times?"),
+                    new(AmDrakeEnemy, "Just like old times.", flipped: true)
+                ]
+            }},
+            {$"Pirate_Infinite_AfterCrew_Multi_Tera_6", new(){
+                type = NodeType.@event,
+                lookup = ["before_pirate"],
+                once = false,
+                priority = false,
+                requireCharsUnlocked = ["eunice"],
+                requiredScenes = ["pirate_1"],
+                allPresent = [AmTera, AmDrakeEnemy],
+                dialogue = [
+                    new(AmDrakeEnemy, "Perfect, just the bird I wanted to see.", flipped: true),
+                    new(AmTera, "lookawaynervous", "Uh-oh."),
+                ]
+            }},
+            {$"Pirate_Infinite_AfterCrew_Multi_Tera_7", new(){
+                type = NodeType.@event,
+                lookup = ["before_pirate"],
+                once = false,
+                priority = false,
+                requireCharsUnlocked = ["eunice"],
+                requiredScenes = ["pirate_1"],
+                allPresent = [AmTera, AmDrakeEnemy],
+                dialogue = [
+                    new(AmDrakeEnemy, "Your flying skills are still terrible, you know.", flipped: true),
+                    new(AmTera, "lookawaynervous", "Thanks for the reminder."),
+                ]
+            }},
+            {$"Pirate_Infinite_AfterCrew_Multi_Tera_8", new(){
+                type = NodeType.@event,
+                lookup = ["before_pirate"],
+                once = false,
+                priority = true,
+                requireCharsUnlocked = ["eunice"],
+                requiredScenes = ["pirate_1"],
+                allPresent = [AmTera, AmDrakeEnemy],
+                dialogue = [
+                    new(AmDrakeEnemy, "Weak, just as always.", flipped: true),
+                    new(AmTera, "sad", "I'm still trying!"),
                 ]
             }},
             {"Sasha_2_Multi_2", new(){
@@ -174,6 +252,9 @@ namespace TeraTaxMod.Dialogue
                     new(EMod.countFromStart, 1, AmTera, "neutral", "Well, I finally found someone who flies worse than me.")
                 ]
             }},
+            {"ArtifactRansomWithDrake", new(){
+                nonePresent = [AmTera],
+                }},
             {"ArtifactRansomWithDrakeAndTera", new(){
                 type = NodeType.@event,
                 canSpawnOnMap = true,
@@ -252,9 +333,10 @@ namespace TeraTaxMod.Dialogue
                     new(AmTera, "neutral", "No, no! Just, wait a minute..."),
                     new(AmTera, "happy", "Aha, found it!"),
                     new(AmTera, "neutral", "An entire case documenting an unauthorized use of a fragmented 'time crystal'."),
-                    new(AmTera, "neutral", "No one knows where this crystal was found, or how this guy ended up with it in his posession."),
-                    new(AmTera, "lookaway", "He DID, however, end up getting caught in a loop of being sued over and over."),
-                    new(AmCat, "neutral", "That's gnarly.", true),
+                    new(AmTera, "neutral", "No one knows where this crystal was found, or how a criminal ended up with it in their posession."),
+                    new(AmTera, "neutral", "No one even knows where the crystal WENT, either. It just... vanished? Poofed after the trial was over."),
+                    new(AmTera, "lookaway", "The criminal DID, however, end up getting caught in a loop of being sued over and over."),
+                    new(AmCat, "grumpy", "That's terrible.", true),
                     new(AmTera, "neutral", "Yeah."),
                 ]
             }},
@@ -270,12 +352,17 @@ namespace TeraTaxMod.Dialogue
                     new(AmTera, "neutral", "Ah, so that was the time crystal, huh?"),
                     new(AmCat, "Part of it!", true),
                     new(AmTera, "neutral", "Huh, I wonder if that's why..."),
-                    new(AmTera, "neutral", "Hey, do you think Drake was ever after that crystal?"),
+                    new(AmTera, "neutral", "Hey, do you think Drake is here because of that crystal?"),
                     new(AmCat, "squint", "Huh? Why Drake?", true),
-                    new(AmTera, "neutral", "Well, the story about the guy getting sued."),
+                    new(AmTera, "neutral", "Well, the story about that criminal in a time loop."),
                     new(AmTera, "lookaway", "I told that to her, too."),
-                    new(AmTera, "lookawaynervous", "And she's been hunting that time crystal ever since."),
-                    new(AmCat, "squint", "...", true),
+                    new(AmTera, "lookawaynervous", "And since then, she's..."),
+                    new(AmTera, "neutral", "She's been looking for it. Her big ticket to fame, fortune. Everything, really."),
+                    new(AmTera, "neutral", "Always looking, waiting for any nugget of info on that crystal."),
+                    new(AmTera, "lookaway", "And I guess she found it."),
+                    new(AmCat, "worried", "I'm sorry, Tera.", true),
+                    new(AmTera, "neutral", "It's okay. I'm fine."),
+                    new(AmTera, "lookaway", "...I think."),
                 ]
             }},
             {"Tera_Peri_0", new(){
@@ -323,7 +410,7 @@ namespace TeraTaxMod.Dialogue
                 bg = "BGRunStart",
                 dialogue = [
                     new(AmTera, "scared", "...Holy crap."),
-                    new(AmTera, "scared", "Eunice, is that you?"),
+                    new(AmTera, "scared", "Eunice?"),
                     new(AmDrake, "reallymad", "Now who the HELL called me that?", true),
                     new(AmDrake, "reallymad", "I swear, I'm gonna-", true),
                     new(AmDrake, "squint", "...Holy hell.", true),

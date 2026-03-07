@@ -57,16 +57,9 @@ public class TeraBailoutManager : IKokoroApi.IV2.IStatusLogicApi.IHook
 
         if (__instance.statusAmount > 0 && currentBailout > 0 && isItGood == false)
         {
+            
             __instance.statusAmount = 0;
-            c.QueueImmediate(new AStatus()
-            {
-                targetPlayer = __instance.targetPlayer,
-                statusAmount = -1,
-                status = ModEntry.Instance.TeraBailoutStatus.Status,
-                statusPulse = ModEntry.Instance.TeraBailoutStatus.Status,
-            });
-
-            if (governmentGrantsGet == true)
+            if (governmentGrantsGet == true && currentShip == s.ship)
             {
                 c.QueueImmediate(new AStatus()
                 {
@@ -76,6 +69,15 @@ public class TeraBailoutManager : IKokoroApi.IV2.IStatusLogicApi.IHook
                 });
 
             }
+            c.QueueImmediate(new AStatus()
+            {
+                targetPlayer = __instance.targetPlayer,
+                statusAmount = -1,
+                status = ModEntry.Instance.TeraBailoutStatus.Status,
+                statusPulse = ModEntry.Instance.TeraBailoutStatus.Status,
+            });
+
+            
         }
         return;
     }

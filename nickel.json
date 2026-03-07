@@ -1,6 +1,6 @@
 {
   "UniqueName": "TeraTheTaxCollector",
-  "Version": "1.0.0",
+  "Version": "1.0.4",
   "Author": "Teratto",
   "Description": "Introduces a silly tax bird to Cobalt Core.",
   "RequiredApiVersion": "1.5.7",
@@ -11,5 +11,8 @@
       "UniqueName": "Shockah.Kokoro",
       "Version": "1.12.1"
     }
-  ]
+  ],
+  "UpdateChecks": {
+    "NexusMods": { "ID": 82 }
+  }
 }

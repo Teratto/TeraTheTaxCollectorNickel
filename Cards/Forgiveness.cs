@@ -68,7 +68,7 @@ namespace TeraTaxMod.Cards
                         }
                     }
                     break;
-                case Upgrade.B:
+                case Upgrade.A:
                     {
                         if (taxAmount >= requiredTax)
                         {
@@ -89,24 +89,26 @@ namespace TeraTaxMod.Cards
                         }
                     }
                     break;
-                case Upgrade.A:
+                case Upgrade.B:
                     {
-                        if (taxAmount >= requiredTax)
+                        if (taxAmount >= (requiredTax + 1))
                         {
                             return new List<CardAction>
                             {
                                 new AStatus()
                                      {
                                         status = ModEntry.Instance.TeraTaxationStatus.Status,
-                                        statusAmount = -requiredTax,
+                                        statusAmount = -(requiredTax + 1),
                                         targetPlayer = false
                                      },
                                 new AEnergy()
                                     {
-                                        changeAmount = 2
+                                        changeAmount = 4
                                     },
                             };
                         }
+                            
+                        
                     }
                     break;
                 default:
@@ -158,6 +160,7 @@ namespace TeraTaxMod.Cards
                             description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "Forgiveness", "descA"])),
                             cost = 0,
                             retain = true,
+                             
                             
                         };
                     }
@@ -167,7 +170,7 @@ namespace TeraTaxMod.Cards
                         {
                             description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "Forgiveness", "descB"])),
                             cost = 0,
-                            infinite = true
+                 
                         };
                     }
                 default:

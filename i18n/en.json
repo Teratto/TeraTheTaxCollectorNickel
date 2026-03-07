@@ -89,9 +89,9 @@
     },
     "Forgiveness": {
       "name": "Forgiveness",
-      "desc": "<c=downside>Spend 1 enemy tax</c> to <c=status>gain 2 energy</c>.",
-      "descA": "<c=downside>Spend 1 enemy tax</c> to <c=status>gain 2 energy</c>.",
-      "descB": "<c=downside>Spend 1 enemy tax</c> to <c=status>gain 2 energy</c>."
+      "desc": "<c=downside>Spend 1 enemy tax</c> to gain 2 <c=energy>energy</c>.",
+      "descA": "<c=downside>Spend 1 enemy tax</c> to gain 2 <c=energy>energy</c>.",
+      "descB": "<c=downside>Spend 2 enemy tax</c> to gain 4 <c=energy>energy</c>."
     },
     "Overdraft": {
       "name": "Overdraft",
@@ -124,7 +124,7 @@
       "name": "Tera.EXE",
       "desc": "Enemy +2 <c=status>tax</c>. Add 1 of 3 <c=cardtrait>discount, temp</c> <c=266fd8>Tera</c> cards to your hand.",
       "descA": "Enemy +2 <c=status>tax</c>. Add 1 of 3 <c=cardtrait>discount, temp</c> <c=266fd8>Tera</c> cards to your hand.",
-      "descB": "Enemy +2 <c=status>tax</c>. Add 1 of 5 <c=cardtrait>discount, temp</c> <c=266fd8>Tera</c> cards to your hand."
+      "descB": "+2 <c=status>bailout</c>. Add 1 of 5 <c=cardtrait>discount, temp</c> <c=266fd8>Tera</c> cards to your hand."
     }
 
 

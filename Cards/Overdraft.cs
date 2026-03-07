@@ -61,7 +61,12 @@ namespace TeraTaxMod.Cards
                             };
                         if (taxAmount >= requiredTax)
                         {
-
+                            actions.Add(new AStatus()
+                            {
+                                status = ModEntry.Instance.TeraTaxationStatus.Status,
+                                statusAmount = -1,
+                                targetPlayer = false
+                            });
                             actions.Add(new AAttack()
                             {
                                 damage = GetDmg(s,2)
@@ -81,7 +86,12 @@ namespace TeraTaxMod.Cards
                             };
                         if (taxAmount >= requiredTax)
                         {
-
+                            actions.Add(new AStatus()
+                            {
+                                status = ModEntry.Instance.TeraTaxationStatus.Status,
+                                statusAmount = -1,
+                                targetPlayer = false
+                            });
                             actions.Add(new AAttack()
                             {
                                 damage = GetDmg(s, 2),
@@ -102,10 +112,11 @@ namespace TeraTaxMod.Cards
                             };
                         if (taxAmount >= bigRequiredTax)
                         {
-
-                            actions.Add(new AAttack()
+                            actions.Add(new AStatus()
                             {
-                                damage = GetDmg(s, 1)
+                                status = ModEntry.Instance.TeraTaxationStatus.Status,
+                                statusAmount = -2,
+                                targetPlayer = false
                             });
                             actions.Add(new AAttack()
                             {
@@ -119,6 +130,11 @@ namespace TeraTaxMod.Cards
                             {
                                 damage = GetDmg(s, 1)
                             });
+                            actions.Add(new AAttack()
+                            {
+                                damage = GetDmg(s, 1)
+                            });
+                           
                         };
                         return actions;
                     }

@@ -132,9 +132,9 @@ public class TeraCatEXE : Card, IRegisterable
                     {
                         new AStatus()
                         {
-                            status = ModEntry.Instance.TeraTaxationStatus.Status,
+                            status = ModEntry.Instance.TeraBailoutStatus.Status,
                             statusAmount = 2,
-                            targetPlayer = false
+                            targetPlayer = true
                         },
                         new ACardOffering
                         {
