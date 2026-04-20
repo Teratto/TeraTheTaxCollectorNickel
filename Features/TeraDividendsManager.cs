@@ -20,17 +20,18 @@ public class TeraDividendsManager : IKokoroApi.IV2.IStatusLogicApi.IHook
         if (args.Status != ModEntry.Instance.TeraDividendsStatus.Status)
             return false;
 
-        if (args.Timing != IKokoroApi.IV2.IStatusLogicApi.StatusTurnTriggerTiming.TurnEnd)
+        if (args.Timing != IKokoroApi.IV2.IStatusLogicApi.StatusTurnTriggerTiming.TurnStart)
             return false;
 
         bool isPlayerShip = args.Ship.isPlayerShip;
+        int dividendsAmount = args.Amount;
 
         if (args.Ship.Get(ModEntry.Instance.TeraBailoutStatus.Status) <= 0)
         {
             args.Combat.QueueImmediate( new AStatus()
             {
                 status = ModEntry.Instance.TeraBailoutStatus.Status,
-                statusAmount = 1,
+                statusAmount = dividendsAmount,
                 targetPlayer = isPlayerShip
             });
         }

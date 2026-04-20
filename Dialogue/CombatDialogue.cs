@@ -1196,7 +1196,7 @@ internal class CombatDialogue : IRegisterable
             {"ManyFlipsAndTeraIsGettingTired_Multi_Tera_0", new()
             {
                 type = NodeType.combat,
-                minTimesYouFlippedACardThisTurn = 20,
+                minTimesYouFlippedACardThisTurn = 30,
                 oncePerCombat = true,
                 allPresent = [AmTera],
                 dialogue = [
@@ -1211,6 +1211,16 @@ internal class CombatDialogue : IRegisterable
                 allPresent = [AmTera],
                 dialogue = [
                     new(AmTera, "squint", "I'm just, going to ignore you now."),
+                    ]
+            }},
+            {"ManyFlipsAndTeraIsGettingTired_Multi_Tera_2", new()
+            {
+                type = NodeType.combat,
+                minTimesYouFlippedACardThisTurn = 200,
+                oncePerCombat = true,
+                allPresent = [AmTera],
+                dialogue = [
+                    new(AmTera, "squint", "...What is WRONG with you?"),
                     ]
             }},
             {"ManyTurns_Multi_Tera_0", new()
@@ -1732,7 +1742,7 @@ internal class CombatDialogue : IRegisterable
                 lastTurnPlayerStatuses = [MissingTera],
                 oncePerRun = true,
                 oncePerCombatTags = ["teraWentMissing"],
-                allPresent = [AmTera, AmPeri],
+                allPresent = [AmPeri],
                 dialogue = [
                     new(AmPeri, "mad", "Tera, get back to your station.")
                     ]
@@ -1744,7 +1754,7 @@ internal class CombatDialogue : IRegisterable
                 lastTurnPlayerStatuses = [MissingTera],
                 oncePerRun = true,
                 oncePerCombatTags = ["teraWentMissing"],
-                allPresent = [AmTera, AmPeri],
+                allPresent = [AmPeri],
                 dialogue = [
                     new(AmPeri, "Please stop hiding under your chair.")
                     ]
@@ -1769,7 +1779,7 @@ internal class CombatDialogue : IRegisterable
                 lastTurnPlayerStatuses = [MissingTera],
                 oncePerRun = true,
                 oncePerCombatTags = ["teraWentMissing"],
-                allPresent = [AmTera, AmRiggs],
+                allPresent = [AmRiggs],
                 dialogue = [
                     new(AmRiggs, "Ah! Tera knocked over my boba!")
                     ]
@@ -1781,7 +1791,7 @@ internal class CombatDialogue : IRegisterable
                 lastTurnPlayerStatuses = [MissingTera],
                 oncePerRun = true,
                 oncePerCombatTags = ["teraWentMissing"],
-                allPresent = [AmTera, AmRiggs],
+                allPresent = [AmRiggs],
                 dialogue = [
                     new(AmRiggs, "There he goes again.")
                     ]
@@ -1793,7 +1803,7 @@ internal class CombatDialogue : IRegisterable
                 
                 oncePerRun = true,
                 oncePerCombatTags = ["teraWentMissing"],
-                allPresent = [ AmDizzy],
+                allPresent = [AmDizzy],
                 lastTurnPlayerStatuses = [MissingTera],
                 dialogue = [
                     new(AmDizzy, "Never seen a bird waddle that fast.")
@@ -1806,7 +1816,7 @@ internal class CombatDialogue : IRegisterable
                 lastTurnPlayerStatuses = [MissingTera],
                 oncePerRun = true,
                 oncePerCombatTags = ["teraWentMissing"],
-                allPresent = [AmTera, AmIsaac],
+                allPresent = [AmIsaac],
                 dialogue = [
                     new(AmIsaac, "Aww, he did the head bob thing as he ran away.")
                     ]
@@ -1818,7 +1828,7 @@ internal class CombatDialogue : IRegisterable
                 lastTurnPlayerStatuses = [MissingTera],
                 oncePerRun = true,
                 oncePerCombatTags = ["teraWentMissing"],
-                allPresent = [AmTera, AmIsaac],
+                allPresent = [ AmIsaac],
                 dialogue = [
                     new(AmIsaac, "shy", "I can see him poking his beak out from my pile of drones.")
                     ]
@@ -1830,7 +1840,7 @@ internal class CombatDialogue : IRegisterable
                 lastTurnPlayerStatuses = [MissingTera],
                 oncePerRun = true,
                 oncePerCombatTags = ["teraWentMissing"],
-                allPresent = [AmTera, AmDrake],
+                allPresent = [AmDrake],
                 dialogue = [
                     new(AmDrake, "squint", "What did I tell you about running away?")
                     ]
@@ -1842,7 +1852,7 @@ internal class CombatDialogue : IRegisterable
                 lastTurnPlayerStatuses = [MissingTera],
                 oncePerRun = true,
                 oncePerCombatTags = ["teraWentMissing"],
-                allPresent = [AmTera, AmDrake],
+                allPresent = [AmDrake],
                 dialogue = [
                     new(AmDrake, "sly", "Chickening out already, Tera?")
                     ]
@@ -1854,7 +1864,7 @@ internal class CombatDialogue : IRegisterable
                 lastTurnPlayerStatuses = [MissingTera],
                 oncePerRun = true,
                 oncePerCombatTags = ["teraWentMissing"],
-                allPresent = [AmTera, AmDrake],
+                allPresent = [AmDrake],
                 dialogue = [
                     new(AmDrake, "Pirates don't run away from their problems, ya know.")
                     ]
@@ -1866,7 +1876,7 @@ internal class CombatDialogue : IRegisterable
                 lastTurnPlayerStatuses = [MissingTera],
                 oncePerRun = true,
                 oncePerCombatTags = ["teraWentMissing"],
-                allPresent = [AmTera, AmMax],
+                allPresent = [AmMax],
                 dialogue = [
                     new(AmMax, "Stop running by my monitors!")
                     ]
@@ -1878,7 +1888,7 @@ internal class CombatDialogue : IRegisterable
                 lastTurnPlayerStatuses = [MissingTera],
                 oncePerRun = true,
                 oncePerCombatTags = ["teraWentMissing"],
-                allPresent = [AmTera, AmMax],
+                allPresent = [AmMax],
                 dialogue = [
                     new(AmMax, "Didn't know birds can run that fast.")
                     ]
@@ -1890,7 +1900,7 @@ internal class CombatDialogue : IRegisterable
                 lastTurnPlayerStatuses = [MissingTera],
                 oncePerRun = true,
                 oncePerCombatTags = ["teraWentMissing"],
-                allPresent = [AmTera, AmMax],
+                allPresent = [ AmMax],
                 dialogue = [
                     new(AmMax, "Is there like, a bug in his code or something?")
                     ]
@@ -1928,7 +1938,7 @@ internal class CombatDialogue : IRegisterable
                 lastTurnPlayerStatuses = [MissingTera],
                 oncePerRun = true,
                 oncePerCombatTags = ["teraWentMissing"],
-                allPresent = [AmTera, AmCat],
+                allPresent = [AmCat],
                 dialogue = [
                     new(AmCat, "squint", "Tera, to the cock pit. Now.")
                     ]
@@ -1940,7 +1950,7 @@ internal class CombatDialogue : IRegisterable
                 lastTurnPlayerStatuses = [MissingTera],
                 oncePerRun = true,
                 oncePerCombatTags = ["teraWentMissing"],
-                allPresent = [AmTera, AmCat],
+                allPresent = [AmCat],
                 dialogue = [
                     new(AmCat, "Sometimes I wonder why I brought him on this ship.")
                     ]
@@ -1952,7 +1962,7 @@ internal class CombatDialogue : IRegisterable
                 
                 oncePerRun = true,
                 oncePerCombatTags = ["teraWentMissing"],
-                allPresent = [ AmDizzy],
+                allPresent = [AmDizzy],
                 lastTurnPlayerStatuses = [MissingTera],
                 dialogue = [
                     new(AmDizzy, "explains", "Ah, a bird's natural fight or flight response.")

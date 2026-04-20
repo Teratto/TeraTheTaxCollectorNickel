@@ -26,7 +26,7 @@
       },
       "Dividends": {
         "name": "Dividends",
-        "desc": "On end of turn, if you do not have <c=status>BAILOUT</c>, gain one."
+        "desc": "At the start of your turn, if you do not have <c=status>BAILOUT</c>, gain {0} <c=status>BAILOUT</c>."
       }
     },
   "action": {
@@ -125,8 +125,20 @@
       "desc": "Enemy +2 <c=status>tax</c>. Add 1 of 3 <c=cardtrait>discount, temp</c> <c=266fd8>Tera</c> cards to your hand.",
       "descA": "Enemy +2 <c=status>tax</c>. Add 1 of 3 <c=cardtrait>discount, temp</c> <c=266fd8>Tera</c> cards to your hand.",
       "descB": "+2 <c=status>bailout</c>. Add 1 of 5 <c=cardtrait>discount, temp</c> <c=266fd8>Tera</c> cards to your hand."
+    },
+    "TaxationDrone": {
+      "name": "Tax Drone"
     }
 
+
+  },
+  "midrow": {
+    "TaxDrone": {
+      "Normal": {
+        "name": "Tax Drone",
+        "description": "A drone stuffed with wads of cash. Shoots a <c=damage>0</c> damage shot that applies 1 <c=status>TAX</c>. "
+      }
+    }
 
   },
   "artifact": {
@@ -153,6 +165,36 @@
     "Inflation": {
       "name": "INFLATION",
       "desc": "<c=status>TAX</c> now does damage on increments of <c=keyword>2</c> instead of <c=keyword>3</c>."
-    }
+    },
+    "Duo": {
+      "Drake": {
+        "name": "FIRE SALE",
+        "desc": "Gain 1 <c=status>BAILOUT</c> whenever you end your turn with 2+ <c=status>HEAT</c>."
+      },
+      "Dizzy": {
+        "name": "MONETARY SHOCK",
+        "desc": "<c=266fd8>Tera</c> attack cards now <c=cardtrait>stun</c>."
+      },
+      "CAT": {
+        "name": "ECONOMICS 101",
+        "desc": "<c=cardtrait>Basic shot</c> cards now apply one <c=status>TAX</c>."
+      },
+      "Riggs": {
+        "name": "YEARLY CYCLE",
+        "desc": "Every <c=keyword>12th</c> time you draw a card, apply 1 <c=status>TAX</c> to the enemy."
+      },
+      "Max": {
+        "name": "ASSET LIQUIDATION",
+        "desc": "Gain 1 <c=status>BAILOUT</c> for every 2 cards <c=cardtrait>exhausted</c>."
+      },
+      "Isaac": {
+        "name": "IMPROVISATION",
+        "desc": "At the start of combat, add 1 <c=card>Tax Drone</c> to your hand."
+      },
+      "Peri": {
+        "name": "SCRUTINY",
+        "desc": "If you were to lose <c=status>OVERDRIVE</c> while having <c=status>BAILOUT</c>, instead lose 1 <c=status>BAILOUT</c>."
+      }
+    },
   }
 }

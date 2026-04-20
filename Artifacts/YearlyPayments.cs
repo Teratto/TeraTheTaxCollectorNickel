@@ -46,4 +46,5 @@ public class YearlyPayments : Artifact, IRegisterable
             artifactPulse = Key() 
         });
     }
+    
 }

@@ -31,6 +31,7 @@ public class TeraBailoutManager : IKokoroApi.IV2.IStatusLogicApi.IHook
 
     public static void AStatusBailout_Begin_Prefix(AStatus __instance, State s, Combat c)
     {
+        
         Ship currentShip = __instance.targetPlayer ? s.ship : c.otherShip;
         if (currentShip == null || currentShip.hull <= 0)
         { 
@@ -46,6 +47,7 @@ public class TeraBailoutManager : IKokoroApi.IV2.IStatusLogicApi.IHook
         }
         bool isItGood = DB.statuses[__instance.status].isGood;
         bool governmentGrantsGet = s.EnumerateAllArtifacts().Find(a => a.GetType() == typeof(GovernmentGrant)) != null;
+        bool scrutinyGet = s.EnumerateAllArtifacts().Find(a => a.GetType() == typeof(Scrutiny)) != null;
 
         int currentStatusValue = currentShip.Get(__instance.status);
         int currentBailout = currentShip.Get(ModEntry.Instance.TeraBailoutStatus.Status);
@@ -54,6 +56,18 @@ public class TeraBailoutManager : IKokoroApi.IV2.IStatusLogicApi.IHook
         {
             return;
         };
+
+        if (scrutinyGet == true && __instance.statusAmount < 0 && __instance.status == Status.overdrive && currentShip == s.ship && currentBailout > 0)
+        {
+            __instance.statusAmount = 0;
+            c.QueueImmediate(new AStatus()
+            {
+                targetPlayer = __instance.targetPlayer,
+                statusAmount = -1,
+                status = ModEntry.Instance.TeraBailoutStatus.Status,
+                statusPulse = ModEntry.Instance.TeraBailoutStatus.Status,
+            });
+        }
 
         if (__instance.statusAmount > 0 && currentBailout > 0 && isItGood == false)
         {

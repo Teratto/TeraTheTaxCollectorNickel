@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿
+using HarmonyLib;
 using Microsoft.Extensions.Logging;
 using Nanoray.PluginManager;
 using Nickel;
@@ -29,10 +30,9 @@ internal class ModEntry : SimpleMod
    
 
     internal static IPlayableCharacterEntryV2 TeraCharacter { get; private set; } = null!;
-    //Note: this IPlayableCharacterEntryV2 was originally in the helper.content function. I changed code
-    //to try and get the "ismissing" status to work. Let's hope I did this right. If it breaks, remove
-    //this from internal and add it back to the helper.content function.
 
+    internal ISpriteEntry TaxDroneCard { get; }
+    internal ISpriteEntry TaxDroneMidrow { get; }
     internal IDeckEntry TeraTaxDeck { get; }
     internal IStatusEntry TeraPersistenceStatus { get; }
     internal IStatusEntry TeraTaxationStatus { get; }
@@ -45,11 +45,6 @@ internal class ModEntry : SimpleMod
     internal ILocaleBoundNonNullLocalizationProvider<IReadOnlyList<string>> Localizations { get; }
     
 
-    /*
-     * The following lists contain references to all types that will be registered to the game.
-     * All cards and artifacts must be registered before they may be used in the game.
-     * In theory only one collection could be used, containing all registrable types, but it is seperated this way for ease of organization.
-     */
     
     private static List<Type> TeraTaxCommonCardTypes = [
         typeof(Tariff),
@@ -77,12 +72,12 @@ internal class ModEntry : SimpleMod
         typeof(Desperation),
         typeof(Forgiveness),
         typeof(Tenacity),
-   
         typeof(Siphon),
     ];
     private static List<Type> TeraTaxSpecialCardTypes = [
         typeof(EggShells),
         typeof(GetsTheWorm),
+        typeof(TaxationDrone),
         
     ];
     private static List<Type> TeraEXECardTypes =
@@ -106,11 +101,21 @@ internal class ModEntry : SimpleMod
         typeof(Capitalism),
         typeof(Inflation)
     ];
+    internal static List<Type> DuoArtifacts = [
+        typeof(FireSale),
+        typeof(MonetaryShock),
+        typeof(WireTransfer),
+        typeof(YearlyCycle),
+        typeof(AssetLiquidation),
+        typeof(Improvisation),
+        typeof(Scrutiny),
+    ];
     private static List<Type> TeraTaxDialogueTypes = [
         typeof(TauntDialogue),
         typeof(CardDialogue),
         typeof(CombatDialogue),
-        typeof(EventDialogue)
+        typeof(EventDialogue),
+        typeof(TeraZariDialogue)
    ];
 
 
@@ -119,24 +124,23 @@ internal class ModEntry : SimpleMod
         TeraTaxCommonArtifacts
             .Concat(TeraTaxBossArtifacts);
 
+
     private static IEnumerable<Type> AllRegisterableTypes =
         TeraTaxCardTypes
             .Concat(TeraTaxArtifactTypes)
             .Concat(TeraTaxDialogueTypes);
 
+    internal static readonly IEnumerable<Type> LateRegisterableTypes
+        = DuoArtifacts;
 
-   
+
+
 
     public ModEntry(IPluginPackage<IModManifest> package, IModHelper helper, ILogger logger) : base(package, helper, logger)
     {
         Instance = this;
         Harmony = new Harmony("rft.TeraTaxMod");
-        
-        /*
-         * Some mods provide an API, which can be requested from the ModRegistry.
-         * The following is an example of a required dependency - the code would have unexpected errors if Kokoro was not present.
-         * Dependencies can (and should) be defined within the nickel.json file, to ensure proper load mod load order.
-         */
+
         KokoroApi = helper.ModRegistry.GetApi<IKokoroApi>("Shockah.Kokoro")!.V2;
 
         AnyLocalizations = new JsonLocalizationProvider(
@@ -150,19 +154,12 @@ internal class ModEntry : SimpleMod
 
        
 
-        /*
-         * A deck only defines how cards should be grouped, for things such as codex sorting and Second Opinions.
-         * A character must be defined with a deck to allow the cards to be obtainable as a character's cards.
-         */
+
         TeraTaxDeck = helper.Content.Decks.RegisterDeck("Tera", new DeckConfiguration
         {
             Definition = new DeckDef
             {
-                /*
-                 * This color is used in a few places:
-                 * TODO On cards, it dictates the sheen on higher rarities, as well as influences the color of the energy cost.
-                 * If this deck is given to a playable character, their name will be this color, and their mini will have this color as their border.
-                 */
+      
                 color = new Color("266fd8"),
 
                 titleColor = new Color("000000")
@@ -198,21 +195,16 @@ internal class ModEntry : SimpleMod
                     new EggToss()
                 ]
             });
+        
+        });
+        helper.ModRegistry.AwaitApi<IDuoApi>("Shockah.DuoArtifacts", api =>
+        {
+            foreach (var artifactType in DuoArtifacts)
+                AccessTools.DeclaredMethod(artifactType, nameof(IDuoArtifact.Register))?.Invoke(null, [package, helper, api]);
         });
 
-        /*
-         * All the IRegisterable types placed into the static lists at the start of the class are initialized here.
-         * This snippet invokes all of them, allowing them to register themselves with the package and helper.
-         */
-        
-        
-        /*
-         * Characters have required animations, recommended animations, and you have the option to add more.
-         * In addition, they must be registered before the character themselves is registered.
-         * The game requires you to have a neutral animation and mini animation, used for normal gameplay and the map and run start screen, respectively.
-         * The game uses the squint animation for the Extra-Planar Being and High-Pitched Static events, and the gameover animation while you are dying.
-         * You may define any other animations, and they will only be used when explicitly referenced (such as dialogue).
-         */
+
+
       
       
         Instance.Helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2
@@ -360,15 +352,12 @@ internal class ModEntry : SimpleMod
               .Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Animation/teraegg.png")).Sprite)
               .ToList()
         });
+      
+        TaxDroneCard = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Artifact/FireSale.png"));
+        TaxDroneMidrow = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Artifact/FireSale.png"));
 
 
 
-
-
-        /*
-         * Statuses are used to achieve many mechanics.
-         * However, statuses themselves do not contain any code - they just keep track of how much you have.
-         */
 
         TeraTaxationStatus = helper.Content.Statuses.RegisterStatus("Tax", new StatusConfiguration
         {
@@ -443,10 +432,6 @@ internal class ModEntry : SimpleMod
             Description = AnyLocalizations.Bind(["status", "Dividends", "desc"]).Localize
         });
 
-        /*
-         * Managers are typically made to register themselves when constructed.
-         * _ = makes the compiler not complain about the fact that you are constructing something for seemingly no reason.
-         */
 
         TeraTaxationManager taxationManager = new();
         KokoroApi.StatusLogic.RegisterHook(taxationManager);
@@ -463,6 +448,9 @@ internal class ModEntry : SimpleMod
 
         _ = new TeraBailoutManager();
         _ = new FlightTraining();
+        _ = new MonetaryShock();
+        _ = new AssetLiquidation();
+
         foreach (var type in AllRegisterableTypes)
             AccessTools.DeclaredMethod(type, nameof(IRegisterable.Register))?.Invoke(null, [package, helper]);
 
@@ -484,22 +472,13 @@ internal class ModEntry : SimpleMod
 
     }
 
-    /*
-     * assets must also be registered before they may be used.
-     * Unlike cards and artifacts, however, they are very simple to register, and often do not need to be referenced in more than one place.
-     * This utility method exists to easily register a sprite, but nothing prevents you from calling the method used yourself.
-     */
+
     public static ISpriteEntry RegisterSprite(IPluginPackage<IModManifest> package, string dir)
     {
         return Instance.Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile(dir));
     }
 
-    /*
-     * Animation frames are typically named very similarly, only differing by the number of the frame itself.
-     * This utility method exists to easily register an animation.
-     * It expects the animation to start at frame 0, up to frames - 1.
-     * TODO It is advised to avoid animations consisting of 2 or 3 frames.
-     */
+
     public static void RegisterAnimation(IPluginPackage<IModManifest> package, string tag, string dir, int frames)
     {
         Instance.Helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2
