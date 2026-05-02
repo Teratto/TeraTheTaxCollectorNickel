@@ -59,4 +59,8 @@ public class Capitalism : Artifact, IRegisterable
             }
         
     }
+    public override List<Tooltip> GetExtraTooltips()
+         => [
+             .. StatusMeta.GetTooltips(ModEntry.Instance.TeraTaxationStatus.Status, 1),
+         ];
 }

@@ -47,4 +47,5 @@ public class EarlyBird : Artifact, IRegisterable
             artifactPulse = Key() 
         });
     }
+
 }

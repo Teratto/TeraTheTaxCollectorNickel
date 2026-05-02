@@ -27,7 +27,10 @@ internal class ModEntry : SimpleMod
     internal Harmony Harmony { get; }
     internal IKokoroApi.IV2 KokoroApi { get; }
 
-   
+    internal IDuoApi? DuoArtifactApi { get; }
+
+
+
 
     internal static IPlayableCharacterEntryV2 TeraCharacter { get; private set; } = null!;
 
@@ -40,6 +43,7 @@ internal class ModEntry : SimpleMod
     internal IStatusEntry TeraLockNextStatus { get; }
     internal IStatusEntry TeraBailoutStatus { get; }
     internal IStatusEntry TeraDividendsStatus { get; }
+
     public LocalDB localDB { get; set; } = null!;  // For dialogue machine
     internal ILocalizationProvider<IReadOnlyList<string>> AnyLocalizations { get; }
     internal ILocaleBoundNonNullLocalizationProvider<IReadOnlyList<string>> Localizations { get; }
@@ -77,7 +81,7 @@ internal class ModEntry : SimpleMod
     private static List<Type> TeraTaxSpecialCardTypes = [
         typeof(EggShells),
         typeof(GetsTheWorm),
-        typeof(TaxationDrone),
+
         
     ];
     private static List<Type> TeraEXECardTypes =
@@ -109,13 +113,15 @@ internal class ModEntry : SimpleMod
         typeof(AssetLiquidation),
         typeof(Improvisation),
         typeof(Scrutiny),
+        typeof(GemstonePrinter)
     ];
     private static List<Type> TeraTaxDialogueTypes = [
         typeof(TauntDialogue),
         typeof(CardDialogue),
         typeof(CombatDialogue),
         typeof(EventDialogue),
-        typeof(TeraZariDialogue)
+        typeof(TeraZariDialogue),
+        typeof(TeraDuoDialogue)
    ];
 
 
@@ -197,16 +203,18 @@ internal class ModEntry : SimpleMod
             });
         
         });
+        DuoArtifactApi = helper.ModRegistry.GetApi<IDuoApi>("Shockah.DuoArtifacts");
         helper.ModRegistry.AwaitApi<IDuoApi>("Shockah.DuoArtifacts", api =>
         {
             foreach (var artifactType in DuoArtifacts)
                 AccessTools.DeclaredMethod(artifactType, nameof(IDuoArtifact.Register))?.Invoke(null, [package, helper, api]);
         });
+        
 
 
 
-      
-      
+
+
         Instance.Helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2
         {
             CharacterType = TeraTaxDeck.Deck.Key(),
@@ -353,8 +361,8 @@ internal class ModEntry : SimpleMod
               .ToList()
         });
       
-        TaxDroneCard = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Artifact/FireSale.png"));
-        TaxDroneMidrow = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Artifact/FireSale.png"));
+        TaxDroneCard = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Artifact/Duo/smallcashdrone.png"));
+        TaxDroneMidrow = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Artifact/Duo/CashDrone.png"));
 
 
 
@@ -450,6 +458,7 @@ internal class ModEntry : SimpleMod
         _ = new FlightTraining();
         _ = new MonetaryShock();
         _ = new AssetLiquidation();
+        _ = new GemstonePrinter();
 
         foreach (var type in AllRegisterableTypes)
             AccessTools.DeclaredMethod(type, nameof(IRegisterable.Register))?.Invoke(null, [package, helper]);

@@ -80,7 +80,7 @@ namespace TeraTaxMod.Cards
                         new AStatus()
                         {
                             status = Status.tempShield,
-                            statusAmount = 4,
+                            statusAmount = 3,
                             targetPlayer = true
                         },
                         new AStatus()
@@ -98,13 +98,13 @@ namespace TeraTaxMod.Cards
                         new AStatus()
                         {
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 4,
+                            statusAmount = 3,
                             targetPlayer = false
                         },
                         new AStatus()
                         {
                             status = Status.tempShield,
-                            statusAmount = 2,
+                            statusAmount = 3,
                             targetPlayer= true  
 
                         },

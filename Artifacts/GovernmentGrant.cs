@@ -35,4 +35,9 @@ public class GovernmentGrant : Artifact, IRegisterable
             artifactPulse = Key() 
         });
     }
+    public override List<Tooltip> GetExtraTooltips()
+         => [
+             .. StatusMeta.GetTooltips(ModEntry.Instance.TeraTaxationStatus.Status, 1),
+             .. StatusMeta.GetTooltips(ModEntry.Instance.TeraBailoutStatus.Status, 2),
+         ];
 }

@@ -33,7 +33,10 @@ public class Inflation : Artifact, IRegisterable
             Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Artifact/ArtifactInflation.png")).Sprite
         });
     }
-
+    public override List<Tooltip> GetExtraTooltips()
+         => [
+             .. StatusMeta.GetTooltips(ModEntry.Instance.TeraTaxationStatus.Status, 1),
+         ];
     /*
      * HIIII HOW ARE YOUUUU 
      * I'M TERATTO I CODED MOST OF THIS WITH HELP FROM VINTAGE AND SNIPER AND CERES BECAUSE FUCKINNNNNNNNNNNNNNNNNNN MAN

@@ -38,6 +38,7 @@ namespace TeraTaxMod.Cards
          * There are many ways to construct the actions a card contains.
          * The following is a simple approach, good for if the actions on the card only vary in their numbers.
          */
+
         public override List<CardAction> GetActions(State s, Combat c)
         {
             switch (this.upgrade)
@@ -127,6 +128,7 @@ namespace TeraTaxMod.Cards
                 exhaust = upgrade == Upgrade.B ? true : false,
             };
         }
+
 
     }
 }

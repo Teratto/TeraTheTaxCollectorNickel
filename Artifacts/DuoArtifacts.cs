@@ -4,7 +4,7 @@ using HarmonyLib;
 using Nanoray.PluginManager;
 using Nickel;
 using TeraTaxMod.Cards;
-
+using TeraTaxMod.External;
 using static TeraTaxMod.External.IKokoroApi.IV2.IStatusLogicApi.IHook;
 using TeraTaxMod.External;
 using System.Linq;
@@ -14,14 +14,10 @@ using JetBrains.Annotations;
 using System;
 using System.Net.NetworkInformation;
 using System.Diagnostics.Metrics;
+using TeraTaxMod.Midrow;
 
 namespace TeraTaxMod.Artifacts;
 
-/*
- * Artifacts are a nice way to accentuate a character's potential.
- * They can be simple effects that occur at simple times, they can modify an existing mechanic or one introduced by the character.
- * Similarly to cards, ensure you add this type to your ModEntry for registration.
- */
 public interface IDuoArtifact
 {
     public static abstract void Register(IPluginPackage<IModManifest> package, IModHelper helper, IDuoApi duoApi);
@@ -45,7 +41,7 @@ public class FireSale : Artifact, IDuoArtifact
             Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "Drake", "name"]).Localize,
             Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "Drake", "desc"]).Localize,
 
-            Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Artifact/FireSale.png")).Sprite
+            Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Artifact/Duo/FireSale.png")).Sprite
         });
         duoApi.RegisterDuoArtifact(MethodBase.GetCurrentMethod()!.DeclaringType!,
             [ModEntry.Instance.TeraTaxDeck.Deck, Deck.eunice]);
@@ -68,6 +64,14 @@ public class FireSale : Artifact, IDuoArtifact
         }
 
     }
+
+    public override List<Tooltip> GetExtraTooltips()
+         => [
+             .. StatusMeta.GetTooltips(ModEntry.Instance.TeraBailoutStatus.Status, 1),
+             .. StatusMeta.GetTooltips(Status.heat, 2),
+            ];
+
+        
 }
 
 
@@ -91,7 +95,7 @@ public class MonetaryShock : Artifact, IDuoArtifact
             Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "Dizzy", "name"]).Localize,
             Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "Dizzy", "desc"]).Localize,
 
-            Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Artifact/FireSale.png")).Sprite
+            Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Artifact/Duo/MonetaryShock.png")).Sprite
         });
         duoApi.RegisterDuoArtifact(MethodBase.GetCurrentMethod()!.DeclaringType!,
             [ModEntry.Instance.TeraTaxDeck.Deck, Deck.dizzy]);
@@ -143,7 +147,7 @@ public class WireTransfer : Artifact, IDuoArtifact
             Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "CAT", "name"]).Localize,
             Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "CAT", "desc"]).Localize,
 
-            Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Artifact/FireSale.png")).Sprite
+            Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Artifact/Duo/Economics.png")).Sprite
         });
         duoApi.RegisterDuoArtifact(MethodBase.GetCurrentMethod()!.DeclaringType!,
             [ModEntry.Instance.TeraTaxDeck.Deck, Deck.colorless]);
@@ -175,6 +179,10 @@ public class WireTransfer : Artifact, IDuoArtifact
         }
 
     }
+    public override List<Tooltip> GetExtraTooltips()
+        => [
+            .. StatusMeta.GetTooltips(ModEntry.Instance.TeraTaxationStatus.Status, 1),
+        ];
 }
 public class YearlyCycle : Artifact, IDuoArtifact
 {
@@ -195,7 +203,7 @@ public class YearlyCycle : Artifact, IDuoArtifact
             Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "Riggs", "name"]).Localize,
             Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "Riggs", "desc"]).Localize,
 
-            Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Artifact/FireSale.png")).Sprite
+            Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Artifact/Duo/YearlyCycle.png")).Sprite
         });
         duoApi.RegisterDuoArtifact(MethodBase.GetCurrentMethod()!.DeclaringType!,
             [ModEntry.Instance.TeraTaxDeck.Deck, Deck.riggs]);
@@ -236,9 +244,11 @@ public class YearlyCycle : Artifact, IDuoArtifact
                 artifactPulse = Key()
             });  
         }
-
-
     }
+    public override List<Tooltip> GetExtraTooltips()
+        => [
+            .. StatusMeta.GetTooltips(ModEntry.Instance.TeraTaxationStatus.Status, 1),
+        ];
 }
 public class AssetLiquidation : Artifact, IDuoArtifact
 {
@@ -260,7 +270,7 @@ public class AssetLiquidation : Artifact, IDuoArtifact
             Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "Max", "name"]).Localize,
             Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "Max", "desc"]).Localize,
 
-            Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Artifact/FireSale.png")).Sprite
+            Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Artifact/Duo/AssetLiquidation.png")).Sprite
         });
         duoApi.RegisterDuoArtifact(MethodBase.GetCurrentMethod()!.DeclaringType!,
             [ModEntry.Instance.TeraTaxDeck.Deck, Deck.hacker]);
@@ -269,13 +279,7 @@ public class AssetLiquidation : Artifact, IDuoArtifact
             postfix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(AssetLiquidation_Postfix))
         );
     }
-    public override List<Tooltip> GetExtraTooltips()
-    {
-        List<Tooltip> list = new List<Tooltip>();
-        list.Add(new TTGlossary("cardtrait.exhaust"));
-        list.Add(new TTGlossary("status.ModEntry.Instance.TeraTaxationStatus.Status"));
-        return list;
-    }
+
 
     public override int? GetDisplayNumber(State s)
     {
@@ -317,7 +321,10 @@ public class AssetLiquidation : Artifact, IDuoArtifact
             return;
         artifact.WaitingForActionDrain = true;
     }
-
+    public override List<Tooltip> GetExtraTooltips()
+        => [
+            .. StatusMeta.GetTooltips(ModEntry.Instance.TeraBailoutStatus.Status, 1),
+        ];
 }
 public class Improvisation : Artifact, IDuoArtifact
 {
@@ -337,11 +344,11 @@ public class Improvisation : Artifact, IDuoArtifact
             },
             Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "Isaac", "name"]).Localize,
             Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "Isaac", "desc"]).Localize,
-
-            Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Artifact/FireSale.png")).Sprite
+            Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Artifact/Duo/Improvisation.png")).Sprite
         });
         duoApi.RegisterDuoArtifact(MethodBase.GetCurrentMethod()!.DeclaringType!,
             [ModEntry.Instance.TeraTaxDeck.Deck, Deck.goat]);
+        TaxationDrone.Register(package, helper);
     }
 
     public override List<Tooltip> GetExtraTooltips()
@@ -355,7 +362,113 @@ public class Improvisation : Artifact, IDuoArtifact
             artifactPulse = Key()
         });
     }
+    internal class TaxationDrone : Card, IRegisterable
+    {
+        public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
+        {
+            helper.Content.Cards.RegisterCard(new CardConfiguration
+            {
+                CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+                Meta = new CardMeta
+                {
+                    deck = ModEntry.Instance.DuoArtifactApi!.DuoArtifactVanillaDeck,
+                    rarity = Rarity.common,
+                    dontOffer = true,
+                    upgradesTo = [Upgrade.A, Upgrade.B]
+                },
+                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "TaxationDrone", "name"]).Localize,
+                Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Artifact/Duo/CardAudit.png")).Sprite,
+            });
+        }
 
+
+        public override List<CardAction> GetActions(State s, Combat c)
+        {
+            switch (this.upgrade)
+            {
+                case Upgrade.None:
+                    {
+                        return new List<CardAction>
+                    {
+                        new ASpawn()
+                        {
+                            thing = new TaxDrone
+                            {
+                                yAnimation = 0.0
+                            },
+                        }
+                    };
+                    }
+                case Upgrade.A:
+                    {
+                        return new List<CardAction>
+                    {
+                        new ASpawn()
+                        {
+                            thing = new TaxDrone
+                            {
+                                yAnimation = 0.0,
+                                bubbleShield = true,
+                            },
+                        },
+                        new AStatus()
+                        {
+                            statusAmount = 2,
+                            status = Status.droneShift,
+                            targetPlayer = true
+                        }
+                    };
+                    }
+                case Upgrade.B:
+                    {
+                        return new List<CardAction>
+                    {
+                        new ASpawn()
+                        {
+                            thing = new TaxDrone
+                            {
+                                yAnimation = 0.0
+                            },
+                        },
+                        new ASpawn()
+                        {
+                            thing = new TaxDrone
+                            {
+                                yAnimation = 0.0
+                            },
+                            offset = -1
+                        },
+
+                    };
+                    }
+                default:
+                    {
+                        return new List<CardAction>
+                    {
+                        new ASpawn()
+                        {
+                            thing = new TaxDrone
+                            {
+                                yAnimation = 0.0
+                            },
+                        }
+                    };
+                    }
+            }
+
+        }
+
+
+        public override CardData GetData(State state)
+        {
+            return new CardData
+            {
+                cost = 1,
+                temporary = true
+            };
+        }
+
+    }
 }
 public class Scrutiny : Artifact, IDuoArtifact
 {
@@ -376,10 +489,92 @@ public class Scrutiny : Artifact, IDuoArtifact
             Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "Peri", "name"]).Localize,
             Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "Peri", "desc"]).Localize,
 
-            Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Artifact/FireSale.png")).Sprite
+            Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Artifact/Duo/CollectorsBestFriend.png")).Sprite
         });
         duoApi.RegisterDuoArtifact(MethodBase.GetCurrentMethod()!.DeclaringType!,
             [ModEntry.Instance.TeraTaxDeck.Deck, Deck.peri]);
     }
+    public override List<Tooltip> GetExtraTooltips()
+       => [
+           .. StatusMeta.GetTooltips(ModEntry.Instance.TeraBailoutStatus.Status, 1),
+           .. StatusMeta.GetTooltips(Status.overdrive, 2),
+       ];
 
 }
+public class GemstonePrinter : Artifact, IDuoArtifact
+{
+    public static void Register(IPluginPackage<IModManifest> package, IModHelper helper, IDuoApi duoApi)
+    {
+
+
+        helper.Content.Artifacts.RegisterArtifact(new ArtifactConfiguration
+
+
+        {
+            ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+            Meta = new()
+            {
+                pools = [ArtifactPool.Common],
+                owner = duoApi.DuoArtifactVanillaDeck,
+            },
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "Books", "name"]).Localize,
+            Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "Books", "desc"]).Localize,
+
+            Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Artifact/Duo/MoneyLaundering.png")).Sprite
+        });
+        duoApi.RegisterDuoArtifact(MethodBase.GetCurrentMethod()!.DeclaringType!,
+            [ModEntry.Instance.TeraTaxDeck.Deck, Deck.shard]);
+        ModEntry.Instance.Harmony.Patch(
+            original: AccessTools.DeclaredMethod(typeof(AStatus), nameof(AStatus.Begin)),
+            prefix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(GemstonePrinter_Postfix))
+            );
+
+    }
+    public override int? GetDisplayNumber(State s)
+    {
+        return shardCounter;
+    }
+    public int shardCounter = 0;
+    public static void GemstonePrinter_Postfix(AStatus __instance, State s, Combat c)
+    {
+        if (s.EnumerateAllArtifacts().FirstOrDefault(a => a is GemstonePrinter) is not { } artifact)
+            return;
+
+        Ship currentShip = __instance.targetPlayer ? s.ship : c.otherShip;
+
+        var gemstonePrinterArtifact = (GemstonePrinter)artifact;
+
+        var getMaxShard = s.ship.GetMaxShard();
+        var getCurrentShard = s.ship.Get(Status.shard);
+
+        if (__instance.status == Status.shard && ((getCurrentShard + __instance.statusAmount) > getMaxShard) && currentShip == s.ship)
+        {
+            gemstonePrinterArtifact.shardCounter += 1;
+            if (gemstonePrinterArtifact.shardCounter >= 2)
+            {
+                c.QueueImmediate(new AStatus()
+                {
+                    statusAmount = 1,
+                    status = ModEntry.Instance.TeraTaxationStatus.Status,
+                    targetPlayer = false
+                });
+                gemstonePrinterArtifact.shardCounter = 0;
+            }
+            
+  
+        }
+    }
+
+
+
+    public override void OnCombatEnd(State state)
+    {
+        shardCounter = 0;
+    }
+    public override List<Tooltip> GetExtraTooltips()
+       => [
+           .. StatusMeta.GetTooltips(Status.shard, 1),
+           .. StatusMeta.GetTooltips(ModEntry.Instance.TeraTaxationStatus.Status, 2),
+       ];
+}
+

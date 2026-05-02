@@ -94,5 +94,9 @@ public class FlightTraining : Artifact, IRegisterable
         turnCounter = 0;
         taxCounter = 0;
     }
-
+    public override List<Tooltip> GetExtraTooltips()
+         => [
+             .. StatusMeta.GetTooltips(Status.evade, 1),
+             .. StatusMeta.GetTooltips(ModEntry.Instance.TeraTaxationStatus.Status, 2),
+         ];
 }

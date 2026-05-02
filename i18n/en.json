@@ -177,7 +177,7 @@
       },
       "CAT": {
         "name": "ECONOMICS 101",
-        "desc": "<c=cardtrait>Basic shot</c> cards now apply one <c=status>TAX</c>."
+        "desc": "<c=cardtrait>Basic shot</c> cards now apply 1 <c=status>TAX</c>."
       },
       "Riggs": {
         "name": "YEARLY CYCLE",
@@ -192,9 +192,13 @@
         "desc": "At the start of combat, add 1 <c=card>Tax Drone</c> to your hand."
       },
       "Peri": {
-        "name": "SCRUTINY",
+        "name": "COLLECTOR'S BEST FRIEND",
         "desc": "If you were to lose <c=status>OVERDRIVE</c> while having <c=status>BAILOUT</c>, instead lose 1 <c=status>BAILOUT</c>."
+      },
+      "Books": {
+        "name": "Money Laundering",
+        "desc": "Every 2 times you gain <c=status>SHARD</c> over your maximum shard capacity, apply 1 <c=status>TAX</c> to the enemy."
       }
-    },
+    }
   }
 }

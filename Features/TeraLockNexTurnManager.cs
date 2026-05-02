@@ -48,6 +48,7 @@ public class TeraLockNextTurnManager : IKokoroApi.IV2.IStatusLogicApi.IHook
     }
     public bool? IsAffectedByBoost(IKokoroApi.IV2.IStatusLogicApi.IHook.IIsAffectedByBoostArgs args)
             => args.Status == ModEntry.Instance.TeraLockNextStatus.Status ? true : null;
+
 }
 
 

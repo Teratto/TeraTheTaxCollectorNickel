@@ -481,7 +481,7 @@ namespace TeraTaxMod.Dialogue
                         oncePerRunTags = ["Tenacity"],
                         oncePerRun = true,
                         dialogue = [
-                        new(AmDrake, "neutral", "All of your forms are making a mess."),
+                        new(AmDrake, "mad", "All of your forms are making a mess."),
                         new(AmTera, "happytaxes", "But these forms are flowing with ideas.")
                         ]
                     }

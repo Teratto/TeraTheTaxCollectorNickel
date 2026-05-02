@@ -14,7 +14,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TeraTaxMod.Midrow
 {
-    internal sealed class TaxDrone : StuffBase
+    internal sealed class TaxDrone : AttackDrone
     {
         [JsonConverter(typeof(StringEnumConverter))]
         public enum TaxDroneType
@@ -51,21 +51,9 @@ namespace TeraTaxMod.Midrow
                 tooltips.Add((Tooltip)new TTGlossary("midrow.bubbleShield", Array.Empty<object>()));
             return tooltips;
         }
-
-
-
-
-        public override List<CardAction>? GetActionsOnBonkedWhileInvincible(State s, Combat c, bool wasPlayer, StuffBase thing)
+        public override bool IsFriendly()
         {
-            return new List<CardAction>
-            {
-                new ASpaceMineAttack
-                {
-                    hurtAmount = 1,
-                    targetPlayer = wasPlayer,
-                    worldX = this.x
-                }
-            };
+            return !targetPlayer;
         }
 
         public override List<CardAction>? GetActions(State s, Combat c)
@@ -88,8 +76,7 @@ namespace TeraTaxMod.Midrow
         {
             Spr Sprite;
             Sprite = ModEntry.Instance.TaxDroneMidrow.Sprite;
-            //DrawWithHilight(g, Sprite, v + GetOffset(g), Mutil.Rand((double)x + 0.1) > 0.5, Mutil.Rand((double)x + 0.2) > 0.5);
-            DrawWithHilight(g, Sprite, v + GetOffset(g));
+            DrawWithHilight(g, Sprite, v + GetOffset(g), flipX: false, targetPlayer);
         }
     }
 }
