@@ -24,7 +24,7 @@ namespace TeraTaxMod.Cards
                 Meta = new CardMeta
                 {
                     deck = ModEntry.Instance.TeraTaxDeck.Deck,
-                    rarity = Rarity.common,
+                    rarity = Rarity.uncommon,
                     dontOffer = false,
                     upgradesTo = [Upgrade.A, Upgrade.B]
                 },
@@ -51,115 +51,108 @@ namespace TeraTaxMod.Cards
 
                 case Upgrade.None:
                     {
-                        List<CardAction> actions = new List<CardAction>
-                            {
-                                new AAttack()
-                                {
-                                    damage = GetDmg(s,1)
-
-                                }
-                            };
                         if (taxAmount >= requiredTax)
                         {
-                            actions.Add(new AStatus()
+                            return new List<CardAction>
                             {
-                                status = ModEntry.Instance.TeraTaxationStatus.Status,
-                                statusAmount = -1,
-                                targetPlayer = false
-                            });
-                            actions.Add(new AAttack()
-                            {
-                                damage = GetDmg(s,2)
-                            });
-                        };
-                        return actions;
+                                new AStatus()
+                                     {
+                                        status = ModEntry.Instance.TeraTaxationStatus.Status,
+                                        statusAmount = -requiredTax,
+                                        targetPlayer = false
+                                     },
+                                new AAttack()
+                                     {
+                                        damage = GetDmg(s, 4)
+                                     },
+                            };
+                        }
                     }
+                    break;
                 case Upgrade.A:
                     {
-                        List<CardAction> actions = new List<CardAction>
-                            {
-                                new AAttack()
-                                {
-                                    damage = GetDmg(s,2),
-                                 
-                                }
-                            };
                         if (taxAmount >= requiredTax)
                         {
-                            actions.Add(new AStatus()
+                            return new List<CardAction>
                             {
-                                status = ModEntry.Instance.TeraTaxationStatus.Status,
-                                statusAmount = -1,
-                                targetPlayer = false
-                            });
-                            actions.Add(new AAttack()
-                            {
-                                damage = GetDmg(s, 2),
-                                
-                            });
-                        };
-                        return actions;
+                                new AStatus()
+                                     {
+                                        status = ModEntry.Instance.TeraTaxationStatus.Status,
+                                        statusAmount = -requiredTax,
+                                        targetPlayer = false
+                                     },
+                                new AAttack()
+                                     {
+                                        damage = GetDmg(s, 5)
+                                     },
+                            };
+                        }
                     }
+                    break;
                 case Upgrade.B:
                     {
-                        List<CardAction> actions = new List<CardAction>
-                            {
-                                new AAttack()
-                                {
-                                    damage = GetDmg(s,1)
-
-                                }
-                            };
                         if (taxAmount >= bigRequiredTax)
                         {
-                            actions.Add(new AStatus()
+                            return new List<CardAction>
                             {
-                                status = ModEntry.Instance.TeraTaxationStatus.Status,
-                                statusAmount = -2,
-                                targetPlayer = false
-                            });
-                            actions.Add(new AAttack()
-                            {
-                                damage = GetDmg(s, 1)
-                            });
-                            actions.Add(new AAttack()
-                            {
-                                damage = GetDmg(s, 1)
-                            });
-                            actions.Add(new AAttack()
-                            {
-                                damage = GetDmg(s, 1)
-                            });
-                            actions.Add(new AAttack()
-                            {
-                                damage = GetDmg(s, 1)
-                            });
-                           
-                        };
-                        return actions;
+                                new AStatus()
+                                     {
+                                        status = ModEntry.Instance.TeraTaxationStatus.Status,
+                                        statusAmount = -bigRequiredTax,
+                                        targetPlayer = false
+                                     },
+                                new AAttack()
+                                     {
+                                        damage = GetDmg(s, 1)
+                                     },
+                                new AAttack()
+                                     {
+                                        damage = GetDmg(s, 1)
+                                     },
+                                new AAttack()
+                                     {
+                                        damage = GetDmg(s, 1)
+                                     },
+                                new AAttack()
+                                     {
+                                       damage = GetDmg(s, 1)
+                                     },
+                                new AAttack()
+                                     {
+                                        damage = GetDmg(s, 1)
+                                     },
+                            };
+                        }
+
+
                     }
+                    break;
                 default:
                     {
-                        List<CardAction> actions = new List<CardAction>
-                            {
-                                new AAttack()
-                                {
-                                    damage = GetDmg(s,1)
-                                }
-                            };
-                        if (taxAmount >= requiredTax)
+                        if (taxAmount > requiredTax)
                         {
-
-                            actions.Add(new AAttack()
+                            return new List<CardAction>
                             {
-                                damage = GetDmg(s, 2)
-                            });
-                        };
-                        return actions;
-                    }
 
+                                new AStatus()
+                                     {
+                                        status = ModEntry.Instance.TeraTaxationStatus.Status,
+                                        statusAmount = -requiredTax,
+                                        targetPlayer = false
+                                     },
+                                new AAttack()
+                                     {
+                                        damage = GetDmg(s, 4),
+                                     },
+                            };
+                        }
+
+
+                    }
+                    break;
             }
 
+            return new List<CardAction>();
         }
 
 
@@ -172,7 +165,7 @@ namespace TeraTaxMod.Cards
                     {
                         return new CardData
                         {
-                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "Overdraft", "desc"], new { damage1 = GetDmg(state, 1), damage2 = GetDmg(state, 2) })),
+                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "Overdraft", "desc"], new { damage1 = GetDmg(state, 4), damage2 = GetDmg(state, 2) })),
                             cost = 1
                         };
                     }
@@ -180,7 +173,7 @@ namespace TeraTaxMod.Cards
                     { 
                         return new CardData
                         {
-                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "Overdraft", "descA"], new { damage1 = GetDmg(state, 2), damage2 = GetDmg(state, 2) })),
+                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "Overdraft", "descA"], new { damage1 = GetDmg(state, 5), damage2 = GetDmg(state, 2) })),
                             cost = 1,
 
                         };
@@ -198,7 +191,7 @@ namespace TeraTaxMod.Cards
                     {
                         return new CardData
                         {
-                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "Overdraft", "desc"], new { damage1 = GetDmg(state, 1), damage2 = GetDmg(state, 2) })),
+                            description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "Overdraft", "desc"], new { damage1 = GetDmg(state, 4), damage2 = GetDmg(state, 2) })),
                             cost = 1
                         };
                     }

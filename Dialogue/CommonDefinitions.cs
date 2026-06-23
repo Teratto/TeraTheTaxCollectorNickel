@@ -45,6 +45,7 @@ static class CommonDefinitions
     internal readonly static string JohnsonFrugal = "Shockah.Johnson::Frugality";
 
     internal readonly static string AmZari = "Vintage.ZariMod::ZariTheDragon";
+    internal readonly static string AmGarrus = "Vintage.VicCharacter::VicCharacterFullMod";
 
 
     internal static Status MissingTera => ModEntry.TeraCharacter.MissingStatus.Status;

@@ -63,7 +63,8 @@ namespace TeraTaxMod.Cards
                         {
                             status = ModEntry.TeraCharacter.MissingStatus.Status,
                             statusAmount = 1,
-                            targetPlayer = true
+                            targetPlayer = true,
+                            dialogueSelector = ".MarketCrash"
                         },
                     };
                     }
@@ -87,7 +88,8 @@ namespace TeraTaxMod.Cards
                         {
                             status = ModEntry.TeraCharacter.MissingStatus.Status,
                             statusAmount = 1,
-                            targetPlayer = true
+                            targetPlayer = true,
+                            dialogueSelector = ".MarketCrash"
                         }
                     };
                     }
@@ -112,7 +114,8 @@ namespace TeraTaxMod.Cards
                         {
                             status = ModEntry.TeraCharacter.MissingStatus.Status,
                             statusAmount = 2,
-                            targetPlayer = true
+                            targetPlayer = true,
+                            dialogueSelector = ".MarketCrash"
                         }
                     };
                     }
@@ -137,7 +140,8 @@ namespace TeraTaxMod.Cards
                         {
                             status = ModEntry.TeraCharacter.MissingStatus.Status,
                             statusAmount = 1,
-                            targetPlayer = true
+                            targetPlayer = true,
+                            dialogueSelector = ".MarketCrash"
                         }
                     };
                     }

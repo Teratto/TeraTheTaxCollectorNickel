@@ -6,7 +6,7 @@
     "status":{
       "tax": {
         "name": "Tax",
-        "desc": "On end of turn, deal <c=keyword>1</c> damage for every <c=keyword>3</c> <c=status>TAX</c>."
+        "desc": "At the end of turn, deal <c=keyword>1</c> damage for every <c=keyword>3</c> <c=status>TAX</c>."
       },
       "persistence": {
         "name": "Interest",
@@ -52,7 +52,7 @@
       "descB": "Gain 2 <c=status>temp shield</c>. <c=downside>Spend 1 enemy tax</c> to gain 1 <c=status>evade</c>."
     },
     "Desperation": {
-      "name": "Desperation"
+      "name": "Usury"
     },
     "EggToss": {
       "name": "Egg Toss"
@@ -95,9 +95,9 @@
     },
     "Overdraft": {
       "name": "Overdraft",
-      "desc": "Shoot for <c=attack>{{damage1}}</c> dmg. <c=downside>Spend 1 enemy tax</c> to shoot again for <c=attack>{{damage2}}</c> dmg.",
-      "descA": "Shoot for <c=attack>{{damage1}}</c> dmg. <c=downside>Spend 1 enemy tax</c> to shoot again for <c=attack>{{damage2}}</c> dmg.",
-      "descB": "Shoot for <c=attack>{{damage1}}</c> dmg. <c=downside>Spend 2 enemy tax</c> to shoot for <c=attack>{{damage1}}</c> dmg <c=keyword>four</c> more times."
+      "desc": "<c=downside>Spend 1 enemy tax</c> to shoot for <c=attack>{{damage1}}</c> dmg.",
+      "descA": "<c=downside>Spend 1 enemy tax</c> to shoot for <c=attack>{{damage1}}</c> dmg.",
+      "descB": "<c=downside>Spend 2 enemy tax</c> to shoot for <c=attack>{{damage1}}</c> dmg <c=keyword>five</c> times."
     },
     "AllIn": {
       "name": "Debtonate",
@@ -152,7 +152,7 @@
     },
     "YearlyPayments": {
       "name": "YEARLY PAYMENTS",
-      "desc": "At the start of combat, add 2 <c=status>TAX</c> to the enemy."
+      "desc": "At the start of combat, apply 2 <c=status>TAX</c> to the enemy."
     },
     "GovernmentGrant": {
       "name": "GOVERNMENT GRANT",
@@ -160,7 +160,7 @@
     },
     "Capitalism": {
       "name": "CAPITALISM",
-      "desc": "At the start of combat, gain <c=energy>1 energy</c>. <c=downside>Gain one tax a turn (caps at 3)</c>."
+      "desc": "Gain 1 extra <c=energy>energy</c> every turn. <c=downside>At the end of every turn, gain 1 tax if you have less than 3 tax</c>."
     },
     "Inflation": {
       "name": "INFLATION",
@@ -196,7 +196,7 @@
         "desc": "If you were to lose <c=status>OVERDRIVE</c> while having <c=status>BAILOUT</c>, instead lose 1 <c=status>BAILOUT</c>."
       },
       "Books": {
-        "name": "Money Laundering",
+        "name": "MONEY LAUNDERING",
         "desc": "Every 2 times you gain <c=status>SHARD</c> over your maximum shard capacity, apply 1 <c=status>TAX</c> to the enemy."
       }
     }

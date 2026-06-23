@@ -202,7 +202,7 @@ namespace TeraTaxMod.Dialogue
                 {"ArtifactImprovisation_Multi_Tera_0", new()
                 {
                     type = NodeType.combat,
-                    hasArtifactTypes = [typeof(AssetLiquidation)],
+                    hasArtifactTypes = [typeof(Improvisation)],
                     oncePerRun = true,
                     turnStart = true,
                     oncePerRunTags = ["Improvisation"],
@@ -216,7 +216,7 @@ namespace TeraTaxMod.Dialogue
                 {"ArtifactImprovisation_Multi_Tera_1", new()
                 {
                     type = NodeType.combat,
-                    hasArtifactTypes = [typeof(AssetLiquidation)],
+                    hasArtifactTypes = [typeof(Improvisation)],
                     oncePerRun = true,
                     turnStart = true,
                     oncePerRunTags = ["Improvisation"],
@@ -230,7 +230,7 @@ namespace TeraTaxMod.Dialogue
                 {"ArtifactImprovisation_Multi_Tera_2", new()
                 {
                     type = NodeType.combat,
-                    hasArtifactTypes = [typeof(AssetLiquidation)],
+                    hasArtifactTypes = [typeof(Improvisation)],
                     oncePerRun = true,
                     turnStart = true,
                     oncePerRunTags = ["Improvisation"],

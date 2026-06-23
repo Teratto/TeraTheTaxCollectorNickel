@@ -86,7 +86,7 @@ namespace TeraTaxMod.Cards
                         new AStatus()
                         {
                             status = Status.evade,
-                            statusAmount = 4,
+                            statusAmount = 3,
                             targetPlayer = true
                         },
                         new AStatus()
@@ -124,7 +124,7 @@ namespace TeraTaxMod.Cards
         {
             return new CardData
             {
-                cost = 1,
+                cost = upgrade == Upgrade.B ? 0 : 1,
                 exhaust = upgrade == Upgrade.B ? true : false,
             };
         }

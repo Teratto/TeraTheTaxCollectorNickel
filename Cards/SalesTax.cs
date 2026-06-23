@@ -82,12 +82,12 @@ namespace TeraTaxMod.Cards
                             statusAmount = 1,
                             targetPlayer = false
                         },
-                        new AAddCard()
+                        new AStatus()
                         {
-                            card = new SpareCash() {temporaryOverride = true },
-                            destination = CardDestination.Discard,
-                            amount = 1,
-                           
+                            status = ModEntry.Instance.TeraBailoutStatus.Status,
+                            statusAmount = 1,
+                            targetPlayer = true,
+
                         }
                     };
                     }

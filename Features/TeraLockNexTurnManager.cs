@@ -15,6 +15,10 @@ namespace TeraTaxMod.Features;
 
 public class TeraLockNextTurnManager : IKokoroApi.IV2.IStatusLogicApi.IHook
 {
+    public IReadOnlyList<Tooltip> GetTooltips(State state, Combat combat, int amount)
+       => [
+           new TTGlossary("action.cardOffering")
+       ];
     public bool HandleStatusTurnAutoStep(IHandleStatusTurnAutoStepArgs args)
     {
         if (args.Status != ModEntry.Instance.TeraLockNextStatus.Status)
@@ -41,14 +45,14 @@ public class TeraLockNextTurnManager : IKokoroApi.IV2.IStatusLogicApi.IHook
 
         });
 
-
+        
 
 
         return false;
     }
     public bool? IsAffectedByBoost(IKokoroApi.IV2.IStatusLogicApi.IHook.IIsAffectedByBoostArgs args)
             => args.Status == ModEntry.Instance.TeraLockNextStatus.Status ? true : null;
-
+   
 }
 
 

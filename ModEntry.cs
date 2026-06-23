@@ -59,8 +59,8 @@ internal class ModEntry : SimpleMod
         typeof(NumberCrunching),
         typeof(FrenziedGetaway),
         typeof(SalesTax),
-        typeof(Overdraft),
-        typeof(Breakout)
+        typeof(Breakout),
+        typeof(SpareCash),
     ];
     private static List<Type> TeraTaxUncommonCardTypes = [
         typeof(MarketCrash),
@@ -68,8 +68,9 @@ internal class ModEntry : SimpleMod
         typeof(TaxHike),
         typeof(TaxExemption),
         typeof(AllIn),
-      
-        typeof(SpareCash),
+        typeof(Overdraft),
+
+
     ];
     private static List<Type> TeraTaxRareCardTypes = [
         typeof(Persistence),
@@ -121,6 +122,7 @@ internal class ModEntry : SimpleMod
         typeof(CombatDialogue),
         typeof(EventDialogue),
         typeof(TeraZariDialogue),
+        typeof(TeraGarrusDialogue),
         typeof(TeraDuoDialogue)
    ];
 
@@ -184,7 +186,7 @@ internal class ModEntry : SimpleMod
                 starterDeck: new StarterDeck
                 {
                     cards = [
-                        new Overdraft(),
+                        new SpareCash(),
                         new TaxingEscape(),
                     ]
                 }

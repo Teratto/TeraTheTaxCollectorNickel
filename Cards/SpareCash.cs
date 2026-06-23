@@ -23,7 +23,7 @@ namespace TeraTaxMod.Cards
                 Meta = new CardMeta
                 {
                     deck = ModEntry.Instance.TeraTaxDeck.Deck,
-                    rarity = Rarity.uncommon,
+                    rarity = Rarity.common,
                     dontOffer = false,
                     upgradesTo = [Upgrade.A, Upgrade.B]
                 },
@@ -49,7 +49,7 @@ namespace TeraTaxMod.Cards
                         new AStatus()
                         {
                             status = ModEntry.Instance.TeraBailoutStatus.Status,
-                            statusAmount = 1,
+                            statusAmount = 2,
                             targetPlayer = true,
                             dialogueSelector = ".SpareCash"
 
@@ -69,7 +69,7 @@ namespace TeraTaxMod.Cards
                         },
                         new ADrawCard()
                         {
-                            count = 1,
+                            count = 2,
                         },
                     };
                     }
@@ -94,7 +94,7 @@ namespace TeraTaxMod.Cards
                         new AStatus()
                         {
                             status = ModEntry.Instance.TeraBailoutStatus.Status,
-                            statusAmount = 1,
+                            statusAmount = 2,
                             targetPlayer = true,
                             dialogueSelector = ".SpareCash"
                         }

@@ -48,7 +48,7 @@ namespace TeraTaxMod.Cards
                     {
                         new AEnergy()
                         {
-                            changeAmount = 3,
+                            changeAmount = 2,
                         },
                         new ADrawCard()
                         {
@@ -90,7 +90,7 @@ namespace TeraTaxMod.Cards
                     {
                         new AEnergy()
                         {
-                            changeAmount = 3,
+                            changeAmount = 2,
                         },
                         new ADrawCard()
                         {
@@ -112,7 +112,7 @@ namespace TeraTaxMod.Cards
                     {
                         new AEnergy()
                         {
-                            changeAmount = 3,
+                            changeAmount = 2,
                         },
                         new ADrawCard()
                         {
@@ -136,7 +136,7 @@ namespace TeraTaxMod.Cards
         {
             return new CardData
             {
-                cost = upgrade == Upgrade.A ? 0 : 1,
+                cost = 0,
                 exhaust = true,
             };
         }

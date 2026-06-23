@@ -46,16 +46,17 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AMove()
-                        {
-                            dir = 2,
-                            targetPlayer = true
-                        },
+                        
                         new AAttack()
                         {
                             damage = GetDmg(s,0),
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
                             statusAmount = 1
+                        },
+                        new AMove()
+                        {
+                            dir = 2,
+                            targetPlayer = true
                         },
                         new AStatus()
                         {
@@ -69,16 +70,17 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AMove()
-                        {
-                            dir = 2,
-                            targetPlayer = true
-                        },
+                        
                         new AAttack()
                         {
                             damage = GetDmg(s,0),
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
                             statusAmount = 1
+                        },
+                        new AMove()
+                        {
+                            dir = 2,
+                            targetPlayer = true
                         },
                         new AStatus()
                         {
@@ -92,16 +94,17 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AMove()
-                        {
-                            dir = 2,
-                            targetPlayer = true
-                        },
+                        
                         new AAttack()
                         {
                             damage = GetDmg(s,0),
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
                             statusAmount = 1
+                        },
+                        new AMove()
+                        {
+                            dir = 2,
+                            targetPlayer = true
                         },
                     };
                     }
@@ -109,16 +112,17 @@ namespace TeraTaxMod.Cards
                     {
                         return new List<CardAction>
                     {
-                        new AMove()
-                        {
-                            dir = 2,
-                            targetPlayer = true
-                        },
+                        
                         new AAttack()
                         {
                             damage = GetDmg(s,0),
                             status = ModEntry.Instance.TeraTaxationStatus.Status,
                             statusAmount = 1
+                        },
+                        new AMove()
+                        {
+                            dir = 3,
+                            targetPlayer = true
                         },
                         new AStatus()
                         {

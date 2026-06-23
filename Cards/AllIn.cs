@@ -131,7 +131,7 @@ namespace TeraTaxMod.Cards
                         return new CardData
                         {
                             description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "AllIn", "desc"])),
-                            cost = 3,
+                            cost = 2,
                             exhaust = true
                         };
                     }
@@ -141,7 +141,8 @@ namespace TeraTaxMod.Cards
                         {
                             description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "AllIn", "descA"])),
                             cost = 2,
-                            exhaust = true
+                            exhaust = true,
+                            retain = true
                         };
                     }
                 case Upgrade.B:
@@ -150,8 +151,7 @@ namespace TeraTaxMod.Cards
                         {
                             description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "AllIn", "descB"])),
                             cost = 3,
-                            exhaust = true,
-                            retain = true
+                            exhaust = false,
                         };
                     }
                 default:
@@ -159,7 +159,7 @@ namespace TeraTaxMod.Cards
                         return new CardData
                         {
                             description = string.Format(ModEntry.Instance.Localizations.Localize(["card", "AllIn", "desc"])),
-                            cost = 3,
+                            cost = 2,
                             exhaust = true
                         };
                     }

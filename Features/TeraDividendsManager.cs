@@ -15,6 +15,8 @@ namespace TeraTaxMod.Features;
 
 public class TeraDividendsManager : IKokoroApi.IV2.IStatusLogicApi.IHook
 {
+    public double ModifyStatusTurnTriggerPriority(IKokoroApi.IV2.IStatusLogicApi.IHook.IModifyStatusTurnTriggerPriorityArgs args)
+        => args.Status == ModEntry.Instance.TeraDividendsStatus.Status ? args.Priority + 20 : args.Priority +20;
     public bool HandleStatusTurnAutoStep(IHandleStatusTurnAutoStepArgs args)
     {
         if (args.Status != ModEntry.Instance.TeraDividendsStatus.Status)
@@ -41,6 +43,7 @@ public class TeraDividendsManager : IKokoroApi.IV2.IStatusLogicApi.IHook
 
         return false;
     }
+    
     public bool? IsAffectedByBoost(IIsAffectedByBoostArgs args)
             => args.Status == ModEntry.Instance.TeraTaxationStatus.Status ? false : null;
 

@@ -57,7 +57,8 @@ namespace TeraTaxMod.Cards
                         {
                             status = ModEntry.Instance.TeraDividendsStatus.Status,
                             statusAmount = 1,
-                            targetPlayer = true
+                            targetPlayer = true,
+                            dialogueSelector = ".Dividends"
                         },
                     };
                     }
@@ -75,7 +76,8 @@ namespace TeraTaxMod.Cards
                         {
                             status = ModEntry.Instance.TeraDividendsStatus.Status,
                             statusAmount = 1,
-                            targetPlayer = true
+                            targetPlayer = true,
+                            dialogueSelector = ".Dividends"
                         },
                     };
                     }
@@ -91,9 +93,16 @@ namespace TeraTaxMod.Cards
                         },
                         new AStatus()
                         {
-                            status = ModEntry.Instance.TeraDividendsStatus.Status,
+                            status = ModEntry.Instance.TeraBailoutStatus.Status,
                             statusAmount = 1,
                             targetPlayer = true
+                        },
+                        new AStatus()
+                        {
+                            status = ModEntry.Instance.TeraDividendsStatus.Status,
+                            statusAmount = 1,
+                            targetPlayer = true,
+                            dialogueSelector = ".Dividends"
                         },
                     };
                     }
@@ -111,7 +120,8 @@ namespace TeraTaxMod.Cards
                         {
                             status = ModEntry.Instance.TeraDividendsStatus.Status,
                             statusAmount = 1,
-                            targetPlayer = true
+                            targetPlayer = true,
+                            dialogueSelector = ".Dividends"
                         },
                     };
                     }
@@ -124,7 +134,7 @@ namespace TeraTaxMod.Cards
         {
             return new CardData
             {
-                cost = upgrade == Upgrade.A ? 0 : 1,
+                cost = upgrade == Upgrade.B ? 0 : 1,
                 exhaust = true,
                 buoyant = upgrade == Upgrade.B ? true : false,
             };

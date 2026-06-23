@@ -43,9 +43,9 @@ public class Capitalism : Artifact, IRegisterable
 		s.ship.baseEnergy++;
 	}
     
-    public override void OnTurnStart(State s, Combat c)
+    public override void OnTurnEnd(State s, Combat c)
     {
-        base.OnTurnStart(s, c);
+        base.OnTurnEnd(s, c);
         int playerTax = s.ship.Get(ModEntry.Instance.TeraTaxationStatus.Status);
         if (playerTax < 3)
             {

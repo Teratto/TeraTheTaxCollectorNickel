@@ -60,12 +60,21 @@ namespace TeraTaxMod.Cards
                     {
                         new AAttack()
                         {
-                            damage = GetDmg(s,3),
-                            status = ModEntry.Instance.TeraTaxationStatus.Status,
-                            statusAmount = 1,
+                            damage = GetDmg(s,1),
                             stunEnemy = true,
                             dialogueSelector = ".EggShells"
-                        }
+                        },
+                        new AMove()
+                        {
+                            dir = 1,
+                            targetPlayer = true
+                        },
+                        new AAttack()
+                        {
+                            damage = GetDmg(s,1),
+                            stunEnemy = true,
+                            dialogueSelector = ".EggShells"
+                        },
                     };
                     }
                 case Upgrade.B:
@@ -74,13 +83,12 @@ namespace TeraTaxMod.Cards
                     {
                         new AAttack()
                         {
-                            damage = GetDmg(s,3),
+                            damage = GetDmg(s,1),
                             stunEnemy = true,
                             status = Status.lockdown,
                             statusAmount = 1,
                             dialogueSelector = ".EggShells"
                         }
-
                     };
                     }
                 default:

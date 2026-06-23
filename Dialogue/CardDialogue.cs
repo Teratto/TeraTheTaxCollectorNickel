@@ -17,20 +17,6 @@ namespace TeraTaxMod.Dialogue
             LocalDB.DumpStoryToLocalLocale("en", new Dictionary<string, DialogueMachine>()
             {
                 {
-                    "EggToss_0",
-                    new()
-                    {
-                        type = NodeType.combat,
-                        allPresent = [AmTera],
-                        lookup = ["EggToss"],
-                        oncePerRunTags = ["EggNormal"],
-                        oncePerRun = true,
-                        dialogue = [
-                        new(AmTera, "happy", "Egg time!")
-                        ]
-                    }
-                },
-                {
                     "EggToss_1",
                     new()
                     {
@@ -203,20 +189,6 @@ namespace TeraTaxMod.Dialogue
                         oncePerRun = true,
                         dialogue = [
                         new(AmTera, "happy", "How 'bout another!")
-                        ]
-                    }
-                },
-                 {
-                    "EggShells_1",
-                    new()
-                    {
-                        type = NodeType.combat,
-                        allPresent = [AmTera],
-                        lookup = ["EggShells"],
-                        oncePerRunTags = ["EggHurtie"],
-                        oncePerRun = true,
-                        dialogue = [
-                        new(AmTera, "happy", "Yeah! Eat it!")
                         ]
                     }
                 },
@@ -423,22 +395,8 @@ namespace TeraTaxMod.Dialogue
                         oncePerRunTags = ["Desperation"],
                         oncePerRun = true,
                         dialogue = [
-                        new(AmTera, "closed", "Just breathe. Everything is gonna be okay.")
+                        new(AmTera, "closed", "Everything is gonna be okay.")
 
-                        ]
-                    }
-                },
-                {
-                    "Tenacity_0",
-                    new()
-                    {
-                        type = NodeType.combat,
-                        allPresent = [AmTera],
-                        lookup = ["Tenacity"],
-                        oncePerRunTags = ["Tenacity"],
-                        oncePerRun = true,
-                        dialogue = [
-                        new(AmTera, "closed", "Give me a second to think.")
                         ]
                     }
                 },
@@ -452,7 +410,7 @@ namespace TeraTaxMod.Dialogue
                         oncePerRunTags = ["Tenacity"],
                         oncePerRun = true,
                         dialogue = [
-                        new(AmTera, "closed", "I can do this. I know I can. Just gotta breathe.")
+                        new(AmTera, "closed", "I can do this. Just gotta breathe.")
                         ]
                     }
                 },
@@ -496,7 +454,22 @@ namespace TeraTaxMod.Dialogue
                         oncePerRunTags = ["Tenacity"],
                         oncePerRun = true,
                         dialogue = [
-                        new(AmTera, "taxes", "Hmm... I think there's something here. Gimme a sec.")
+                        new(AmTera, "taxes", "Hmm... I think there's some ideas brewing. Gimme a sec.")
+                        ]
+                    }
+                },
+                {
+                    "Tenacity_5",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera, AmRiggs],
+                        lookup = ["Tenacity"],
+                        oncePerRunTags = ["Tenacity"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmRiggs, "squint", "There's too much fine print."),
+                        new(AmRiggs, "happytaxes", "The fine print holds eeeverything we'll need.")
                         ]
                     }
                 },
@@ -511,20 +484,6 @@ namespace TeraTaxMod.Dialogue
                         oncePerRun = true,
                         dialogue = [
                         new(AmTera, "happytaxes", "Gotta hit 'em where it hurts.")
-                        ]
-                    }
-                },
-                {
-                    "Breakout_1",
-                    new()
-                    {
-                        type = NodeType.combat,
-                        allPresent = [AmTera,],
-                        lookup = ["Breakout"],
-                        oncePerRunTags = ["Breakout"],
-                        oncePerRun = true,
-                        dialogue = [
-                        new(AmTera, "happy", "It's my lucky break!")
                         ]
                     }
                 },
@@ -547,13 +506,13 @@ namespace TeraTaxMod.Dialogue
                     new()
                     {
                         type = NodeType.combat,
-                        allPresent = [AmTera, AmIsaac],
+                        allPresent = [AmTera, AmDizzy],
                         lookup = ["Breakout"],
                         oncePerRunTags = ["Breakout"],
                         oncePerRun = true,
                         dialogue = [
                         new(AmTera, "happy", "Time to get some payback!"),
-                        new(AmIsaac, "explains", "They're the ones paying us back, obviously.")
+                        new(AmDizzy, "explains", "They're the ones paying us back, obviously.")
                         ]
                     }
                 },
@@ -591,20 +550,6 @@ namespace TeraTaxMod.Dialogue
                     new()
                     {
                         type = NodeType.combat,
-                        allPresent = [AmTera,],
-                        lookup = ["Forgiveness"],
-                        oncePerRunTags = ["Forgiveness"],
-                        oncePerRun = true,
-                        dialogue = [
-                        new(AmTera, "closed", "You've been pardoned.")
-                        ]
-                    }
-                },
-                {
-                    "Forgiveness_1",
-                    new()
-                    {
-                        type = NodeType.combat,
                         allPresent = [AmTera, AmDizzy],
                         lookup = ["Forgiveness"],
                         oncePerRunTags = ["Forgiveness"],
@@ -616,7 +561,7 @@ namespace TeraTaxMod.Dialogue
                     }
                 },
                 {
-                    "Forgiveness_2",
+                    "Forgiveness_1",
                     new()
                     {
                         type = NodeType.combat,
@@ -631,7 +576,7 @@ namespace TeraTaxMod.Dialogue
                     }
                 },
                 {
-                    "Forgiveness_3",
+                    "Forgiveness_2",
                     new()
                     {
                         type = NodeType.combat,
@@ -645,7 +590,7 @@ namespace TeraTaxMod.Dialogue
                     }
                 },
                 {
-                    "Forgiveness_4",
+                    "Forgiveness_3",
                     new()
                     {
                         type = NodeType.combat,
@@ -655,20 +600,6 @@ namespace TeraTaxMod.Dialogue
                         oncePerRun = true,
                         dialogue = [
                         new(AmTera, "taxes", "Just this once, I'll let you slip up on your taxes.")
-                        ]
-                    }
-                },
-                {
-                    "Forgiveness_5",
-                    new()
-                    {
-                        type = NodeType.combat,
-                        allPresent = [AmTera],
-                        lookup = ["Forgiveness"],
-                        oncePerRunTags = ["Forgiveness"],
-                        oncePerRun = true,
-                        dialogue = [
-                        new(AmTera, "neutral", "Let me ease up on their payments for a bit.")
                         ]
                     }
                 },
@@ -726,20 +657,6 @@ namespace TeraTaxMod.Dialogue
                         oncePerRun = true,
                         dialogue = [
                         new(AmTera, "happytaxes", "Ah, the two things guaranteed in life: death and taxes.")
-                        ]
-                    }
-                },
-                {
-                    "Persistence_4",
-                    new()
-                    {
-                        type = NodeType.combat,
-                        allPresent = [AmTera],
-                        lookup = ["Persistence"],
-                        oncePerRunTags = ["Persistence"],
-                        oncePerRun = true,
-                        dialogue = [
-                        new(AmTera, "lookawaynervous", "I was told to never give up. Let's hope that works now.")
                         ]
                     }
                 },
@@ -898,6 +815,63 @@ namespace TeraTaxMod.Dialogue
                         oncePerRun = true,
                         dialogue = [
                         new(AmCat, "neutral", "Little bit of tax should do the trick.")
+                        ]
+                    }
+                },
+                 {
+                    "Dividends_0",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera, AmDizzy],
+                        lookup = ["Dividends"],
+                        oncePerRunTags = ["Dividends"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmTera, "happy", "Sharing is caring!"),
+                        ]
+                    }
+                },
+                 {
+                    "Dividends_1",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera, AmDizzy],
+                        lookup = ["Dividends"],
+                        oncePerRunTags = ["Dividends"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmTera, "neutral", "Time to get back what we're owed."),
+                        ]
+                    }
+                },
+                 {
+                    "Dividends_2",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera, AmDizzy],
+                        lookup = ["Dividends"],
+                        oncePerRunTags = ["Dividends"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmTera, "closed", "Need some extra funds. Gotta trust we'll get paid back."),
+                        ]
+                    }
+                },
+                 {
+                    "Dividends_3",
+                    new()
+                    {
+                        type = NodeType.combat,
+                        allPresent = [AmTera, AmDizzy],
+                        lookup = ["Dividends"],
+                        oncePerRunTags = ["Dividends"],
+                        oncePerRun = true,
+                        dialogue = [
+                        new(AmDrake, "neutral", "So you give them money, and they give you more later?"),
+                        new(AmTera, "happy", "That's called interest, baby!")
                         ]
                     }
                 },

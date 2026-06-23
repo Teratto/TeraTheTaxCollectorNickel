@@ -206,7 +206,7 @@ internal class CombatDialogue : IRegisterable
                         new (AmDrake, "neutral", "...Gets hit with a stone."),
                         new (AmMax, "squint", "...I don't like worms in my code."),
                         new (AmBooks, "neutral", "...Makes me breakfast!"),
-                        new (AmCat, "neutral", "Setting your alarm for 5 AM, got it.")
+                        new (AmCat, "neutral", "Setting your alarm for 5 AM, got it."),
                     }),
                     ]
             }},
@@ -442,6 +442,7 @@ internal class CombatDialogue : IRegisterable
                 oncePerRun = true,
                 oncePerRunTags = ["GeminiCoreBooster"],
                 allPresent = [AmTera],
+                nonePresent = [AmDrake],
                 dialogue = [
                     new(AmTera, "lookawaynervous", "I can't even begin to understand what's happening on this ship."),
                     ]
@@ -930,7 +931,7 @@ internal class CombatDialogue : IRegisterable
                 oncePerRunTags = ["yelledAboutBrittle"],
                 allPresent = [AmTera],
                 dialogue = [
-                    new(AmTera, "happy", "Yeah yeah! Hit that brittle point!")
+                    new(AmTera, "happy", "Their ship sucks! Hit that brittle point!")
                     ]
             }},
             {"EnemyHasWeakness_Multi_Tera_0", new()
